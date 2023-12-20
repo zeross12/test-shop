@@ -309,9 +309,9 @@ watch(recordType, val => {
 	<div id="pc-recordswiper" v-show="!isHide">
 		<div class="opt-wrap">
 			<div class="live-wrap">
-				<div class="live-opt" @click="onClickSwitch">
+				<div class="live-opt">
 
-					<div class="live-action">
+					<div class="live-action" @click="onClickSwitch">
 						<svg class="icon-pause" v-if="!playRecord">
 							<use xlink:href="@/assets/icon.svg#play" ng-href="@/assets/icon.svg#play" class="ng-scope">
 							</use>
@@ -372,16 +372,15 @@ watch(recordType, val => {
 #pc-recordswiper {
 	display: flex;
 	width: 100%;
-	height: 162px;
 	position: relative;
 	margin-top: 16px;
+
 
 	.opt-wrap {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: 143px;
-		height: 100%;
 
 
 
@@ -389,7 +388,7 @@ watch(recordType, val => {
 			position: relative;
 			display: flex;
 			justify-content: center;
-			align-items: baseline;
+			align-items: center;
 			// width: 100%;
 			// height: 100%;
 			padding: 0 24px;
@@ -409,7 +408,7 @@ watch(recordType, val => {
 				width: 16px;
 				height: 16px;
 				position: relative;
-				bottom: 6px;
+				bottom: 16px;
 
 				svg {
 					display: inline-block;
@@ -613,6 +612,16 @@ watch(recordType, val => {
 				background-position: center;
 				background-size: cover;
 
+				@keyframes drop-in-data {
+					0% {
+						max-width: 0;
+					}
+
+					100% {
+						max-width: 100%;
+					}
+				}
+
 				.item-bgimg {
 					position: absolute;
 					width: 100%;
@@ -811,15 +820,7 @@ watch(recordType, val => {
 		}
 	}
 
-	@keyframes drop-in-data {
-		0% {
-			max-width: 0;
-		}
 
-		100% {
-			max-width: 180px;
-		}
-	}
 
 	@keyframes skeleton-animate-wave {
 		0% {
@@ -828,6 +829,69 @@ watch(recordType, val => {
 
 		100% {
 			background-position: calc(200px + 100%) 0;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+
+		.opt-wrap {
+			width: auto;
+			height: auto;
+			margin-bottom: 8px;
+
+			.live-wrap {
+				padding: 0 16px;
+
+				.live-txt {
+					font-size: 16px;
+				}
+
+				.live-action {
+					bottom: 0;
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+
+		.swiper-container {
+			width: 100%;
+			padding-left: 16px;
+			height: auto;
+
+			.sub-container {
+
+				.swiper-slide {
+					width: 108px;
+					height: 96px;
+
+					.swiper-item {
+						.swiper-pic {
+							width: 70% !important;
+							height: auto !important;
+							// top: 0 !important;
+						}
+
+						.item-info {
+							bottom: 4px;
+						}
+
+						.item-info1 {
+							font-size: 14px !important;
+						}
+
+						.item-info2 {
+							font-size: 10px !important;
+							margin-top: 0 !important;
+						}
+					}
+
+
+				}
+			}
 		}
 	}
 }

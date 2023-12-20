@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 import mheader from "@/components/pc/mheader/Index.vue";
 import mfooter from "@/components/pc/mfooter/Index.vue";
+import bottomNav from "@/components/pc/bottomNavigation/index.vue";
 import introduce from "@/components/pc/introduce/Index.vue";
 import sidebar from "@/components/pc/sidebar/Index.vue";
 import sign from "@/components/pc/login/Sign.vue";
@@ -31,28 +32,28 @@ components: {
 }
 
 onMounted(() => {
-	if (route.query.qhclickid) {
-		let bz = _isMobile() ? 2 : 1;
-		let snnid = route.query.qhclickid + "," + bz;
-		localStorage.setItem("bd_vid", snnid);
-	}
-	if (route.query.bd_vid) {
-		localStorage.setItem("bd_vid", route.query.bd_vid);
-	}
+	// if (route.query.qhclickid) {
+	// 	let bz = _isMobile() ? 2 : 1;
+	// 	let snnid = route.query.qhclickid + "," + bz;
+	// 	localStorage.setItem("bd_vid", snnid);
+	// }
+	// if (route.query.bd_vid) {
+	// 	localStorage.setItem("bd_vid", route.query.bd_vid);
+	// }
 
-	if (!isPCFunc()) {
-		let params = { path: "/m/home" };
-		if (route.query.code) {
-			params.query = { code: route.query.code };
-		}
-		router.replace(params);
+	// if (!isPCFunc()) {
+	// 	let params = { path: "/m/home" };
+	// 	if (route.query.code) {
+	// 		params.query = { code: route.query.code };
+	// 	}
+	// 	router.replace(params);
 
-		// let url="http://test.199skins.com/"
-		// if (route.query.code) {
-		//	 url+="?code="+route.query.code;
-		// }
-		// window.open(url, "_self");
-	}
+	// 	// let url="http://test.199skins.com/"
+	// 	// if (route.query.code) {
+	// 	//	 url+="?code="+route.query.code;
+	// 	// }
+	// 	// window.open(url, "_self");
+	// }
 });
 
 watch(route, (newRoute, oldRoute) => {
@@ -83,14 +84,12 @@ watch(route, (newRoute, oldRoute) => {
 		-->
 		<!-- /被替换的组建 -->
 
+		<bottomNav />
 		<bindPhone />
 		<UpdateNotice />
 		<!-- <ActivityDialog /> -->
-		<div
-			v-if="store.state.userInfoBase.userType == UserType.anchor && false"
-			class="pc-live_tip"
-		>
-			{{ t( 'common.liveTip' ) }}
+		<div v-if="store.state.userInfoBase.userType == UserType.anchor && false" class="pc-live_tip">
+			{{ t('common.liveTip') }}
 		</div>
 	</div>
 </template>
@@ -100,6 +99,8 @@ watch(route, (newRoute, oldRoute) => {
 	// background: url(@/assets/pcimg/base_back.png) no-repeat center top, #201E2C;
 	// background-size: 100%;
 	background-color: #15172c;
+	width: 100%;
+
 	.pc-live_tip {
 		position: fixed;
 		right: 6px;

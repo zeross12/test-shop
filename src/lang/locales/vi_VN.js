@@ -56,6 +56,7 @@ export default
 			show: 'Hiển thị',	///	+
 			hide: 'Ẩn',	///	+
 			all: 'tất cả',	///	+
+			category: 'Danh mục'
 		},
 
 		///	商城
@@ -755,7 +756,7 @@ export default
 			bindConfirmBtn: 'Xác nhận liên kết',
 			formatFail: 'Định dạng sai',
 			confirmBind: 'Xác nhận liên kết',
-			loginTitle: 'Bảo mật tài khoản',
+			loginTitle: 'Đăng nhập',
 			registerTitle: 'Đăng ký tài khoản',
 			registerByPhoneNumber: 'Đăng ký qua điện thoại ',
 			registerByEmail: 'Đăng ký qua email',

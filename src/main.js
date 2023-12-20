@@ -24,30 +24,29 @@ import vhCheck from 'vh-check'
 import Socket from '@/util/socket'
 import App from './App.vue'
 
-import { defaultChannelCode, defaultPlatformId ,siteUrl, wsurl} from './config';
-window.ws = new Socket( wsurl, store )
+import { defaultChannelCode, defaultPlatformId, siteUrl, wsurl } from './config';
+window.ws = new Socket(wsurl, store)
 window._hmt = window._hmt || [];
 window.Success = Success
 window.Warn = Warn
 window.$dev = import.meta.env.MODE === 'development' || import.meta.env.MODE === 'staging'
 
 ///	设置网站标题
-function setPageTitle( meta )
-{
-	if( typeof meta !== 'undefined' && typeof meta.name !== 'undefined' && meta.name !== '' )
-		window.document.title = `${i18n.global.t( 'common.siteTitle' )} - ${i18n.global.t( `router.${meta.name}` )}`
+function setPageTitle(meta) {
+	if (typeof meta !== 'undefined' && typeof meta.name !== 'undefined' && meta.name !== '')
+		window.document.title = `${i18n.global.t('common.siteTitle')} - ${i18n.global.t(`router.${meta.name}`)}`
 	else
-		window.document.title = i18n.global.t( 'common.siteTitle' )
+		window.document.title = i18n.global.t('common.siteTitle')
 }
 
 async function initPlatform() {
-	const res = await getChannel({ siteUrl: siteUrl});
+	const res = await getChannel({ siteUrl: siteUrl });
 	let platformId = defaultPlatformId;
 	let channelCode = defaultChannelCode;
 	if (res.code === 0) {
 		platformId = res.data.platformId;
 		channelCode = res.data.channelCode;
-		let keyword=res.data.keyWord;
+		let keyword = res.data.keyWord;
 		(function () {
 			var hm = document.createElement('script')
 			hm.src = `https://hm.baidu.com/hm.js?${keyword}`
@@ -55,25 +54,24 @@ async function initPlatform() {
 			s.parentNode.insertBefore(hm, s)
 		})()
 
-		Window.channelInfo=res.data;
+		Window.channelInfo = res.data;
 	}
 	localStorage.setItem('platformId', platformId);
 	localStorage.setItem('channelCode', channelCode);
 	initApp(platformId);
 }
 
-router.afterEach( ( to, form ) => {
-	setPageTitle( to.meta )
-} )
+router.afterEach((to, form) => {
+	setPageTitle(to.meta)
+})
 
 function initApp(platformId) {
 	const app = createApp(App)
 
 	app.use(store).use(router).use(vant)
 
-	for( const [key, component] of Object.entries( ElementPlusIconsVue ))
-	{
-		app.component( key, component )
+	for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+		app.component(key, component)
 	}
 	// Notify.setDefaultOptions({
 	//	 position:"bottom",
@@ -104,9 +102,9 @@ function initApp(platformId) {
 		window.$dev && console.log(err)
 		window.$dev && console.log('info:', info)
 	}
-	
+
 	setPageTitle()
-	app.mount( '#app' )
+	app.mount('#app')
 }
 
 initPlatform()

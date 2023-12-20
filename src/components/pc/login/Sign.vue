@@ -162,19 +162,19 @@ function dragResult(val) {
  */
 function changeType(module) {
 	type.value = module;
-	switch (module) {
-		case "login":
-			signContainer.value.style.top = `calc( 50% - 493px / 2 )`;
-			break;
+	// switch (module) {
+	// 	case "login":
+	// 		// signContainer.value.style.top = `calc( 50% - 493px / 2 )`;
+	// 		break;
 
-		case "register":
-			signContainer.value.style.top = `calc( 50% - 624px / 2 )`;
-			break;
+	// 	case "register":
+	// 		signContainer.value.style.top = `calc( 50% - 624px / 2 )`;
+	// 		break;
 
-		case "forget":
-			signContainer.value.style.top = `calc( 50% - 454px / 2 )`;
-			break;
-	}
+	// 	case "forget":
+	// 		signContainer.value.style.top = `calc( 50% - 454px / 2 )`;
+	// 		break;
+	// }
 	resetData();
 	initInviteCode()
 }
@@ -521,7 +521,7 @@ function submit(e) {
 <template>
 	<div id="pc-sign-wrap">
 		<van-overlay :show="showSignView" style="background-color: rgba(0, 0, 0, 0.7)" :z-index="201">
-			<div class="sign-container" ref="signContainer" @keypress="submit">
+			<div class="sign-container" :class="{ isSignUp: type == 'register' }" ref="signContainer" @keypress="submit">
 				<div class="close-btn" @click="onClickClose">
 					<!-- <img src="@/assets/pcimg/sign/close.png" /> -->
 					<span class="icon iconfont" style="color: #c3c3e2">&#xe65f;</span>
@@ -549,9 +549,49 @@ function submit(e) {
 								<img src="@/assets/pcimg/sign/hide-pwd.png" v-else />
 							</button>
 						</div>
+						<div class="sign-footer" v-if="type != 'forget'">
+							<div :class="['footer-item', remember ? 'active' : '']" v-if="type == 'login'">
+								<div class="remember" @click="remember = !remember">
+									<img src="@/assets/pcimg/sign/checkbox.png" v-if="!remember" />
+									<img src="@/assets/pcimg/sign/checked.png" v-else />
+									{{ t('sign.rememberPassword') }}
+								</div>
+								<div class="forget" @click="changeType('forget')">{{ t('sign.forgetPassword') }}</div>
+							</div>
+							<div :class="[
+								'footer-item',
+								'agreement',
+								agreementChecked ? 'active' : '',
+							]" v-if="type === 'register'">
+								<!-- <I18nT keypath=" sign.acceptAgreement" tag="div" class="agreement">
+					<template #acceptAgreement>
+						<div class="agreement" @click="agreementChecked = !agreementChecked">
+							<img src="@/assets/pcimg/sign/checked.png" v-if="agreementChecked" />
+							<img src="@/assets/pcimg/sign/checkbox.png" v-else />
+						</div>
+					</template>
 
-						<button class="button" @click="onAccountLogin">{{ t('sign.loginBtn') }}</button>
-						<div class="to-reg">
+					<div class="lis">
+						<span @click="toRoute('/p/help/regulations')">用户协议</span>
+						<span @click="toRoute('/p/help/privacy')">隐私条款</span>
+					</div>
+					</I18nT> -->
+								<div class="agreement" @click="agreementChecked = !agreementChecked">
+									<img src="@/assets/pcimg/sign/checked.png" v-if="agreementChecked" />
+									<img src="@/assets/pcimg/sign/checkbox.png" v-else />
+									<p>
+										{{ t('sign.over18YearsOldPc') }}
+										<span @click="toRoute('/p/help/regulations')">"{{ t('sign.userAgreement') }}"</span>
+										{{ t('sign.and') }}
+										<span @click="toRoute('/p/help/privacy')">"{{ t('sign.privacyPolicy') }}"</span>
+									</p>
+								</div>
+								<!-- <div class="lis">
+						</div> -->
+							</div>
+						</div>
+						<button class="button button--primary" @click="onAccountLogin">{{ t('sign.loginBtn') }}</button>
+						<div class="to-reg ">
 							<p @click="changeType('register')">{{ t('sign.toRegisterText') }}</p>
 						</div>
 					</div>
@@ -585,8 +625,7 @@ function submit(e) {
 
 						<div :class="['form-item', verifyCodeError ? 'error' : '']">
 							<input v-model="accountSign.verifyCode" :disabled="!sended" maxlength="6"
-								:placeholder="t('sign.enterVCode')" ref="verifyCode"
-								@keypress="verifyCodeError = false" />
+								:placeholder="t('sign.enterVCode')" ref="verifyCode" @keypress="verifyCodeError = false" />
 							<button class="send-sms" :disabled="sending" @click="sendSMS">
 								{{ countDownText }}
 							</button>
@@ -600,8 +639,9 @@ function submit(e) {
 						<div class="form-item">
 							<input v-model="accountSign.inviteCode" :placeholder="t('sign.enterInviteCodeOptional')" />
 						</div>
-						<button class="button" @click="onAccountRegister()">{{ t('sign.registerBtn') }}</button>
-						<div class="to-reg">
+						<button class="button button--primary" @click="onAccountRegister()">{{ t('sign.registerBtn')
+						}}</button>
+						<div class="to-reg ">
 							<p @click="changeType('login')">{{ t('sign.toLoginText') }}</p>
 						</div>
 					</div>
@@ -635,8 +675,7 @@ function submit(e) {
 
 						<div :class="['form-item', verifyCodeError ? 'error' : '']">
 							<input v-model="accountSign.verifyCode" :disabled="!sended" maxlength="6"
-								:placeholder="t('sign.enterVCode')" ref="verifyCode"
-								@keypress="verifyCodeError = false" />
+								:placeholder="t('sign.enterVCode')" ref="verifyCode" @keypress="verifyCodeError = false" />
 							<button class="send-sms" :disabled="sending" @click="sendSMS">
 								{{ countDownText }}
 							</button>
@@ -648,53 +687,7 @@ function submit(e) {
 					</div>
 					<!-- /忘记密码 -->
 				</div>
-				<div class="sign-footer" v-if="type != 'forget'">
-					<div :class="['footer-item', remember ? 'active' : '']" v-if="type == 'login'">
-						<div class="remember" @click="remember = !remember">
-							<img src="@/assets/pcimg/sign/checkbox.png" v-if="!remember" />
-							<img src="@/assets/pcimg/sign/checked.png" v-else />
-							{{ t('sign.rememberPassword') }}
-						</div>
-						<div class="forget" @click="changeType('forget')">{{ t('sign.forgetPassword') }}</div>
-					</div>
-					<div :class="[
-						'footer-item',
-						'agreement',
-						agreementChecked ? 'active' : '',
-					]">
-						<!-- <I18nT keypath="sign.acceptAgreement" tag="div" class="agreement">
-							<template #acceptAgreement>
-								<div
-									class="agreement"
-									@click="agreementChecked = !agreementChecked"
-								>
-									<img
-										src="@/assets/pcimg/sign/checked.png"
-										v-if="agreementChecked"
-									/>
-									<img src="@/assets/pcimg/sign/checkbox.png" v-else />
-								</div>
-							</template>
-							
-							<div class="lis">
-								<span @click="toRoute('/p/help/regulations')">用户协议</span>
-								<span @click="toRoute('/p/help/privacy')">隐私条款</span>
-							</div>
-						</I18nT> -->
-						<div class="agreement" @click="agreementChecked = !agreementChecked">
-							<img src="@/assets/pcimg/sign/checked.png" v-if="agreementChecked" />
-							<img src="@/assets/pcimg/sign/checkbox.png" v-else />
-							<p>
-								{{ t('sign.over18YearsOldPc') }}
-								<span @click="toRoute('/p/help/regulations')">"{{ t('sign.userAgreement') }}"</span>
-								{{ t('sign.and') }}
-								<span @click="toRoute('/p/help/privacy')">"{{ t('sign.privacyPolicy') }}"</span>
-							</p>
-						</div>
-						<!-- <div class="lis">
-						</div> -->
-					</div>
-				</div>
+
 			</div>
 		</van-overlay>
 	</div>
@@ -704,19 +697,48 @@ function submit(e) {
 #pc-sign-wrap {
 	.sign-container {
 		display: flex;
+		align-items: center;
+		justify-content: center;
 		position: fixed;
-		width: 500px;
-		// height: 511px;
-		top: calc(50% - 511px / 2);
-		left: calc(50% - 500px / 2);
-		border-radius: 5px;
-		// padding: 40px 0;
-		flex-direction: column;
-		box-sizing: border-box;
+		max-width: 544px;
+		// max-height: 463px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		overflow: hidden;
+		flex-direction: column;
+		width: 100%;
+		padding: 40px;
+
+
+
+
+		&::after {
+			content: "";
+			background: url(@/assets/pcimg/common/login_bg.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			position: absolute;
+			z-index: 0;
+			inset: 0;
+
+		}
+
+		&.isSignUp {
+
+			&::after {
+				background: url(@/assets/pcimg/common/sign-up_bg.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+			}
+
+		}
 
 		.close-btn {
 			position: absolute;
+			z-index: 1;
 			right: 10px;
 			top: 10px;
 			// border: 1px solid red;
@@ -743,32 +765,21 @@ function submit(e) {
 
 		.sign-header {
 			width: 100%;
-			display: flex;
-			justify-content: center;
-			background: #2a2f56;
-			padding: 40px 40px 0 40px;
-			box-sizing: border-box;
+			position: relative;
+			z-index: 1;
+			text-align: center;
 
 			.title {
-
-				font-size: 22px;
+				width: 100%;
+				font-size: 24px;
 				font-style: normal;
 				font-weight: 700;
-				line-height: 35px;
+				line-height: 26px;
+				text-align: center;
 				color: #fff;
-				// width: 200px;
-				display: flex;
-				justify-content: center;
 				position: relative;
+				margin: 0;
 
-				&::after {
-					content: "";
-					width: 120px;
-					position: absolute;
-					bottom: 0;
-					// left: calc( ( 100px - 120px ) / 2 );
-					border-bottom: 2px solid #0985ed;
-				}
 			}
 		}
 
@@ -777,9 +788,9 @@ function submit(e) {
 			display: flex;
 			flex-direction: column;
 			gap: 20px;
-			background: #2a2f56;
-			padding: 0 40px 30px 40px;
 			box-sizing: border-box;
+			position: relative;
+			z-index: 1;
 
 			.error-message {
 				border-radius: 5px;
@@ -803,13 +814,13 @@ function submit(e) {
 			.sign-form {
 				display: flex;
 				gap: 13px;
+				margin-top: 20px;
 				flex-direction: column;
 
 				.form-item {
 					width: 100%;
 					border-radius: 5px;
 					background: #191c33;
-					height: 44px;
 					display: flex;
 					box-sizing: border-box;
 					border: 1px solid #191c33;
@@ -844,24 +855,27 @@ function submit(e) {
 					}
 
 					&:focus-within {
-						border: 1px solid #0985ed;
+						border: 1px solid #FFE063;
 					}
 
 					input {
 						border: none;
 						outline: none;
 						background: transparent;
-						padding: 10px 13px;
-						font-size: 14px;
+						padding: 16px 24px;
 						color: #fff;
 						height: 100%;
 						box-sizing: border-box;
-						font-weight: 200;
+						font-weight: 400;
 						flex: 1;
+						font-family: Archivo;
 						width: 100%;
+						font-size: 16px;
+						line-height: 24px;
 
 						&::placeholder {
-							color: rgba(255, 255, 255, 0.6);
+							color: #8D8D8D;
+							text-transform: uppercase;
 						}
 
 						&:-internal-autofill-selected {
@@ -899,18 +913,23 @@ function submit(e) {
 
 				.button {
 					border-radius: 5px;
-					background: #0985ed;
-					color: #fff;
+					// background: #0985ed;
+					// color: #fff;
 					width: 100%;
 					height: 44px;
 					border: none;
 					font-size: 16px;
 					font-weight: 700;
-					margin-top: 28px;
+
+					&:hover {
+						border: 1px solid #FFE063;
+					}
 				}
 
 				.to-reg {
-					color: #848492;
+					color: white;
+					margin-top: 24px;
+					text-transform: uppercase;
 					font-size: 16px;
 					width: 100%;
 					display: flex;
@@ -929,11 +948,12 @@ function submit(e) {
 		.sign-footer {
 			display: flex;
 			flex-direction: column;
-			background: #191c33;
 			width: 100%;
-			padding: 28px 40px;
+			padding: 24px 0px;
 			box-sizing: border-box;
 			gap: 22px;
+			position: relative;
+			z-index: 1;
 
 			.footer-item {
 				display: flex;
@@ -1009,5 +1029,38 @@ function submit(e) {
 			}
 		}
 	}
+
+	@media screen and (max-width: 768px) {
+		.sign-container {
+			max-width: 400px;
+			padding: 30px;
+
+			.sign-form {
+				margin-top: 0px !important;
+			}
+
+			.sign-footer {
+				padding: 0px 0px;
+			}
+
+			.to-reg {
+
+				margin-top: 0px !important;
+			}
+
+			.form-item input {
+				padding: 10px 24px !important;
+			}
+
+			&::after {
+				// background: url(@/assets/romimg/common/arrow_top.png) no-repeat center;
+				// background-size: contain;
+				// position: absolute;
+				// inset: 0;
+
+			}
+		}
+	}
+
 }
 </style>

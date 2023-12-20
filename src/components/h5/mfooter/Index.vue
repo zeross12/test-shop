@@ -62,7 +62,7 @@ function getLogo() {
 </script>
 
 <template>
-	<div id="footer-wrap" v-if="store.state.showFooterView">
+	<!-- <div id="footer-wrap" v-if="store.state.showFooterView">
 		<div class="site-info-container">
 			<div class="info-wrap">
 				<div class="box">
@@ -102,7 +102,7 @@ function getLogo() {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </template>
 
 <style lang="scss">

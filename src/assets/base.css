@@ -61,15 +61,28 @@
 	font-weight: normal;
 }
 
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+
 body {
 	min-height: 100vh;
 	color: var(--color-text);
 	background: var(--color-background);
 	transition: color 0.5s, background-color 0.5s;
-	line-height: 1.6;
+	/* line-height: 1.6; */
 	font-family: Exo2, Helvetica Neue, Helvetica, Segoe UI, Arial, Roboto, PingFang SC, miui, Hiragino Sans GB, Microsoft Yahei, sans-serif;
-	font-size: 15px;
+	/* font-size: 15px; */
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	font-size: 16px !important;
 }

@@ -698,9 +698,13 @@ function scrollTo(index) {
 		margin: 18px 24px;
 		color: white;
 		font-size: 16px;
-		display: flex;
+		display: none;
 		align-items: center;
 		gap: 40px;
+
+		@media (min-width: 1200px) {
+			display: flex;
+		}
 
 		&-item {
 			display: flex;
@@ -726,6 +730,7 @@ function scrollTo(index) {
 		gap: 24px;
 		padding-left: 12px;
 		box-sizing: border-box;
+		display: none;
 
 		.to-top {
 			img {
@@ -802,7 +807,8 @@ function scrollTo(index) {
 			display: flex;
 			align-items: center;
 			width: 100%;
-			gap: 24px;
+			// gap: 24px;
+			gap: 16px;
 
 
 			// height: 100%;
@@ -810,6 +816,7 @@ function scrollTo(index) {
 			.nav_item {
 				align-self: stretch;
 				padding: 24px 16px;
+				// padding: 24px 8px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -886,6 +893,10 @@ function scrollTo(index) {
 		z-index: 100;
 		margin-left: auto;
 		padding-right: 16px;
+
+		.button--primary {
+			font-size: 16px;
+		}
 
 		&.mini {
 			position: fixed;
@@ -1109,19 +1120,87 @@ function scrollTo(index) {
 		}
 	}
 
-}
-
-@media (max-width: 1600PX) {
-	.nav_item {
-		font-size: 14px !important;
-		padding: 0 20px !important;
+	@media (max-width: 1600PX) {
+		.nav_item {
+			font-size: 14px !important;
+			padding: 8px 20px !important;
+		}
 	}
-}
 
-@media (max-width: 1400PX) {
-	.nav_item {
-		font-size: 12px !important;
-		padding: 0 16px !important;
+	@media (max-width: 1400PX) {
+		.nav_item {
+			font-size: 12px !important;
+			padding: 8px 16px !important;
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		.logo {
+			img {
+				width: 80px;
+				height: 100%;
+			}
+		}
+
+		.nav_item {
+			font-size: 16px !important;
+			padding: 12px 0 !important;
+
+			svg {
+				display: none;
+			}
+		}
+
+		.user-action-area {
+			.button--primary {
+
+				padding: 8px;
+				font-size: 16px;
+
+				svg {
+					display: none;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.pc-header_top {
+			margin: 0;
+
+			.logo-wrap {
+				.logo {
+					img {
+						width: 126px;
+						height: 32px;
+					}
+				}
+			}
+
+			.tab-list {
+				padding: 16px 0;
+
+				.nav_item {
+
+					display: none !important;
+				}
+
+				.user-action-area {
+					.button--primary {
+						border-radius: 8px;
+						padding: 12px 16px;
+						font-size: 14px;
+
+						svg {
+							display: block;
+							width: 16px;
+							height: 16px;
+						}
+					}
+				}
+			}
+		}
+
 	}
 }
 </style>

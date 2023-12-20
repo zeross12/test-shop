@@ -7,11 +7,11 @@ export default [
 		path: "/",
 		redirect: (to) => {
 			let isPC = isPCFunc();
-			if (!isPC) {
-				return { path: "/m/home" };
-			} else {
-				return { path: '/p/home' }
-			}
+			// if (!isPC) {
+			// 	return { path: "/m/home" };
+			// } else {
+			return { path: '/p/home' }
+			// }
 		},
 	},
 	{
@@ -25,17 +25,17 @@ export default [
 				name: "m_home",
 				component: () => import("../views/h5/home/Index.vue"),
 				meta: {
-					name : 'home'
+					name: 'home'
 				},
 			},
-			 /// crash
-			 {
-				path : 'crash',
-				name : 'm_crash',
-				component : () => import( '@/views/h5/crash/Crash.vue' ),
-				meta :
+			/// crash
+			{
+				path: 'crash',
+				name: 'm_crash',
+				component: () => import('@/views/h5/crash/Crash.vue'),
+				meta:
 				{
-					name : 'crash',
+					name: 'crash',
 				}
 			},
 			//roll
@@ -62,7 +62,7 @@ export default [
 				name: "m_openbox",
 				component: () => import("@/views/h5/openbox/Index.vue"),
 				meta: {
-					name : 'openbox'
+					name: 'openbox'
 				},
 			},
 			//幸运饰品
@@ -140,10 +140,10 @@ export default [
 			},
 			{
 				path: 'activity',
-				name : 'm_activity',
-				component: () => import( '@/views/h5/activity/Index.vue' ),
-				meta : {
-					name : 'activity'
+				name: 'm_activity',
+				component: () => import('@/views/h5/activity/Index.vue'),
+				meta: {
+					name: 'activity'
 				}
 			},
 			{
@@ -184,7 +184,7 @@ export default [
 							name: t("router.myBattleHistory"),
 						},
 					},
-				
+
 					{
 						path: "battleHelp",
 						name: "m_battle_help",
@@ -194,7 +194,7 @@ export default [
 						},
 					},
 
-					
+
 				],
 			},
 			// 创建对战
@@ -216,12 +216,12 @@ export default [
 				},
 			},
 			{
-				 path: "battleRank",
-				 name: "m_battle_rank",
-				 component: () => import("@/views/h5/battle/BattleRank.vue"),
-				 meta: {
-					 name: "rank",
-				 },
+				path: "battleRank",
+				name: "m_battle_rank",
+				component: () => import("@/views/h5/battle/BattleRank.vue"),
+				meta: {
+					name: "rank",
+				},
 			},
 			// {
 			// 	 path: "battleHistory",
@@ -261,19 +261,19 @@ export default [
 				component: () => import("@/views/h5/vip/Index.vue"),
 				meta: {
 					name: "vip",
-					type:'user'
+					type: 'user'
 				},
 			},
-		
-		{
-			path: "rule",
-			name: "m_rule",
-			component: () => import("@/views/h5/spreadUser/rule.vue"),
-			meta: {
-				name: "rule",
-				type:'user'
+
+			{
+				path: "rule",
+				name: "m_rule",
+				component: () => import("@/views/h5/spreadUser/rule.vue"),
+				meta: {
+					name: "rule",
+					type: 'user'
+				},
 			},
-		},
 
 			// {
 			//	 path: 'vip',
@@ -285,7 +285,7 @@ export default [
 			// },
 
 			//vip
-	 
+
 			//账户充值
 			{
 				path: "recharge",
@@ -306,8 +306,8 @@ export default [
 					type: "user",
 				},
 			},
-			 //个人资料
-			 {
+			//个人资料
+			{
 				path: "personalHead",
 				name: "m_personal_head",
 				component: () => import("@/views/h5/personal/Head.vue"),
@@ -401,36 +401,36 @@ export default [
 					type: "user",
 				},
 			},
-		//登陆
-		{
-			path: "sign",
-			name: "m_sign",
-			component: () => import("@/components/h5/login/Sign.vue"),
-			meta: {
-				name: "login",
-				type: "user",
+			//登陆
+			{
+				path: "sign",
+				name: "m_sign",
+				component: () => import("@/components/h5/login/Sign.vue"),
+				meta: {
+					name: "login",
+					type: "user",
+				},
 			},
-		},
-		//注册
-		{
-			path: "register",
-			name: "m_register",
-			component: () => import("@/components/h5/login/Register.vue"),
-			meta: {
-				name: "register",
-				type: "user",
+			//注册
+			{
+				path: "register",
+				name: "m_register",
+				component: () => import("@/components/h5/login/Register.vue"),
+				meta: {
+					name: "register",
+					type: "user",
+				},
 			},
-		},
-		//找回密码
-		{
-			path: "forgetPW",
-			name: "m_forgetPW",
-			component: () => import("@/components/h5/login/ForgetPW.vue"),
-			meta: {
-				name: "register",
-				type: "user",
+			//找回密码
+			{
+				path: "forgetPW",
+				name: "m_forgetPW",
+				component: () => import("@/components/h5/login/ForgetPW.vue"),
+				meta: {
+					name: "register",
+					type: "user",
+				},
 			},
-		},
 			//站内信详情
 			{
 				path: "informationDetail",
@@ -574,22 +574,22 @@ export default [
 			},
 			/// crash
 			{
-				path : 'crash',
-				name : 'p_crash',
-				component : () => import( '@/views/pc/crash/Crash.vue' ),
-				meta :
+				path: 'crash',
+				name: 'p_crash',
+				component: () => import('@/views/pc/crash/Crash.vue'),
+				meta:
 				{
-					name : 'crash'
+					name: 'crash'
 				}
 			},
 			/// rank
 			{
-				path : 'rank',
-				name : 'p_rank',
-				component : () => import( '@/views/pc/rank/Index.vue' ),
-				meta :
+				path: 'rank',
+				name: 'p_rank',
+				component: () => import('@/views/pc/rank/Index.vue'),
+				meta:
 				{
-					name : 'rank'
+					name: 'rank'
 				}
 			},
 			//roll
@@ -735,11 +735,11 @@ export default [
 					}
 				},
 				{
-					path : 'rank',
-					name : 'p_battle_rank',
-					component : () => import( '@/views/pc/battle/BattleRank.vue' ),
-					meta : {
-						name : 'rank'
+					path: 'rank',
+					name: 'p_battle_rank',
+					component: () => import('@/views/pc/battle/BattleRank.vue'),
+					meta: {
+						name: 'rank'
 					}
 				}
 				]
@@ -765,13 +765,13 @@ export default [
 				}
 			},
 			{
-				 path: 'battleRank',
-				 name: 'p_battle_rank',
-				 component: () =>
-					 import('@/views/pc/battle/BattleRank.vue'),
-				 meta: {
-					 name: 'rank'
-				 }
+				path: 'battleRank',
+				name: 'p_battle_rank',
+				component: () =>
+					import('@/views/pc/battle/BattleRank.vue'),
+				meta: {
+					name: 'rank'
+				}
 			},
 
 			{
@@ -783,14 +783,14 @@ export default [
 					name: 'battleBoxDetails'
 				}
 			},
-			
+
 			{
-				 path: "activity",
-				 name: "p_activity",
-				 component: () => import("@/views/pc/activity/Index.vue"),
-				 meta: {
-					 name: "festivalActivity",
-				 },
+				path: "activity",
+				name: "p_activity",
+				component: () => import("@/views/pc/activity/Index.vue"),
+				meta: {
+					name: "festivalActivity",
+				},
 			},
 			//个人中心
 			{

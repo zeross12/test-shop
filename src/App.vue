@@ -49,29 +49,29 @@ function initResizeView() {
 }
 
 function viewChangeListener() {
-	let isPC = isPCFunc();
-	store.commit("setPCClient", isPC);
-	if (isPC && route.path.startsWith("/m/")) {
-		let params = { path: "/p/home" };
-		// let url = "https://pc.199skins.com";
-		if (route.query.code) {
-			params.query = { code: route.query.code };
-			// url += "?code=" + route.query.code;
-		}
-		router.replace(params);
-		// window.open(url, "_self");
-	}
-	if (!isPC && route.path.startsWith("/p/")) {
-		let params = { path: "/m/home" };
-		// let url = "http://test.199skins.com";
+	// let isPC = isPCFunc();
+	// store.commit("setPCClient", isPC);
+	// if (isPC && route.path.startsWith("/m/")) {
+	// 	let params = { path: "/p/home" };
+	// 	// let url = "https://pc.199skins.com";
+	// 	if (route.query.code) {
+	// 		params.query = { code: route.query.code };
+	// 		// url += "?code=" + route.query.code;
+	// 	}
+	// 	router.replace(params);
+	// 	// window.open(url, "_self");
+	// }
+	// if (!isPC && route.path.startsWith("/p/")) {
+	// 	let params = { path: "/m/home" };
+	// 	// let url = "http://test.199skins.com";
 
-		if (route.query.code) {
-			params.query = { code: route.query.code };
-			// url += "?code=" + route.query.code;
-		}
-		router.replace(params);
-		// window.open(url, "_self");
-	}
+	// 	if (route.query.code) {
+	// 		params.query = { code: route.query.code };
+	// 		// url += "?code=" + route.query.code;
+	// 	}
+	// 	router.replace(params);
+	// 	// window.open(url, "_self");
+	// }
 }
 
 function initTSSVid() {
@@ -368,8 +368,7 @@ window.Notify = (msg) => {
 		margin-left: -5px;
 
 		&.active {
-			background: url(@/assets/romimg/common/tab_item_active.png) no-repeat
-				center;
+			background: url(@/assets/romimg/common/tab_item_active.png) no-repeat center;
 			background-size: 100% 100%;
 			color: #141427;
 			height: 63px;
@@ -412,8 +411,7 @@ window.Notify = (msg) => {
 		margin-left: -3px;
 
 		&.active {
-			background: url(@/assets/romimg/common/tab_item_active.png) no-repeat
-				center;
+			background: url(@/assets/romimg/common/tab_item_active.png) no-repeat center;
 			background-size: 100% 100%;
 			color: #141427;
 			height: 51px;

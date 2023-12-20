@@ -235,6 +235,7 @@ function goToVip() {
 	width: 750px;
 	box-sizing: border-box;
 
+
 	.top-controller-wrap {
 		display: flex;
 		justify-content: space-between;

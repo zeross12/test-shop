@@ -66,29 +66,34 @@ async function copy(value) {
 	<div id="pc-bannerswiper">
 		<div class="pc-banner-item">
 			<div class="pc-banner-item__bg">
-				<img src="@/assets/pcimg/home/banner1_1.png" alt="" />
+				<img class="mobile" src="@/assets/pcimg/home/banner1_1_mobile.png" alt="" />
+				<img class="pc" src="@/assets/pcimg/home/banner1_1.png" alt="" />
+
 				<div class="pc-banner-item__content">
 					<p class="text-1">New Collection</p>
 					<h2 class="text-2">Brand new case series</h2>
 					<h1 class="text-3">Legendary of Dragon Lore Collection</h1>
-					<div class="text-price">
+					<div class="wrapper_bottom">
+						<div class="text-price">
 
-						<img src="@/assets/pcimg/common/coins.svg" style="width: 32px;">
-						<span>
-							53.20
-						</span>
-						<div class="text-promotion">
-							73.26
+							<img src="@/assets/pcimg/common/coins.svg" style="width: 32px;">
+							<span>
+								53.20
+							</span>
+							<div class="text-promotion">
+								73.26
+							</div>
 						</div>
+						<button class="button--primary">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M19.7897 4.22001C16.8297 1.27001 12.0297 1.27001 9.08966 4.22001C7.01966 6.27001 6.39966 9.22001 7.19966 11.82L2.49966 16.52C2.16966 16.86 1.93966 17.53 2.00966 18.01L2.30966 20.19C2.41966 20.91 3.08966 21.59 3.80966 21.69L5.98966 21.99C6.46966 22.06 7.13966 21.84 7.47966 21.49L8.29966 20.67C8.49966 20.48 8.49966 20.16 8.29966 19.96L6.35966 18.02C6.06966 17.73 6.06966 17.25 6.35966 16.96C6.64966 16.67 7.12966 16.67 7.41966 16.96L9.36966 18.91C9.55966 19.1 9.87966 19.1 10.0697 18.91L12.1897 16.8C14.7797 17.61 17.7297 16.98 19.7897 14.93C22.7397 11.98 22.7397 7.17001 19.7897 4.22001ZM14.4997 12C13.1197 12 11.9997 10.88 11.9997 9.50001C11.9997 8.12001 13.1197 7.00001 14.4997 7.00001C15.8797 7.00001 16.9997 8.12001 16.9997 9.50001C16.9997 10.88 15.8797 12 14.4997 12Z"
+									fill="current" />
+							</svg>
+							OPEN NOW
+						</button>
+
 					</div>
-					<button class="button--primary">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<path
-								d="M19.7897 4.22001C16.8297 1.27001 12.0297 1.27001 9.08966 4.22001C7.01966 6.27001 6.39966 9.22001 7.19966 11.82L2.49966 16.52C2.16966 16.86 1.93966 17.53 2.00966 18.01L2.30966 20.19C2.41966 20.91 3.08966 21.59 3.80966 21.69L5.98966 21.99C6.46966 22.06 7.13966 21.84 7.47966 21.49L8.29966 20.67C8.49966 20.48 8.49966 20.16 8.29966 19.96L6.35966 18.02C6.06966 17.73 6.06966 17.25 6.35966 16.96C6.64966 16.67 7.12966 16.67 7.41966 16.96L9.36966 18.91C9.55966 19.1 9.87966 19.1 10.0697 18.91L12.1897 16.8C14.7797 17.61 17.7297 16.98 19.7897 14.93C22.7397 11.98 22.7397 7.17001 19.7897 4.22001ZM14.4997 12C13.1197 12 11.9997 10.88 11.9997 9.50001C11.9997 8.12001 13.1197 7.00001 14.4997 7.00001C15.8797 7.00001 16.9997 8.12001 16.9997 9.50001C16.9997 10.88 15.8797 12 14.4997 12Z"
-								fill="current" />
-						</svg>
-						OPEN NOW
-					</button>
 				</div>
 			</div>
 			<div class="pc-banner-item__img">
@@ -134,6 +139,10 @@ async function copy(value) {
 				width: 100%;
 				height: 100%;
 				object-fit: contain;
+
+				&.mobile {
+					display: none;
+				}
 			}
 
 			.text-1 {
@@ -158,10 +167,13 @@ async function copy(value) {
 				margin-top: 4px;
 			}
 
+			.wrapper_bottom {
+				margin-top: 18px;
+			}
+
 			.text-price {
 				position: relative;
 				width: max-content;
-				margin-top: 18px;
 				font-size: 32px;
 				font-weight: 600;
 				color: white;
@@ -180,7 +192,7 @@ async function copy(value) {
 				font-size: 24px;
 				font-weight: 600;
 				text-decoration-line: line-through;
-				color: #727391;
+				color: #c5c5c5;
 			}
 
 			.button--primary {
@@ -263,5 +275,202 @@ async function copy(value) {
 			background-color: #cccccc !important;
 		}
 	}
+
+	@media screen and (max-width: 1600px) {
+		.pc-banner-item {
+			.pc-banner-item__bg {
+				.text-1 {
+					font-size: 12px;
+				}
+
+				.text-2 {
+					font-size: 30px;
+				}
+
+				.text-3 {
+					font-size: 40px;
+				}
+
+				.text-price {
+					font-size: 20px;
+
+					img {
+						width: 18px !important;
+						height: 18px !important;
+					}
+				}
+
+				.text-promotion {
+					font-size: 16px;
+				}
+
+				.button--primary {
+					padding: 16px 20px;
+					margin-top: 16px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 1400px) {
+		.pc-banner-item {
+			.pc-banner-item__bg {
+				.text-1 {
+					font-size: 12px;
+				}
+
+				.text-2 {
+					font-size: 24px;
+				}
+
+				.text-3 {
+					font-size: 32px;
+				}
+
+				.text-price {
+					font-size: 16px;
+
+					img {
+						width: 18px !important;
+						height: 18px !important;
+					}
+				}
+
+				.text-promotion {
+					font-size: 16px;
+				}
+
+				.button--primary {
+					padding: 8px 12px;
+					margin-top: 12px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		.pc-banner-item {
+
+
+			.pc-banner-item__bg {
+				.text-1 {
+					font-size: 12px;
+				}
+
+				.text-2 {
+					font-size: 20px;
+				}
+
+				.text-3 {
+					font-size: 26px;
+				}
+
+				.text-price {
+					font-size: 16px;
+
+					img {
+						width: 16px !important;
+						height: 16px !important;
+					}
+				}
+
+				.text-promotion {
+					font-size: 13px;
+				}
+
+				.button--primary {
+					padding: 6px 10px;
+					margin-top: 12px;
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 992px) {}
+
+	@media screen and (max-width: 768px) {
+		margin-inline: 16px;
+		padding-top: 24px;
+
+		.pc-banner-item {
+
+			// .pc-banner-item__bgimg {
+			// 	src: url('@/assets/pcimg/home/banner1_1_mobile.png');
+			// }
+			&__content {
+				// left: 50%;
+				left: 16px;
+				right: 16px;
+				// transform: translate(-50%, -50%);
+			}
+
+			&__img {
+				display: none;
+			}
+
+			.pc-banner-item__bg {
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+
+					&.mobile {
+						display: block;
+					}
+
+					&.pc {
+						display: none;
+					}
+
+
+				}
+
+				.text-1 {
+					font-size: 16px;
+				}
+
+				.text-2 {
+					font-size: 24px;
+				}
+
+				.text-3 {
+					font-size: 24px;
+					text-shadow: none;
+				}
+
+				.wrapper_bottom {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					margin-top: 24px;
+				}
+
+
+
+				.text-price {
+					font-size: 32px;
+
+					img {
+						width: 32px !important;
+						height: 32px !important;
+					}
+				}
+
+				.text-promotion {
+					font-size: 24px;
+				}
+
+				.button--primary {
+					padding: 12px 18px;
+					margin-top: 0;
+					font-size: 16px;
+					border-radius: 12px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 576px) {}
 }
 </style>

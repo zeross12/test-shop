@@ -27,27 +27,27 @@ components: {
 }
 
 onMounted(() => {
-	if (route.query.qhclickid) {
-		let bz = _isMobile() ? 2 : 1;
-		let snnid = route.query.qhclickid + "," + bz;
-		localStorage.setItem("bd_vid", snnid);
-	}
-	if (route.query.bd_vid) {
-		localStorage.setItem("bd_vid", route.query.bd_vid);
-	}
+	// if (route.query.qhclickid) {
+	// 	let bz = _isMobile() ? 2 : 1;
+	// 	let snnid = route.query.qhclickid + "," + bz;
+	// 	localStorage.setItem("bd_vid", snnid);
+	// }
+	// if (route.query.bd_vid) {
+	// 	localStorage.setItem("bd_vid", route.query.bd_vid);
+	// }
 
-	if (isPCFunc()) {
-		let params = { path: "/p/home" };
-		if (route.query.code) {
-			params.query = { code: route.query.code };
-		}
-		router.replace(params);
-		// let url="https://pc.199skins.com"
-		// if (route.query.code) {
-		//	 url+="?code="+route.query.code;
-		// }
-		// window.open(url, "_self");
-	}
+	// if (isPCFunc()) {
+	// 	let params = { path: "/p/home" };
+	// 	if (route.query.code) {
+	// 		params.query = { code: route.query.code };
+	// 	}
+	// 	router.replace(params);
+	// 	// let url="https://pc.199skins.com"
+	// 	// if (route.query.code) {
+	// 	//	 url+="?code="+route.query.code;
+	// 	// }
+	// 	// window.open(url, "_self");
+	// }
 });
 
 watch(route, (newRoute, oldRoute) => {
@@ -66,17 +66,14 @@ watch(route, (newRoute, oldRoute) => {
 		<PasswordRed></PasswordRed>
 		<RegRed></RegRed>
 		<!-- <sidebar /> -->
-		
+
 		<!-- <register /> -->
 		<!-- <forgetPW /> -->
 		<bindPhone />
 		<UpdateNotice />
 		<ActivityDialog />
-		<div
-			v-if="store.state.userInfoBase.userType == UserType.anchor"
-			class="live_tip"
-		>
-		{{ t('common.liveTip') }}
+		<div v-if="store.state.userInfoBase.userType == UserType.anchor" class="live_tip">
+			{{ t('common.liveTip') }}
 			<!-- 直播内容仅供参考&nbsp;切勿随意模仿&nbsp; -->
 		</div>
 	</div>

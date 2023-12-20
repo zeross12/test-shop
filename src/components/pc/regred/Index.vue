@@ -210,23 +210,23 @@ onMounted(() => {
 		}
 	}
 
-	.pc-reg-left-Small {
-		width: 172px;
-		height: 263px;
-		background: url(@/assets/pcimg/regred/center_reg.png) no-repeat center;
-		background-size: contain;
-		position: fixed;
-		left: 0;
-		bottom: 10px;
-		z-index: -1;
-		opacity: 0;
-		transition: 0.3s;
-		transform: scale(0.8);
+	// .pc-reg-left-Small {
+	// 	width: 172px;
+	// 	height: 263px;
+	// 	background: url(@/assets/pcimg/regred/center_reg.png) no-repeat center;
+	// 	background-size: contain;
+	// 	position: fixed;
+	// 	left: 0;
+	// 	bottom: 10px;
+	// 	z-index: -1;
+	// 	opacity: 0;
+	// 	transition: 0.3s;
+	// 	transform: scale(0.8);
 
-		&.active {
-			opacity: 1;
-			z-index: 100;
-		}
-	}
+	// 	&.active {
+	// 		opacity: 1;
+	// 		z-index: 100;
+	// 	}
+	// }
 }
 </style>

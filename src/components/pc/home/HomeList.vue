@@ -173,114 +173,120 @@ function rewardWindowRight() {
 </script>
 
 <template>
-	<div id="pc-home-list-wrap" class="container" v-if="store.state.moduleBlindBox">
-		<div class="pc-home-list" id="act" v-if="false">
-			<div class="pc-top-active">
-				<div class="background">
-					<div class="time-countdown-container">
-						<div class="countdown-title">{{ t('home.limitTimeActivity') }}</div>
-						<div class="countdown-item">
-							<div>{{ Days }}</div>
-							<div>Days</div>
-						</div>
-						<div class="countdown-item">
-							<div>{{ Hours }}</div>
-							<div>Hours</div>
-						</div>
-						<div class="countdown-item">
-							<div>{{ Min }}</div>
-							<div>Min</div>
-						</div>
-						<div class="countdown-item">
-							<div>{{ Sec }}</div>
-							<div>Sec</div>
-						</div>
-					</div>
+	<div class="pc-home-list-wrapper">
 
-					<div>
-						<div class="act-box-list">
-							<div class="pc-tab-item" v-for="value in activity.boxItems" @click="openBox(value)"
-								:key="value.boxId" @mouseenter="enterFun(value.boxId)" @mouseleave="leaveFun(value.boxId)">
-								<lazy-component>
-									<div class="animation-wrap" :class="{ active: node == value.boxId }">
-										<img src="@/assets/pcimg/home/box_active_bg.png" alt="" />
-									</div>
-									<div class="pc-hot" v-show="value.labelUrl">
-										<img :src="value.labelUrl" alt="" />
-									</div>
-									<div class="pc-item-pic" :style="'background-image: url(' + value.imageUrl + ');'">
-										<img :src="value.weaponImageUrl" :alt="value.name" />
-									</div>
-									<div class="pc-item-name">{{ value.name }}</div>
-									<div class="pc-item-price">
-										{{ node == value.boxId ? "Open for " : ""
-										}}<img src="@/assets/pcimg/common/coins.svg" alt="" />
-										<Price :value="value.price"></Price>
-									</div>
-								</lazy-component>
+
+		<div id="pc-home-list-wrap" v-if="store.state.moduleBlindBox">
+			<div class="pc-home-list" id="act" v-if="false">
+				<div class="pc-top-active">
+					<div class="background">
+						<div class="time-countdown-container">
+							<div class="countdown-title">{{ t('home.limitTimeActivity') }}</div>
+							<div class="countdown-item">
+								<div>{{ Days }}</div>
+								<div>Days</div>
+							</div>
+							<div class="countdown-item">
+								<div>{{ Hours }}</div>
+								<div>Hours</div>
+							</div>
+							<div class="countdown-item">
+								<div>{{ Min }}</div>
+								<div>Min</div>
+							</div>
+							<div class="countdown-item">
+								<div>{{ Sec }}</div>
+								<div>Sec</div>
 							</div>
 						</div>
-						<div class="active-title">{{ t('home.activityContent') }}</div>
-						<div class="active-title-sub">{{ t('home.activityText') }}</div>
+
+						<div>
+							<div class="act-box-list">
+								<div class="pc-tab-item" v-for="value in activity.boxItems" @click="openBox(value)"
+									:key="value.boxId" @mouseenter="enterFun(value.boxId)"
+									@mouseleave="leaveFun(value.boxId)">
+									<lazy-component>
+										<div class="animation-wrap" :class="{ active: node == value.boxId }">
+											<img src="@/assets/pcimg/home/box_active_bg.png" alt="" />
+										</div>
+										<div class="pc-hot" v-show="value.labelUrl">
+											<img :src="value.labelUrl" alt="" />
+										</div>
+										<div class="pc-item-pic" :style="'background-image: url(' + value.imageUrl + ');'">
+											<img :src="value.weaponImageUrl" :alt="value.name" />
+										</div>
+										<div class="pc-item-name">{{ value.name }}</div>
+										<div class="pc-item-price">
+											{{ node == value.boxId ? "Open for " : ""
+											}}<img src="@/assets/pcimg/common/coins.svg" alt="" />
+											<Price :value="value.price"></Price>
+										</div>
+									</lazy-component>
+								</div>
+							</div>
+							<div class="active-title">{{ t('home.activityContent') }}</div>
+							<div class="active-title-sub">{{ t('home.activityText') }}</div>
+						</div>
+					</div>
+					<div class="active-img">
+						<!-- <img @click="router.push( '/p/activity' )" src="@/assets/pcimg/home/activity.png"> -->
+						<swiper :pagination="{ clickable: true }" :modules="modules" :autoplay="{ delay: 3000 }"
+							:loop="true">
+							<swiper-slide v-for="(item, index) in banner" :key="index">
+								<img :src="item.image" alt="" @click="open(item)" />
+							</swiper-slide>
+						</swiper>
 					</div>
 				</div>
-				<div class="active-img">
-					<!-- <img @click="router.push( '/p/activity' )" src="@/assets/pcimg/home/activity.png"> -->
-					<swiper :pagination="{ clickable: true }" :modules="modules" :autoplay="{ delay: 3000 }" :loop="true">
-						<swiper-slide v-for="(item, index) in banner" :key="index">
-							<img :src="item.image" alt="" @click="open(item)" />
-						</swiper-slide>
-					</swiper>
-				</div>
 			</div>
-		</div>
-		<div class="pc-home-list" v-for="(item, index) in homoBox" :key="index" :id="`section-${index}`">
-			<div v-if="index !== 0" class="separate" style="margin-bottom: 40px;" />
-			<div class="bg" v-if="index != 5 && item.boxItems && item.boxItems.length > 0">
-				<div class="box-title" :class="{ 'hasBg': index === 0 }" v-if="item.boxItems && item.boxItems.length > 0">
+			<div class="pc-home-list" v-for="(item, index) in homoBox" :key="index" :id="`section-${index}`">
+				<div v-if="index !== 0 && item.boxItems && item.boxItems.length > 0" class="separate"
+					style="margin-bottom: 40px;" />
+				<div class="bg" v-if="index != 5 && item.boxItems && item.boxItems.length > 0">
+					<div class="box-title" :class="{ 'hasBg': index === 0 }"
+						v-if="item.boxItems && item.boxItems.length > 0">
 
-					<svg v-if="index === 0" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40"
-						fill="none">
-						<path
-							d="M29.9329 18.6667C29.5496 18.1667 29.0829 17.7333 28.6496 17.3C27.5329 16.3 26.2663 15.5833 25.1996 14.5333C22.7163 12.1 22.1663 8.08333 23.7496 5C22.1663 5.38333 20.7829 6.25 19.5996 7.2C15.2829 10.6667 13.5829 16.7833 15.6163 22.0333C15.6829 22.2 15.7496 22.3667 15.7496 22.5833C15.7496 22.95 15.4996 23.2833 15.1663 23.4167C14.7829 23.5833 14.3829 23.4833 14.0663 23.2167C13.9711 23.138 13.8919 23.0418 13.8329 22.9333C11.9496 20.55 11.6496 17.1333 12.9163 14.4C10.1329 16.6667 8.61626 20.5 8.83293 24.1167C8.93293 24.95 9.03293 25.7833 9.31626 26.6167C9.54959 27.6167 9.99959 28.6167 10.4996 29.5C12.2996 32.3833 15.4163 34.45 18.7663 34.8667C22.3329 35.3167 26.1496 34.6667 28.8829 32.2C31.9329 29.4333 32.9996 25 31.4329 21.2L31.2163 20.7667C30.8663 20 29.9329 18.6667 29.9329 18.6667ZM24.6663 29.1667C24.1996 29.5667 23.4329 30 22.8329 30.1667C20.9663 30.8333 19.0996 29.9 17.9996 28.8C19.9829 28.3333 21.1663 26.8667 21.5163 25.3833C21.7996 24.05 21.2663 22.95 21.0496 21.6667C20.8496 20.4333 20.8829 19.3833 21.3329 18.2333C21.6496 18.8667 21.9829 19.5 22.3829 20C23.6663 21.6667 25.6829 22.4 26.1163 24.6667C26.1829 24.9 26.2163 25.1333 26.2163 25.3833C26.2663 26.75 25.6663 28.25 24.6663 29.1667Z"
-							fill="url(#paint0_linear_211_3866)" />
-						<defs>
-							<linearGradient id="paint0_linear_211_3866" x1="20.4813" y1="5" x2="20.4813" y2="34.9991"
-								gradientUnits="userSpaceOnUse">
-								<stop stop-color="#FF0000" />
-								<stop offset="1" stop-color="#FF8A00" />
-							</linearGradient>
-						</defs>
-					</svg>
-					<span>
+						<svg v-if="index === 0" xmlns="http://www.w3.org/2000/svg" width="41" height="40"
+							viewBox="0 0 41 40" fill="none">
+							<path
+								d="M29.9329 18.6667C29.5496 18.1667 29.0829 17.7333 28.6496 17.3C27.5329 16.3 26.2663 15.5833 25.1996 14.5333C22.7163 12.1 22.1663 8.08333 23.7496 5C22.1663 5.38333 20.7829 6.25 19.5996 7.2C15.2829 10.6667 13.5829 16.7833 15.6163 22.0333C15.6829 22.2 15.7496 22.3667 15.7496 22.5833C15.7496 22.95 15.4996 23.2833 15.1663 23.4167C14.7829 23.5833 14.3829 23.4833 14.0663 23.2167C13.9711 23.138 13.8919 23.0418 13.8329 22.9333C11.9496 20.55 11.6496 17.1333 12.9163 14.4C10.1329 16.6667 8.61626 20.5 8.83293 24.1167C8.93293 24.95 9.03293 25.7833 9.31626 26.6167C9.54959 27.6167 9.99959 28.6167 10.4996 29.5C12.2996 32.3833 15.4163 34.45 18.7663 34.8667C22.3329 35.3167 26.1496 34.6667 28.8829 32.2C31.9329 29.4333 32.9996 25 31.4329 21.2L31.2163 20.7667C30.8663 20 29.9329 18.6667 29.9329 18.6667ZM24.6663 29.1667C24.1996 29.5667 23.4329 30 22.8329 30.1667C20.9663 30.8333 19.0996 29.9 17.9996 28.8C19.9829 28.3333 21.1663 26.8667 21.5163 25.3833C21.7996 24.05 21.2663 22.95 21.0496 21.6667C20.8496 20.4333 20.8829 19.3833 21.3329 18.2333C21.6496 18.8667 21.9829 19.5 22.3829 20C23.6663 21.6667 25.6829 22.4 26.1163 24.6667C26.1829 24.9 26.2163 25.1333 26.2163 25.3833C26.2663 26.75 25.6663 28.25 24.6663 29.1667Z"
+								fill="url(#paint0_linear_211_3866)" />
+							<defs>
+								<linearGradient id="paint0_linear_211_3866" x1="20.4813" y1="5" x2="20.4813" y2="34.9991"
+									gradientUnits="userSpaceOnUse">
+									<stop stop-color="#FF0000" />
+									<stop offset="1" stop-color="#FF8A00" />
+								</linearGradient>
+							</defs>
+						</svg>
+						<span>
 
-						{{ item.name }}
-					</span>
-					<svg v-if="index === 0" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40"
-						fill="none">
-						<path
-							d="M29.9329 18.6667C29.5496 18.1667 29.0829 17.7333 28.6496 17.3C27.5329 16.3 26.2663 15.5833 25.1996 14.5333C22.7163 12.1 22.1663 8.08333 23.7496 5C22.1663 5.38333 20.7829 6.25 19.5996 7.2C15.2829 10.6667 13.5829 16.7833 15.6163 22.0333C15.6829 22.2 15.7496 22.3667 15.7496 22.5833C15.7496 22.95 15.4996 23.2833 15.1663 23.4167C14.7829 23.5833 14.3829 23.4833 14.0663 23.2167C13.9711 23.138 13.8919 23.0418 13.8329 22.9333C11.9496 20.55 11.6496 17.1333 12.9163 14.4C10.1329 16.6667 8.61626 20.5 8.83293 24.1167C8.93293 24.95 9.03293 25.7833 9.31626 26.6167C9.54959 27.6167 9.99959 28.6167 10.4996 29.5C12.2996 32.3833 15.4163 34.45 18.7663 34.8667C22.3329 35.3167 26.1496 34.6667 28.8829 32.2C31.9329 29.4333 32.9996 25 31.4329 21.2L31.2163 20.7667C30.8663 20 29.9329 18.6667 29.9329 18.6667ZM24.6663 29.1667C24.1996 29.5667 23.4329 30 22.8329 30.1667C20.9663 30.8333 19.0996 29.9 17.9996 28.8C19.9829 28.3333 21.1663 26.8667 21.5163 25.3833C21.7996 24.05 21.2663 22.95 21.0496 21.6667C20.8496 20.4333 20.8829 19.3833 21.3329 18.2333C21.6496 18.8667 21.9829 19.5 22.3829 20C23.6663 21.6667 25.6829 22.4 26.1163 24.6667C26.1829 24.9 26.2163 25.1333 26.2163 25.3833C26.2663 26.75 25.6663 28.25 24.6663 29.1667Z"
-							fill="url(#paint0_linear_211_3866)" />
-						<defs>
-							<linearGradient id="paint0_linear_211_3866" x1="20.4813" y1="5" x2="20.4813" y2="34.9991"
-								gradientUnits="userSpaceOnUse">
-								<stop stop-color="#FF0000" />
-								<stop offset="1" stop-color="#FF8A00" />
-							</linearGradient>
-						</defs>
-					</svg>
+							{{ item.name }}
+						</span>
+						<svg v-if="index === 0" xmlns="http://www.w3.org/2000/svg" width="41" height="40"
+							viewBox="0 0 41 40" fill="none">
+							<path
+								d="M29.9329 18.6667C29.5496 18.1667 29.0829 17.7333 28.6496 17.3C27.5329 16.3 26.2663 15.5833 25.1996 14.5333C22.7163 12.1 22.1663 8.08333 23.7496 5C22.1663 5.38333 20.7829 6.25 19.5996 7.2C15.2829 10.6667 13.5829 16.7833 15.6163 22.0333C15.6829 22.2 15.7496 22.3667 15.7496 22.5833C15.7496 22.95 15.4996 23.2833 15.1663 23.4167C14.7829 23.5833 14.3829 23.4833 14.0663 23.2167C13.9711 23.138 13.8919 23.0418 13.8329 22.9333C11.9496 20.55 11.6496 17.1333 12.9163 14.4C10.1329 16.6667 8.61626 20.5 8.83293 24.1167C8.93293 24.95 9.03293 25.7833 9.31626 26.6167C9.54959 27.6167 9.99959 28.6167 10.4996 29.5C12.2996 32.3833 15.4163 34.45 18.7663 34.8667C22.3329 35.3167 26.1496 34.6667 28.8829 32.2C31.9329 29.4333 32.9996 25 31.4329 21.2L31.2163 20.7667C30.8663 20 29.9329 18.6667 29.9329 18.6667ZM24.6663 29.1667C24.1996 29.5667 23.4329 30 22.8329 30.1667C20.9663 30.8333 19.0996 29.9 17.9996 28.8C19.9829 28.3333 21.1663 26.8667 21.5163 25.3833C21.7996 24.05 21.2663 22.95 21.0496 21.6667C20.8496 20.4333 20.8829 19.3833 21.3329 18.2333C21.6496 18.8667 21.9829 19.5 22.3829 20C23.6663 21.6667 25.6829 22.4 26.1163 24.6667C26.1829 24.9 26.2163 25.1333 26.2163 25.3833C26.2663 26.75 25.6663 28.25 24.6663 29.1667Z"
+								fill="url(#paint0_linear_211_3866)" />
+							<defs>
+								<linearGradient id="paint0_linear_211_3866" x1="20.4813" y1="5" x2="20.4813" y2="34.9991"
+									gradientUnits="userSpaceOnUse">
+									<stop stop-color="#FF0000" />
+									<stop offset="1" stop-color="#FF8A00" />
+								</linearGradient>
+							</defs>
+						</svg>
+					</div>
+					<p class="box-subtitle">
+						Wipe the snow off the new winter cases and find your favorite skin
+					</p>
 				</div>
-				<p class="box-subtitle">
-					Wipe the snow off the new winter cases and find your favorite skin
-				</p>
-			</div>
-			<div class="pc-tab-list" v-if="item.boxItems && item.boxItems.length > 0 && item.subType != 6">
-				<div class="pc-tab-item" v-for="value in item.boxItems" @click="openBox(value)" :key="value.boxId"
-					@mouseenter="enterFun(value.boxId)" @mouseleave="leaveFun(value.boxId)">
-					<lazy-component>
-						<div class="animation-wrap" :class="{ active: node == value.boxId }">
+				<div class="pc-tab-list" v-if="item.boxItems && item.boxItems.length > 0 && item.subType != 6">
+					<div class="pc-tab-item" v-for="value in item.boxItems" @click="openBox(value)" :key="value.boxId"
+						@mouseenter="enterFun(value.boxId)" @mouseleave="leaveFun(value.boxId)">
+						<!-- <div class="animation-wrap" :class="{ active: node == value.boxId }">
 							<img src="@/assets/pcimg/home/box_active_bg.png" alt="" />
-						</div>
+						</div> -->
 						<!-- <div class="pc-hot" v-show="value.labelUrl"> -->
 						<div class="pc-hot" v-show="item.subType == 8">
 							<img src="@/assets/pcimg/home/hot.png" alt="" />
@@ -296,32 +302,32 @@ function rewardWindowRight() {
 							<Price :value="value.price"></Price>
 							<span v-if="Number(value.price) < Number(value.originalPrice)">{{ value.originalPrice }}</span>
 						</button>
-					</lazy-component>
+					</div>
 				</div>
 			</div>
+			<van-overlay style="background: rgba(0, 0, 0, 0.7)" z-index="200" :show="rewardShow.show">
+				<div class="pc-flower" :class="{ ani: ani }"></div>
+				<div :class="{
+					reward1: rewardShow.classs[rewardShow.index] == 'reward',
+					reward2: rewardShow.classs[rewardShow.index] == 'reward2',
+					reward3: rewardShow.classs[rewardShow.index] == 'reward3',
+				}" class="pc-reward-container" id="fire-container">
+					<div class="close" @click="closeRewardDialog"></div>
+					<div class="left">
+						<img v-if="rewardShow.index > 0" @click="rewardWindowLeft"
+							src="@/assets/romimg/activity/10.1/allow_left.png" alt="" style="cursor: pointer" />
+						<img style="transform: rotate(180deg)" v-else src="@/assets/romimg/activity/10.1/allow_right.png"
+							alt="" />
+					</div>
+					<div class="right">
+						<img v-if="rewardShow.index < rewardShow.classs.length - 1" @click="rewardWindowRight"
+							style="transform: rotate(180deg); cursor: pointer"
+							src="@/assets/romimg/activity/10.1/allow_left.png" alt="" />
+						<img v-else src="@/assets/romimg/activity/10.1/allow_right.png" alt="" />
+					</div>
+				</div>
+			</van-overlay>
 		</div>
-		<van-overlay style="background: rgba(0, 0, 0, 0.7)" z-index="200" :show="rewardShow.show">
-			<div class="pc-flower" :class="{ ani: ani }"></div>
-			<div :class="{
-				reward1: rewardShow.classs[rewardShow.index] == 'reward',
-				reward2: rewardShow.classs[rewardShow.index] == 'reward2',
-				reward3: rewardShow.classs[rewardShow.index] == 'reward3',
-			}" class="pc-reward-container" id="fire-container">
-				<div class="close" @click="closeRewardDialog"></div>
-				<div class="left">
-					<img v-if="rewardShow.index > 0" @click="rewardWindowLeft"
-						src="@/assets/romimg/activity/10.1/allow_left.png" alt="" style="cursor: pointer" />
-					<img style="transform: rotate(180deg)" v-else src="@/assets/romimg/activity/10.1/allow_right.png"
-						alt="" />
-				</div>
-				<div class="right">
-					<img v-if="rewardShow.index < rewardShow.classs.length - 1" @click="rewardWindowRight"
-						style="transform: rotate(180deg); cursor: pointer"
-						src="@/assets/romimg/activity/10.1/allow_left.png" alt="" />
-					<img v-else src="@/assets/romimg/activity/10.1/allow_right.png" alt="" />
-				</div>
-			</div>
-		</van-overlay>
 	</div>
 </template>
 <style lang="scss">
@@ -425,12 +431,22 @@ function rewardWindowRight() {
 }
 </style>
 <style lang="scss" scoped>
+.pc-home-list-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+
+
 #pc-home-list-wrap {
 	// box-sizing: border-box;
 	// max-width: 1440px;
+	max-width: 1120px;
+	margin: 0 auto;
 	min-height: 500px;
 	background-color: #15172c;
 	margin-top: 18px;
+	padding: 0 16px;
 
 	.pc-home-list {
 		margin-top: 40px;
@@ -679,23 +695,27 @@ function rewardWindowRight() {
 		}
 
 		.pc-tab-list {
-			// margin-top: -100px;
-			// max-width: 1410px;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
+			// display: grid;
+			// grid-template-columns: repeat(4, 1fr);
+			gap: 32px;
+			margin-top: 38px;
 
 			.pc-tab-item {
-				// width: 260px;
+				width: 100%;
 				// height: 318px;
+				flex: 0 1 calc(25% - 32px);
 				position: relative;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				flex-direction: column;
 				cursor: pointer;
+				// width: 25%;
 
-				margin: 11px 0px 50px 0px;
+				// margin: 11px 0px 50px 0px;
 
 				&::after {
 					content: "";
@@ -743,13 +763,14 @@ function rewardWindowRight() {
 				}
 
 				.pc-item-mainpic {
+					width: 100%;
 					transition: .3s all;
 					transform: scale(1);
 				}
 
 				.pc-item-pic {
-					width: 260px;
-					height: 260px;
+					width: 100%;
+					height: 100%;
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -760,9 +781,10 @@ function rewardWindowRight() {
 					position: relative;
 					z-index: 1;
 					transition: 0.3s all;
+					padding: 8px;
 
 					transform: scale(0.8);
-					pointer-events: none;
+					// pointer-events: none;
 
 
 
@@ -781,7 +803,7 @@ function rewardWindowRight() {
 					font-size: 16px;
 					font-weight: 500;
 					// margin-top: 15px;
-					margin: 8px auto 20px;
+					margin: 16px auto 20px;
 					transition: .3s all;
 					z-index: 1;
 
@@ -803,6 +825,11 @@ function rewardWindowRight() {
 						margin-right: 3px;
 						margin-left: 7px;
 					}
+
+					@media screen and (max-width: 768px) {
+						padding-left: 0px;
+						padding-right: 0px;
+					}
 				}
 
 				.pc-item-name {
@@ -822,7 +849,7 @@ function rewardWindowRight() {
 					}
 
 					.pc-item-mainpic {
-						transform: scale(1.2);
+						transform: scale(1);
 					}
 
 					.pc-item-price {
@@ -870,6 +897,36 @@ function rewardWindowRight() {
 
 	.pc-home-list:first-child {
 		margin-top: 60px;
+	}
+
+	@media screen and (max-width: 768px) {
+		margin-top: 0;
+
+		.pc-home-list {
+			&:first-child {
+				margin-top: 25px;
+			}
+
+			.pc-tab-list {
+				gap: 8px;
+
+				.pc-tab-item {
+					flex: 0 1 calc(50% - 8px)
+				}
+
+				.pc-item-pic {
+					width: 100%;
+				}
+			}
+
+			.box-title {
+				font-size: 24px !important;
+			}
+
+			.box-subtitle {
+				font-size: 14px !important;
+			}
+		}
 	}
 }
 </style>
