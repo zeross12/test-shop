@@ -57,7 +57,7 @@ const showCopyAdd = ref(false)
 
 let detailTimer = null;
 
-const { reloadView } = inject('reloadView')
+// const { reloadView } = inject('reloadView')
 let { hidden, visState, visibilityChange } = pageChangeShowHide()
 
 /// 集字卡
@@ -100,7 +100,7 @@ async function copy(value) {
 function reload() {
 	window.$dev && console.log('reload');
 	if (document[visState] == 'visible') {
-		reloadView();
+		// reloadView();
 	} else {
 		stopDetailTime();
 	}
@@ -478,7 +478,7 @@ function createCopyAdd() {
 			<div class="copy-add-container">
 				<div class="header">提示<img src="@/assets/pcimg/common/close.png" @click="showCopyAdd = false"></div>
 				<div class="body">
-					确定要消耗 <img src="@/assets/pcimg/common/coin.png"> {{battleInfo.joinPrice}} 来创建相同的房间吗？
+					确定要消耗 <img src="@/assets/pcimg/common/coin.svg"> {{battleInfo.joinPrice}} 来创建相同的房间吗？
 				</div>
 				
 				<div class="footer" @click="onClickAdd"> <button>{{ t( 'notify.confirm' ) }}</button> </div>
@@ -487,7 +487,7 @@ function createCopyAdd() {
 		<van-dialog v-model:show="showCopyAdd" show-cancel-button class="pc-join-dialog">
 			<div class="join-dialog-wrap">
 				<div class="join-content-wrap">
-					{{ t('battle.confirmCopy') }} <img src="@/assets/pcimg/common/coin.png">
+					{{ t('battle.confirmCopy') }} <img src="@/assets/pcimg/common/coin.svg">
 					<span>{{ battleInfo.joinPrice }}</span> {{ t('battle.copyBattleRoom') }}？
 				</div>
 			</div>
@@ -511,22 +511,41 @@ function createCopyAdd() {
 		</van-dialog>
 		<div class="pc-battle-title">
 			<div class="title-c">
-				<img src="@/assets/pcimg/home/icon_battle2.png" alt="" />
 				<p>{{ t('router.battle') }}</p>
 				<div class="question"><img src="@/assets/pcimg/battle/question.png" alt="" /></div>
 			</div>
 			<div class="opts">
 				<div class="opt" @click="share">
-					<img src="@/assets/pcimg/battle/share.png">{{ t('battle.copyBattleLink') }}
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M18 22C17.1667 22 16.4583 21.7083 15.875 21.125C15.2917 20.5417 15 19.8333 15 19C15 18.8833 15.0083 18.7623 15.025 18.637C15.0417 18.5117 15.0667 18.3993 15.1 18.3L8.05 14.2C7.76667 14.45 7.45 14.646 7.1 14.788C6.75 14.93 6.38333 15.0007 6 15C5.16667 15 4.45833 14.7083 3.875 14.125C3.29167 13.5417 3 12.8333 3 12C3 11.1667 3.29167 10.4583 3.875 9.875C4.45833 9.29167 5.16667 9 6 9C6.38333 9 6.75 9.071 7.1 9.213C7.45 9.355 7.76667 9.55067 8.05 9.8L15.1 5.7C15.0667 5.6 15.0417 5.48767 15.025 5.363C15.0083 5.23833 15 5.11733 15 5C15 4.16667 15.2917 3.45833 15.875 2.875C16.4583 2.29167 17.1667 2 18 2C18.8333 2 19.5417 2.29167 20.125 2.875C20.7083 3.45833 21 4.16667 21 5C21 5.83333 20.7083 6.54167 20.125 7.125C19.5417 7.70833 18.8333 8 18 8C17.6167 8 17.25 7.92933 16.9 7.788C16.55 7.64667 16.2333 7.45067 15.95 7.2L8.9 11.3C8.93333 11.4 8.95833 11.5127 8.975 11.638C8.99167 11.7633 9 11.884 9 12C9 12.1167 8.99167 12.2377 8.975 12.363C8.95833 12.4883 8.93333 12.6007 8.9 12.7L15.95 16.8C16.2333 16.55 16.55 16.3543 16.9 16.213C17.25 16.0717 17.6167 16.0007 18 16C18.8333 16 19.5417 16.2917 20.125 16.875C20.7083 17.4583 21 18.1667 21 19C21 19.8333 20.7083 20.5417 20.125 21.125C19.5417 21.7083 18.8333 22 18 22Z"
+							fill="black" />
+					</svg>
 				</div>
 
 				<div class="opt" @click="createCopyAdd">
-					<img src="@/assets/pcimg/battle/copy.png">{{ t('battle.copyBattleRoom') }}}
-					<p><img src="@/assets/pcimg/common/coin.png"><span>{{ battleInfo.joinPrice }}</span></p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M18 12.75H6C5.59 12.75 5.25 12.41 5.25 12C5.25 11.59 5.59 11.25 6 11.25H18C18.41 11.25 18.75 11.59 18.75 12C18.75 12.41 18.41 12.75 18 12.75Z"
+							fill="#171717" />
+						<path
+							d="M12 18.75C11.59 18.75 11.25 18.41 11.25 18V6C11.25 5.59 11.59 5.25 12 5.25C12.41 5.25 12.75 5.59 12.75 6V18C12.75 18.41 12.41 18.75 12 18.75Z"
+							fill="#171717" />
+					</svg>
+					{{ t('battle.copyBattleRoom') }}
+
 				</div>
 
 				<div class="opt" @click="onClickBack">
-					<img src="@/assets/pcimg/common/back.png" alt="" />{{ t('common.back') }}
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M9.57043 18.82C9.38043 18.82 9.19043 18.75 9.04043 18.6L2.97043 12.53C2.68043 12.24 2.68043 11.76 2.97043 11.47L9.04043 5.4C9.33043 5.11 9.81043 5.11 10.1004 5.4C10.3904 5.69 10.3904 6.17 10.1004 6.46L4.56043 12L10.1004 17.54C10.3904 17.83 10.3904 18.31 10.1004 18.6C9.96043 18.75 9.76043 18.82 9.57043 18.82Z"
+							fill="#171717" />
+						<path
+							d="M20.4999 12.75H3.66992C3.25992 12.75 2.91992 12.41 2.91992 12C2.91992 11.59 3.25992 11.25 3.66992 11.25H20.4999C20.9099 11.25 21.2499 11.59 21.2499 12C21.2499 12.41 20.9099 12.75 20.4999 12.75Z"
+							fill="#171717" />
+					</svg>
+					{{ t('common.back') }}
 				</div>
 			</div>
 		</div>
@@ -560,10 +579,9 @@ function createCopyAdd() {
 		
 <style lang="scss" >
 #pc-battleDetail {
-	max-width: 1440px;
+	max-width: 1120px;
 	width: 100%;
 	margin: auto;
-	padding: 0 15px;
 	box-sizing: border-box;
 	min-height: 900px;
 
@@ -746,30 +764,26 @@ function createCopyAdd() {
 	}
 
 	.pc-battle-title {
-		height: 138px;
+		// height: 138px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
 		position: relative;
+		margin-top: 40px;
 
 		.title-c {
 			color: #fff;
-			font-size: 27px;
-			display: flex;
-			align-items: center;
+			font-size: 40px;
+			font-weight: 700;
+			letter-spacing: 4px;
 			position: relative;
-
-			img {
-				width: 28px;
-				height: 28px;
-				margin-right: 10px;
-			}
 
 			.question {
 				position: absolute;
 				top: -10px;
 				right: -36px;
+				display: none;
 
 				img {
 					width: 17px;
@@ -782,21 +796,32 @@ function createCopyAdd() {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			color: #cfd4ff;
-			font-size: 14px;
+			color: #151515;
+			gap: 16px;
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 24px;
+			text-transform: uppercase;
 
 			.opt {
 				cursor: pointer;
-				margin: 10px;
 				display: flex;
 				align-items: center;
-				padding: 0 50px;
-				height: 60px;
-				flex-shrink: 0;
-				vertical-align: middle;
-				border-radius: 4px;
-				border: 1px solid #313350;
+				padding: 16px 32px;
+				background: #727391;
+				border-radius: 8px;
 
+				gap: 8px;
+
+				&:first-child {
+					padding: 16px;
+				}
+
+				&:nth-child(2) {
+					// padding: 16px;
+					background-color: #FFE063;
+					// color: #fff;
+				}
 
 				img {
 					width: 17px;
@@ -813,7 +838,7 @@ function createCopyAdd() {
 
 						font-weight: 700;
 						font-size: 14px;
-						color: #7BDCA2;
+						// color: #7BDCA2;
 					}
 
 					img {
@@ -860,9 +885,11 @@ function createCopyAdd() {
 	.room-list {
 		display: flex;
 		justify-content: space-between;
-		box-sizing: border-box;
+		gap: 32px;
+		// box-sizing: border-box;
 		width: 100%;
-		margin-top: 16px;
+		margin-top: 37px;
+
 	}
 }
 </style>

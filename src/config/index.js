@@ -1,8 +1,8 @@
 import { DeviceType } from "@/util/util";
 
 //正式服
-export const url = import.meta.env.MODE === 'development' || import.meta.env.MODE === 'staging' ? 'https://api.vnskin.club/' : "https://api.199skins.com";
-// export const url = import.meta.env.MODE === 'development' || import.meta.env.MODE === 'staging' ? 'https://testapi.qhrqfa.com' : "https://api.199skins.com";
+// export const url = import.meta.env.MODE === 'development' || import.meta.env.MODE === 'staging' ? 'https://api.vnskin.club/' : "https://api.199skins.com";
+export const url = import.meta.env.MODE === 'development' || import.meta.env.MODE === 'staging' ? 'https://testapi.qhrqfa.com' : "https://api.199skins.com";
 export const wsurl = import.meta.env.MODE === 'development' || import.meta.env.MODE === 'staging' ? 'wss://8.217.71.149:21081/gate' : "wss://api.199skins.com/gate";
 // export const url = 'http://192.168.110.59:21080';
 // export const wsurl = 'ws://192.168.110.59:21081/gate';	 

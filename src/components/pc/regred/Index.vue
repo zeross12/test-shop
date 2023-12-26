@@ -88,17 +88,17 @@ onMounted(() => {
 
 <template>
 	<div id="pc-reg-parket">
-		<div class="reg-parket-wrap" :class="{ active: regPacket.closeRed }">
+		<!-- <div class="reg-parket-wrap" :class="{ active: regPacket.closeRed }">
 			<div class="no-pk-pic">
 				<div class="close" @click="close"></div>
 				<div class="no-pk-btn" @click="openPacket"></div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="reg-parket-wrap" :class="{ active: regPacket.openRed }">
 			<div class="open-pk-pic">
 				<div class="red-amount">
-					<img src="@/assets/pcimg/common/coin.png">
+					<img src="@/assets/pcimg/common/coin.svg">
 					{{ regPacket.money }}
 				</div>
 				<div class="open-btn" @click="closeView"></div>

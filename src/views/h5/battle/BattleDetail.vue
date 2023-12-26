@@ -64,7 +64,7 @@ const resultData = ref({ price: "0", name: "", ammon: 0 });
 
 let detailTimer = null;
 
-const { reloadView } = inject("reloadView");
+// const { reloadView } = inject("reloadView");
 let { hidden, visState, visibilityChange } = pageChangeShowHide();
 
 onMounted(() => {
@@ -86,7 +86,7 @@ onUnmounted(() => {
 
 function reload() {
 	if (document[visState] == "visible") {
-		reloadView();
+		// reloadView();
 	} else {
 		stopDetailTime();
 	}
@@ -214,9 +214,9 @@ async function getDetails() {
 
 		if (showXCDialog.value && item.battleType == 2) {
 			Dialog.confirm({
-				message: t( 'battle.XModeTip' ),
+				message: t('battle.XModeTip'),
 				showCancelButton: false,
-			}).then(() => {});
+			}).then(() => { });
 			showXCDialog.value = false;
 		}
 	}
@@ -424,9 +424,9 @@ function back() {
 async function copy() {
 	try {
 		await toClipboard(window.location.href);
-		Notify( t( 'common.copySuccess' ) );
+		Notify(t('common.copySuccess'));
 	} catch (e) {
-		NotifyF( 'common.copyFail' );
+		NotifyF('common.copyFail');
 	}
 }
 
@@ -439,7 +439,7 @@ async function onClickAdd() {
 	const res = await createBattleRoom(params);
 	showCopyAdd.value = false;
 	if (res.code === 0) {
-		Notify( t( 'battle.createSuccess' ) );
+		Notify(t('battle.createSuccess'));
 		store.dispatch("getUserInfo");
 		router.push("/m/transfor?id=" + res.data.battleIds[0]);
 	}
@@ -463,10 +463,7 @@ let showCopyAdd = ref(false);
 				> -->
 				<span @click="copy" class="icon iconfont">&#xe656;</span>
 				<span @click="showCopyAdd = true" class="icon iconfont">&#xe655;</span>
-				<Currency
-					:currency="battleInfo.joinPrice"
-					:font-weight="700"
-				></Currency>
+				<Currency :currency="battleInfo.joinPrice" :font-weight="700"></Currency>
 			</div>
 			<!-- <p class="bat-type-wrap">
 				{{
@@ -476,69 +473,29 @@ let showCopyAdd = ref(false);
 				}}
 			</p> -->
 		</div>
-		<Operation
-			:boxList="boxList"
-			:watchCount="battleInfo.watchUserCount"
-			:start="start"
-			@openRule="onOpenRule"
-		></Operation>
+		<Operation :boxList="boxList" :watchCount="battleInfo.watchUserCount" :start="start" @openRule="onOpenRule">
+		</Operation>
 		<div class="room-list">
-			<BattleRoomItem
-				v-for="(item, index) in userItems"
-				:key="index"
-				:battleId="battleId"
-				:userData="item"
-				:roomStatus="battleInfo.status"
-				ref="battleRoomRef"
-				:roomRound="roomRound"
-				:boxList="boxList"
-				:start="start"
-				:roomPrice="battleInfo.joinPrice"
-				@endTransition="endTransition"
-				:peoples="battleInfo.peoples"
-				@slideEnd="slideEnd"
-				@randGoodsComplete="randGoodsComplete"
-				@onJoinRoom="onJoinRoom"
-				@joinRoomSuc="joinRoomSuc"
-				:selfJoinStatus="selfJoinStatus"
-			></BattleRoomItem>
+			<BattleRoomItem v-for="(item, index) in userItems" :key="index" :battleId="battleId" :userData="item"
+				:roomStatus="battleInfo.status" ref="battleRoomRef" :roomRound="roomRound" :boxList="boxList" :start="start"
+				:roomPrice="battleInfo.joinPrice" @endTransition="endTransition" :peoples="battleInfo.peoples"
+				@slideEnd="slideEnd" @randGoodsComplete="randGoodsComplete" @onJoinRoom="onJoinRoom"
+				@joinRoomSuc="joinRoomSuc" :selfJoinStatus="selfJoinStatus"></BattleRoomItem>
 		</div>
 		<!-- 奖品展示 -->
-		<Result
-			:goodsList="boxList.goodsList"
-			:isBattle="isBattle"
-			:titleData="resultData"
-			@onClose="onResultClose"
-			ref="resultRef"
-		></Result>
-		<BattleJoinNotice
-			:battleId="battleId"
-			:joinPrice="battleInfo.joinPrice"
-			@joinRoomSuc="joinRoomSuc"
-			ref="battleJoinNotice"
-		></BattleJoinNotice>
-		<BattleRule
-			:serialNum="battleInfo.serialNum"
-			:disVerify="ruleDisVerify"
-			ref="battleRuleRef"
-		/>
+		<Result :goodsList="boxList.goodsList" :isBattle="isBattle" :titleData="resultData" @onClose="onResultClose"
+			ref="resultRef"></Result>
+		<BattleJoinNotice :battleId="battleId" :joinPrice="battleInfo.joinPrice" @joinRoomSuc="joinRoomSuc"
+			ref="battleJoinNotice"></BattleJoinNotice>
+		<BattleRule :serialNum="battleInfo.serialNum" :disVerify="ruleDisVerify" ref="battleRuleRef" />
 
-		<ShowDialog
-			:btn-type="2"
-			:title="t( 'battle.copyBattleRoom' )"
-			:show="showCopyAdd"
-			@cancel="showCopyAdd = false"
-			@ok="onClickAdd"
-		>
+		<ShowDialog :btn-type="2" :title="t('battle.copyBattleRoom')" :show="showCopyAdd" @cancel="showCopyAdd = false"
+			@ok="onClickAdd">
 			<div class="dialog-x-content">
 				<div class="dialog-row-wrap tips">
-					{{ t( 'battle.confirmCopy' ) }} &nbsp;
-					<Currency
-						:currency="battleInfo.joinPrice"
-						:font-weight="700"
-						:fontsize="16"
-					></Currency
-					>&nbsp; {{ t( 'battle.confirmText' ) }}
+					{{ t('battle.confirmCopy') }} &nbsp;
+					<Currency :currency="battleInfo.joinPrice" :font-weight="700" :fontsize="16"></Currency>&nbsp; {{ t(
+						'battle.confirmText') }}
 				</div>
 			</div>
 		</ShowDialog>
@@ -589,27 +546,32 @@ let showCopyAdd = ref(false);
 
 		p {
 			color: #b4b8cd;
+
 			// width: 100%;
 			span {
 				margin-right: 50px;
 				font-size: 36px;
 			}
 		}
+
 		.top-rand-info {
 			display: flex;
 
 			padding-right: 30px;
+
 			.icon {
 				font-size: 36px;
 				color: #fff;
 				margin-right: 30px;
 			}
+
 			.info-verify {
 				color: #6a77ff;
 				margin-left: 10px;
 				font-size: 24px;
 			}
 		}
+
 		.bat-type-wrap {
 			color: #fbfa02;
 			font-weight: bold;

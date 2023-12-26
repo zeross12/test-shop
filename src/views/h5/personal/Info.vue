@@ -11,7 +11,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const { toClipboard } = useClipboard();
 
-const { reloadView } = inject("reloadView");
+// const { reloadView } = inject("reloadView");
 
 const store = useStore();
 const router = useRouter();
@@ -51,10 +51,10 @@ function onAnimSwitchChange(flag) {
 async function onClickExitLogin() {
 	const res = await logout();
 	if (res.code === 0) {
-		Notify( t('menu.loggedOut') );
+		Notify(t('menu.loggedOut'));
 		store.commit("logout");
 		nextTick(() => {
-			reloadView();
+			// reloadView();
 		});
 	}
 }
@@ -71,16 +71,16 @@ async function copy() {
 	try {
 		let id = JSON.stringify(store.state.userId);
 		await toClipboard(id);
-		Notify(t('common.copySuccess' ));
+		Notify(t('common.copySuccess'));
 	} catch (e) {
-		NotifyF(t('common.copyFail' ));
+		NotifyF(t('common.copyFail'));
 	}
 }
 </script>
 
 <template>
 	<div id="personal-info">
-		<TopTitleBack :title=" t('router.userInfo') "></TopTitleBack>
+		<TopTitleBack :title="t('router.userInfo')"></TopTitleBack>
 		<div class="row-wrap">
 			<div class="label">{{ t('users.avater') }}</div>
 			<div class="value" @click="goToHead">
@@ -99,7 +99,7 @@ async function copy() {
 			<div class="value">
 				{{ store.state.userId }}
 				<!-- <van-button @click="copy(store.state.userId)">t('common.copy' )</van-button> -->
-				<div class="copy" @click="copy">{{t('common.copy' )}}</div>
+				<div class="copy" @click="copy">{{ t('common.copy') }}</div>
 			</div>
 		</div>
 		<div class="row-wrap">
@@ -156,29 +156,15 @@ async function copy() {
 		<div class="switch-wrap">
 			<div class="switch-item">
 				{{ t('common.sound') }}
-				<img
-					v-if="soundChecked"
-					@click="onSoundSwitchChange(false)"
-					src="@/assets/romimg/personal/switch_open.png"
-				/>
-				<img
-					v-else
-					@click="onSoundSwitchChange(true)"
-					src="@/assets/romimg/personal/switch_close.png"
-				/>
+				<img v-if="soundChecked" @click="onSoundSwitchChange(false)"
+					src="@/assets/romimg/personal/switch_open.png" />
+				<img v-else @click="onSoundSwitchChange(true)" src="@/assets/romimg/personal/switch_close.png" />
 			</div>
 			<div class="switch-item">
-			 {{ t('common.animation') }}
-				<img
-					v-if="animationChecked"
-					@click="onAnimSwitchChange(false)"
-					src="@/assets/romimg/personal/switch_open.png"
-				/>
-				<img
-					v-else
-					@click="onAnimSwitchChange(true)"
-					src="@/assets/romimg/personal/switch_close.png"
-				/>
+				{{ t('common.animation') }}
+				<img v-if="animationChecked" @click="onAnimSwitchChange(false)"
+					src="@/assets/romimg/personal/switch_open.png" />
+				<img v-else @click="onAnimSwitchChange(true)" src="@/assets/romimg/personal/switch_close.png" />
 			</div>
 		</div>
 		<div class="exit-warp" @click="onClickExitLogin">{{ t('menu.logout') }}</div>
@@ -189,6 +175,7 @@ async function copy() {
 #personal-info {
 	box-sizing: border-box;
 	width: 750px;
+
 	.row-wrap {
 		width: 690px;
 		height: 120px;
@@ -198,6 +185,7 @@ async function copy() {
 		justify-content: space-between;
 		display: flex;
 		align-items: center;
+
 		.copy {
 			border-radius: 8px;
 			border: 1px solid #2d2d67;
@@ -213,6 +201,7 @@ async function copy() {
 			padding-right: 20px;
 			margin-left: 20px;
 		}
+
 		.label {
 			display: flex;
 			color: #cfd0d3;
@@ -221,6 +210,7 @@ async function copy() {
 			font-weight: 400;
 			text-transform: uppercase;
 		}
+
 		.value {
 			display: flex;
 			justify-content: center;
@@ -237,6 +227,7 @@ async function copy() {
 				font-size: 30px;
 				margin-left: 10px;
 			}
+
 			.head {
 				width: 64px;
 				height: 64px;
@@ -245,6 +236,7 @@ async function copy() {
 			}
 		}
 	}
+
 	.switch-wrap {
 		width: 690px;
 		height: 120px;
@@ -253,6 +245,7 @@ async function copy() {
 		display: flex;
 		align-items: center;
 		justify-content: start;
+
 		.switch-item {
 			color: #2ae1bc;
 			font-size: 30px;
@@ -260,6 +253,7 @@ async function copy() {
 			font-weight: 400;
 			line-height: 48px;
 			margin-right: 50px;
+
 			img {
 				width: 92px;
 				height: 48px;
@@ -268,6 +262,7 @@ async function copy() {
 			}
 		}
 	}
+
 	.exit-warp {
 		margin: auto;
 		margin-top: 100px;

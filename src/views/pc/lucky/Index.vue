@@ -404,7 +404,6 @@ watch(route, (newRoute, oldRoute) => {
 	<div id="pc-luckybox">
 		<div class="page-head">
 			<div class="page-title">
-				<img src="@/assets/pcimg/lucky/icon.png" alt="" />
 				{{ t('router.lucky') }}
 			</div>
 		</div>
@@ -422,29 +421,30 @@ watch(route, (newRoute, oldRoute) => {
 				curFliterTypeItem.subTypes &&
 				curFliterTypeItem.subTypes.length > 0
 				">
-				<div class="sub-title">{{ t('mall.goodsType') }}</div>
+				<!-- <div class="sub-title">{{ t('mall.goodsType') }}</div> -->
 				<div v-for="item in curFliterTypeItem.subTypes" class="sub-type-item" :key="item.id"
 					:class="{ active: filterSelect.subType == item.id }" @click="onClickFliterSubType(item)">
 					{{ item.name }}
 				</div>
 			</div>
 		</div>
-
+		<div class="separate" />
 		<div class="goods-wrap">
 			<div class="goods-header">
 				<div class="header-left">
-					<svg class="icon-cubes">
+					<!-- <svg class="icon-cubes">
 						<use xlink:href="@/assets/icon.svg#cubes" ng-href="@/assets/icon.svg#cubes"></use>
-					</svg>
+					</svg> -->
 					<span>{{ t('lucky.changeGoods') }}</span>
 				</div>
 				<div class="header-right">
-					<input type="text" v-model="searchKey" :placeholder="t('battle.searchByName')" />
 					<div class="search-btn" @click="onSearchData()">
 						<svg class="icon-search">
 							<use xlink:href="@/assets/icon.svg#search" ng-href="@/assets/icon.svg#search"></use>
 						</svg>
 					</div>
+					<input type="text" v-model="searchKey" :placeholder="t('battle.searchByName')" />
+
 				</div>
 			</div>
 			<div class="fliter-wrap">
@@ -466,19 +466,26 @@ watch(route, (newRoute, oldRoute) => {
 						<div v-for="item in filterPriceArray" class="filter-type-item" :key="item.id"
 							:class="{ active: curFliterPriceItem.id == item.id }" @click="onClickFliterPrice(item)">
 							{{ item.min }}- {{ item.max }}
+							<img src="@/assets/pcimg/common/coin.svg" width="20px" height="20px" alt="" />
 						</div>
 					</div>
 				</div>
 				<div class="fliter-right">
 					<div class="input-item">
 						<input type="text" v-model="fliterInputMin" :placeholder="t('lucky.minPrice')" />
+
+						<img src="@/assets/pcimg/common/coin.svg" width="20px" height="20px" alt="" />
 					</div>
 					<div class="input-item">
 						<input type="text" v-model="fliterInputMax" :placeholder="t('lucky.maxPrice')" />
+
+						<img src="@/assets/pcimg/common/coin.svg" width="20px" height="20px" alt="" />
 					</div>
 					<div class="opt-btn-item" @click="onClickFliterSure()">{{ t('notify.confirm') }}</div>
 				</div>
 			</div>
+
+			<div class="separate" style="height: 1px; margin-top: 24px;"></div>
 			<div class="goods_list_main">
 				<van-list v-if="goodsList.length > 0" v-model="loading" :finished="finished"
 					:finished-text="t('common.noMore')" @load="onLoad" :key="pager.pageIndex" :immediate-check="false">
@@ -493,7 +500,7 @@ watch(route, (newRoute, oldRoute) => {
 								<p class="item-info2">{{ getGoodsNameSec(item.goodsName) }}</p>
 							</div>
 							<div class="price">
-								<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price }}
+								<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price }}
 							</div>
 						</div>
 					</div>
@@ -504,16 +511,14 @@ watch(route, (newRoute, oldRoute) => {
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #pc-luckybox {
 	padding-bottom: 60px;
-	padding-top: 50px;
-	max-width: 1440px;
+	padding-top: 40px;
+	max-width: 1120px;
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
-	padding-left: 15px;
-	padding-right: 15px;
 	box-sizing: border-box;
 
 	.page-head {
@@ -527,33 +532,29 @@ watch(route, (newRoute, oldRoute) => {
 			display: flex;
 			align-items: center;
 			color: #fff;
-			font-size: 27px;
-
-			img {
-				width: 28px;
-				height: 28px;
-				margin-right: 15px;
-			}
+			font-weight: 700;
+			font-size: 40px;
+			text-transform: uppercase;
 		}
 	}
 
 	.lucky-top {
 		display: block;
-		background-color: #0e0f1e;
-		box-shadow: 0 24px 31px rgba(15, 16, 31, 0.71);
+		// background-color: #0e0f1e;
+		// box-shadow: 0 24px 31px rgba(15, 16, 31, 0.71);
 		overflow: hidden;
-		margin-bottom: 36px;
+		// margin-bottom: 36px;
 
 		.type-items {
-			margin-left: -4px;
-			overflow: hidden;
+			// margin-left: -4px;
+			// overflow: hidden;
 			display: flex;
-			height: 190px;
-			background-color: #0d0e1d;
+			// background-color: #0d0e1d;
 			width: 100%;
 			// justify-items: center;
 			align-items: center;
-			justify-content: space-evenly;
+			gap: 32px;
+			// justify-content: space-evenly;
 			// height: 100%;
 
 			.type-item {
@@ -563,15 +564,31 @@ watch(route, (newRoute, oldRoute) => {
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-evenly;
-				height: 100%;
+
+				height: 160px;
+				width: 160px;
 				// height: 100px;
-				padding-left: 10px;
-				padding-right: 10px;
+				// padding-left: 10px;
+				// padding-right: 10px;
 				border-bottom: 1px solid #15172c;
 				cursor: pointer;
 				outline: 0;
-				flex: 1;
+				// flex: 1;
 				box-sizing: border-box;
+				position: relative;
+
+				::before {
+					content: "";
+					background-image: url("@/assets/pcimg/common/bg_lucky.png");
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-position: center;
+					position: absolute;
+					inset: 0;
+					opacity: 0;
+					transition: .3s all;
+
+				}
 
 				p {
 					font-size: 14px;
@@ -588,11 +605,14 @@ watch(route, (newRoute, oldRoute) => {
 					img {
 						position: relative;
 						z-index: 1;
-						opacity: 0.3;
+						// opacity: 0.3;
 						filter: grayscale(100%);
 						max-width: 100%;
 						height: auto;
 						max-height: 100%;
+						opacity: 1;
+						transition: .3s all;
+						// filter: none;
 					}
 				}
 
@@ -607,9 +627,17 @@ watch(route, (newRoute, oldRoute) => {
 				}
 
 				&.active {
+
+
+
+					::before {
+						opacity: .7;
+					}
+
 					img {
 						opacity: 1;
 						filter: none;
+
 					}
 
 					p {
@@ -629,29 +657,31 @@ watch(route, (newRoute, oldRoute) => {
 						box-shadow: 0 0 55px 30px #432ac0;
 					}
 
-					&::after {
-						content: "";
-						position: absolute;
-						z-index: -1;
-						top: 0;
-						bottom: 0;
-						left: 0;
-						right: 0;
-						background: linear-gradient(to top,
-								#0d0e1d 30px,
-								rgba(13, 14, 29, 0) 90%);
-					}
+					// &::after {
+					// 	content: "";
+					// 	position: absolute;
+					// 	z-index: -1;
+					// 	top: 0;
+					// 	bottom: 0;
+					// 	left: 0;
+					// 	right: 0;
+					// 	background: linear-gradient(to top,
+					// 			#0d0e1d 30px,
+					// 			rgba(13, 14, 29, 0) 90%);
+					// }
 				}
 			}
 		}
 
 		.sub-type-items {
 			display: flex;
+			justify-content: center;
 			flex-wrap: wrap;
 			align-items: baseline;
-			padding: 46px 50px;
-			height: 140px;
+			padding: 24px 0px;
+			// height: 140px;
 			box-sizing: border-box;
+			gap: 8px;
 
 			.sub-title {
 				font-size: 19px;
@@ -663,25 +693,19 @@ watch(route, (newRoute, oldRoute) => {
 			}
 
 			.sub-type-item {
-				display: flex;
-				align-items: center;
-				margin-top: 4px;
-				margin-bottom: 4px;
-				padding-top: 3px;
-				padding-left: 12px;
-				padding-right: 12px;
-				font-size: 16px;
-				color: #9898aa;
-				font-weight: 300;
-				height: 40px;
-				border: 1px solid #1e213b;
-				border-radius: 4px;
-				margin-right: 6px;
+				color: #727391;
 				box-sizing: border-box;
+				font-weight: 500;
+				font-size: 16px;
+				border-radius: 8px;
+				padding: 8px 12px;
+				transition: .3s all;
+				cursor: pointer;
 
 				&.active {
-					background-color: #4a45b1;
-					color: #fff;
+					background-color: #FFE063;
+					color: #151515;
+
 					border: 0;
 				}
 			}
@@ -694,19 +718,18 @@ watch(route, (newRoute, oldRoute) => {
 			align-items: center;
 			position: relative;
 			z-index: 0;
-			height: 88px;
-			padding-left: 30px;
-			background: url(@/assets/pcimg/lucky/sec_title.svg) left center/contain no-repeat #1b1d35;
+			margin-top: 24px;
+			// height: 88px;
+			// padding-left: 30px;
+			// background: url(@/assets/pcimg/lucky/sec_title.svg) left center/contain no-repeat #1b1d35;
 			box-sizing: border-box;
 
 			.header-left {
 				display: flex;
 				align-items: center;
 				color: #fff;
-				font-size: 21px;
+				font-size: 18px;
 				font-weight: 500;
-				margin-top: 3px;
-				margin-right: 20px;
 				box-sizing: border-box;
 
 				.icon-cubes {
@@ -732,7 +755,6 @@ watch(route, (newRoute, oldRoute) => {
 			.header-right {
 				display: flex;
 				position: relative;
-				align-self: stretch;
 				margin-left: auto;
 				width: 100%;
 				max-width: 404px;
@@ -741,16 +763,14 @@ watch(route, (newRoute, oldRoute) => {
 				input {
 					width: 100%;
 					height: 100%;
-					padding-left: 30px;
-					padding-right: 70px;
-					border: 0;
+					padding: 12px 16px 12px 56px;
 					font-size: 18px;
-					font-weight: 300;
-					padding-top: 3px;
-					color: #bfc1d1;
+					background-color: transparent;
+					font-weight: 500;
+					color: white;
 					outline: 0;
-					background-color: #1f213c;
-					box-sizing: border-box;
+					border: 1px solid #4B4F71;
+					border-radius: 12px;
 
 					&::placeholder {
 						color: #676c90;
@@ -761,8 +781,9 @@ watch(route, (newRoute, oldRoute) => {
 					display: flex;
 					align-items: center;
 					position: absolute;
+					// r: 50%;
+					left: 16px;
 					top: 50%;
-					right: 30px;
 					color: #dbdded;
 					transition: none;
 					transform: translateY(-50%);
@@ -786,12 +807,13 @@ watch(route, (newRoute, oldRoute) => {
 		.fliter-wrap {
 			display: flex;
 			width: 100%;
-			height: 99px;
+			margin-top: 16px;
 			align-items: center;
 			justify-content: space-between;
 
 			.fliter-left {
 				display: flex;
+				gap: 40px;
 
 				.top-sort-item {
 					display: flex;
@@ -803,7 +825,15 @@ watch(route, (newRoute, oldRoute) => {
 						width: 48px;
 						height: 40px;
 						border-radius: 4px;
-						background: #0e0f1e;
+						// background: ;
+						border-radius: 8px;
+						border: 1px solid #4B4F71;
+						transition: .3s all;
+						color: #151515;
+
+						svg {
+							fill: #151515;
+						}
 
 						&:last-child {
 							margin-left: 10px;
@@ -815,16 +845,16 @@ watch(route, (newRoute, oldRoute) => {
 							display: inline-block;
 							vertical-align: middle;
 							fill: currentColor;
-							color: rgba(135, 139, 145, 0.9);
+							color: white;
 							cursor: pointer;
 							box-sizing: border-box;
 						}
 
 						&.active {
-							background: #4a45b1;
+							background: #FFE063;
 
 							.icon-arrow {
-								color: #fff;
+								color: #151515;
 							}
 						}
 					}
@@ -832,50 +862,54 @@ watch(route, (newRoute, oldRoute) => {
 
 				.filter-type-wrap {
 					display: flex;
-					margin-left: 12px;
+					gap: 8px;
 
 					.filter-type-item {
 						display: flex;
-						width: 103px;
-						height: 40px;
 						justify-content: center;
 						align-items: center;
 						border-radius: 4px;
-						background: #0e0f1e;
-						margin-left: 20px;
-						color: #878b91;
-
+						color: #fff;
+						border-radius: 8px;
+						border: 1px solid #4B4F71;
+						padding: 8px;
+						gap: 8px;
 						font-size: 16px;
 						font-weight: 500;
+						cursor: pointer;
+						transition: .3s all;
 
 						&.active {
-							background: #4a45b1;
-							color: #fff;
+							background: #FFE063;
+							color: #151515;
 						}
+
+
 					}
 				}
 			}
 
 			.fliter-right {
 				display: flex;
+				gap: 8px;
 
 				.input-item {
 					display: flex;
 					align-items: center;
-					width: 100px;
-					height: 40px;
-					border-bottom: 2px solid #4a45b1;
-					margin-left: 10px;
-					padding: 0 5px;
-					box-sizing: border-box;
+					border: 1px solid #4B4F71;
+					padding: 8px;
+					border-radius: 8px;
+					color: #727391;
+					max-width: 128px;
 
 					input {
-						box-sizing: border-box;
 						width: 100%;
 						border: none;
 						background: none;
 						color: #fff;
-						font-size: 12px;
+						font-size: 16px;
+						font-weight: 500;
+						padding-right: 8px;
 
 						&::placeholder {
 							color: #878b91;
@@ -885,18 +919,20 @@ watch(route, (newRoute, oldRoute) => {
 
 				.opt-btn-item {
 					display: flex;
-					width: 80px;
-					height: 40px;
 					justify-content: center;
 					align-items: center;
 					color: #fff;
-					text-align: center;
-					text-shadow: 1px 1px 1px #888;
 					font-size: 16px;
-					margin-left: 16px;
-					border-radius: 4px;
-					background: #4a45b1;
+					border-radius: 8px;
+					background: #555BC7;
 					cursor: pointer;
+					font-weight: 500;
+					padding: 8px 12px;
+					transition: .3s all;
+
+					&:hover {
+						background: #555bc7c7;
+					}
 				}
 			}
 		}
@@ -909,11 +945,11 @@ watch(route, (newRoute, oldRoute) => {
 			}
 
 			.pc-weapon-list {
+				margin-top: 24px;
 				display: grid;
 				grid-template-columns: repeat(auto-fill, 205px);
 				grid-template-rows: repeat(auto-fill, 205px);
-				column-gap: 0px;
-				row-gap: 0px;
+				gap: 16px;
 				box-sizing: border-box;
 				width: 100%;
 				margin-bottom: 20px;

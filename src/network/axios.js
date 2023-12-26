@@ -32,29 +32,29 @@ export default function axios(option) {
 					if (response.data.code == 0) {
 						return Promise.resolve(response.data)
 					} else {
-						if( _isMobile() )
+						if (_isMobile())
 							NotifyF(response.data.message);
 						else
-							Warn( response.data.message )
+							Warn(response.data.message)
 
 						return Promise.resolve(response.data)
 					}
 				} else if (response.status === 401) {
 					//token 失效
-					if( _isMobile() )
-						NotifyF( t( 'network.unauthorized' ) )
+					if (_isMobile())
+						NotifyF(t('network.unauthorized'))
 					else
-						Warn(  t( 'network.unauthorized' )  )
+						Warn(t('network.unauthorized'))
 
 					localStorage.removeItem(tokenName);
 					router.replace('/');
 					store.commit('setSignView', true);
 					return Promise.resolve(response.data);
 				} else {
-					if( _isMobile() )
+					if (_isMobile())
 						NotifyF(response.data.message);
 					else
-						Warn( response.data.message )
+						Warn(response.data.message)
 
 					return Promise.resolve(response.data);
 				}
@@ -65,10 +65,10 @@ export default function axios(option) {
 
 					if (error.response.status === 401) {
 						//token 失效 
-						if( _isMobile() )
-							NotifyF( t( 'network.unauthorized' ) )
+						if (_isMobile())
+							NotifyF(t('network.unauthorized'))
 						else
-							Warn(  t( 'network.unauthorized' )  )
+							Warn(t('network.unauthorized'))
 
 						localStorage.removeItem(tokenName);
 						router.replace('/');
@@ -82,33 +82,33 @@ export default function axios(option) {
 					// }
 
 					if (error.response.data && error.response.data.message) {
-						if( _isMobile() )
+						if (_isMobile())
 							NotifyF(error.response.data.message);
 						else
-							Warn( error.response.data.message )
+							Warn(error.response.data.message)
 					} else {
-						if( _isMobile() )
-							NotifyF( t( 'network.error' ) )
+						if (_isMobile())
+							NotifyF(t('network.error'))
 						else
-							Warn(  t( 'network.error' )  )
+							Warn(t('network.error'))
 					}
 					let res = {};
 					res.code = 100;
 					res.message = error.response.data.message
 					return Promise.resolve(res);
 				} else {
-					if(error&&error.code=="ECONNABORTED"){
-						if( _isMobile() )
-							NotifyF( t( 'network.overtime' ) )
+					if (error && error.code == "ECONNABORTED") {
+						if (_isMobile())
+							NotifyF(t('network.overtime'))
 						else
-							Warn(  t( 'network.overtime' )  )
-					}else{
-						if( _isMobile() )
-							NotifyF( t( 'network.error' ) )
+							Warn(t('network.overtime'))
+					} else {
+						if (_isMobile())
+							NotifyF(t('network.error'))
 						else
-							Warn(  t( 'network.error' )  )
+							Warn(t('network.error'))
 					}
-					
+
 				}
 				return Promise.resolve({ code: 500 })
 			}

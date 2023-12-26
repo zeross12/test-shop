@@ -62,7 +62,7 @@ const prop = defineProps({
 </script>
 <template>
 	<div class="price-container">
-		<img v-if="showIcon" src="@/assets/pcimg/common/coin.png"
+		<img v-if="showIcon" src="@/assets/pcimg/common/coin.svg"
 			:style="{ width: `${beforeSize}`, height: `${beforeSize}` }">
 		<div class="prices">
 			<div :style="{ color: color ? color : beforeColor, fontWeight: fontWeight, fontSize: beforeSize }">

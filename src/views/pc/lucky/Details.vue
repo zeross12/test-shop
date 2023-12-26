@@ -534,7 +534,7 @@ const onClickAnchor = () => {
 			</div>
 			<div class="lucky-openbox-container">
 				<div class="item" @click="onClickOpen">
-					<img src="@/assets/pcimg/common/coin.png" />
+					<img src="@/assets/pcimg/common/coin.svg" />
 					{{
 						(
 							(Number(curProbability) / 100) *
@@ -571,7 +571,7 @@ const onClickAnchor = () => {
 							</div>
 							<div class="item-info">
 								<p class="price">
-									<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price
+									<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price
 									}}
 								</p>
 								<div class="goods-info">

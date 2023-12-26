@@ -230,7 +230,7 @@ function join(item) {
 				<div class="timing-item" v-if="hour.type">
 					<div class="left-bt-wrap">
 						<div class="need-rechagrge" v-if="!isAllowJoin(hour)">{{ t('timebox.needRecharge') }}</div>
-						<div class="price" v-if="!isAllowJoin(hour)"><img src="@/assets/pcimg/common/coin.png"> {{
+						<div class="price" v-if="!isAllowJoin(hour)"><img src="@/assets/pcimg/common/coin.svg"> {{
 							joinNeedAmount(hour) }}</div>
 						<div class="state" @click="join">{{ hour.isJoined ? t('timebox.joined') : t('timebox.join') }}
 						</div>
@@ -240,7 +240,7 @@ function join(item) {
 					</div>
 					<div class="time-goods-info">
 						<div class="time-goods-name hide">{{ hour.boxItem.name }}</div>
-						<div class="pep-count"><img src="@/assets/pcimg/common/coin.png"> {{ hour.boxItem.price }}</div>
+						<div class="pep-count"><img src="@/assets/pcimg/common/coin.svg"> {{ hour.boxItem.price }}</div>
 						<p class="item-rule text-cut"
 							v-html="t('timebox.rechargeText', { type: t('timebox.everyHour'), money: hour.needAmount })">
 						</p>
@@ -271,7 +271,7 @@ function join(item) {
 				<div class="timing-item day" v-if="day.type">
 					<div class="left-bt-wrap">
 						<div class="need-rechagrge" v-if="!isAllowJoin(day)">{{ t('timebox.needRecharge') }}</div>
-						<div class="price" v-if="!isAllowJoin(day)"><img src="@/assets/pcimg/common/coin.png"> {{
+						<div class="price" v-if="!isAllowJoin(day)"><img src="@/assets/pcimg/common/coin.svg"> {{
 							joinNeedAmount(day) }}</div>
 						<div class="state" @click="join">{{ day.isJoined ? t('timebox.joined') : t('timebox.join') }}
 						</div>
@@ -281,7 +281,7 @@ function join(item) {
 					</div>
 					<div class="time-goods-info">
 						<div class="time-goods-name hide">{{ day.boxItem.name }}</div>
-						<div class="pep-count"><img src="@/assets/pcimg/common/coin.png"> {{ day.boxItem.price }}</div>
+						<div class="pep-count"><img src="@/assets/pcimg/common/coin.svg"> {{ day.boxItem.price }}</div>
 						<p class="item-rule text-cut"
 							v-html="t('timebox.rechargeText', { type: t('timebox.everyDay'), money: day.needAmount })">
 						</p>
@@ -310,7 +310,7 @@ function join(item) {
 				<div class="timing-item week" v-if="week.type">
 					<div class="left-bt-wrap">
 						<div class="need-rechagrge" v-if="!isAllowJoin(week)">{{ t('timebox.needRecharge') }}</div>
-						<div class="price" v-if="!isAllowJoin(week)"><img src="@/assets/pcimg/common/coin.png"> {{
+						<div class="price" v-if="!isAllowJoin(week)"><img src="@/assets/pcimg/common/coin.svg"> {{
 							joinNeedAmount(week) }}</div>
 						<div class="state" @click="join">{{ week.isJoined ? t('timebox.joined') : t('timebox.join') }}
 						</div>
@@ -320,7 +320,7 @@ function join(item) {
 					</div>
 					<div class="time-goods-info">
 						<div class="time-goods-name text-cut">{{ week.boxItem.name }}</div>
-						<div class="pep-count"><img src="@/assets/pcimg/common/coin.png"> {{ week.boxItem.price }}</div>
+						<div class="pep-count"><img src="@/assets/pcimg/common/coin.svg"> {{ week.boxItem.price }}</div>
 						<p class="item-rule text-cut"
 							v-html="t('timebox.rechargeText', { type: t('timebox.everyWeek'), money: week.needAmount })">
 						</p>
@@ -361,7 +361,7 @@ function join(item) {
 					<div class="item-card">
 						<div class="card-label">
 							<!-- <p>饰品价格</p> -->
-							<span><img class="pc-price-coins" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price
+							<span><img class="pc-price-coins" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price
 							}}</span>
 						</div>
 						<div class="weapon-item-pic" :style="`background-image: url(` + getImageBg(item) + `)`">

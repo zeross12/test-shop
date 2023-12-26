@@ -7,7 +7,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { getBattleList, joinBattleRoom, enterBattleRoom, getRecords } from "@/network/api/battle"
 import { Dialog } from 'vant';
-import goldImgUrl from '@/assets/pcimg/common/coin.png';
+import goldImgUrl from '@/assets/pcimg/common/coin.svg';
 import xcBgImgUrl from '@/assets/romimg/battle/xc_room_bg.png';
 import { GoodImageBgType } from '@/util/util'
 import Price from '@/components/pc/common/Price.vue'
@@ -308,7 +308,7 @@ function isAnchorRoom(item) {
 							</div>
 						</div>
 						<div class="price">
-							<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" /> -->
+							<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" /> -->
 							<!-- {{item.joinPrice }} -->
 							<Price :value="item.joinPrice" show-icon before-size="20px" after-size="16px" color="#75DC9E">
 							</Price>
@@ -373,16 +373,23 @@ function isAnchorRoom(item) {
 <style lang="scss">
 #pc-battle-room-list {
 	min-height: 500px;
+	width: 100%;
+	color: #fff;
+	position: relative;
+	max-width: 1120px;
+	margin: auto;
 
 	.list-header {
 		width: 100%;
-		height: 80px;
-		color: #6D6C82;
-		font-size: 12px;
+		margin-top: 24px;
+		margin-bottom: 16px;
+		color: #727391;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: 500;
 		text-align: left;
 		display: flex;
 		align-items: center;
-		justify-content: center;
 		box-sizing: border-box;
 
 		p {

@@ -555,7 +555,7 @@ async function onClickCartExchange() {
 						</div>
 						<p class="hide">{{ item.goodsName }}</p>
 						<div class="price">
-							<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />
+							<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />
 							{{ item.price }}
 						</div>
 						<div class="sel-num" v-if="item.selectNum && item.selectNum > 0">
@@ -570,7 +570,7 @@ async function onClickCartExchange() {
 					<div class="top-info">
 						<div class="info1">{{ t('mall.cart') }}</div>
 						<div class="info2">
-							{{ t('mall.priceTotal') }}<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png"
+							{{ t('mall.priceTotal') }}<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg"
 								alt="" /><span>{{ cartPrice }}</span>
 						</div>
 					</div>
@@ -596,7 +596,7 @@ async function onClickCartExchange() {
 					</div>
 				</div>
 				<div class="cart-opt" @click="onClickCartExchange">
-					{{ t('mall.exchangeConfirm') }}<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png"
+					{{ t('mall.exchangeConfirm') }}<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg"
 						alt="" /><span>{{ cartPrice }}</span>
 				</div>
 			</div>
@@ -608,7 +608,7 @@ async function onClickCartExchange() {
 				</div>
 				<div class="exchange-title">{{ t('mall.confirmExchange') }}</div>
 				<div class="price">
-					<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />
+					<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />
 					{{ exchangeSelItem.price }}
 				</div>
 				<div class="goods-wrap">

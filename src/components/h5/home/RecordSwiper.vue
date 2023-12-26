@@ -249,7 +249,7 @@ function goToVip() {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			font-size: 26px;
+			font-size: 20px;
 			font-style: normal;
 			font-weight: 400;
 

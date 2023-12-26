@@ -334,7 +334,7 @@ function switchSound() {
 			<div class="sound-switch" :class="{ 'active': !isAnimation }" @click="switchSound"></div>
 			<div class="box-info-wrap">
 				<div class="open-title">{{ boxData.name }}</div>
-				<div class="open-price" v-if="false"> <img class="pc-price-coin" src="@/assets/pcimg/common/coin.png"
+				<div class="open-price" v-if="false"> <img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg"
 						alt="" />
 					{{ (boxData.price * boxNum).toFixed(2) }}</div>
 			</div>
@@ -358,7 +358,7 @@ function switchSound() {
 					<div class="opt-btn" v-for="(item, index) in openArr" :key="index" :class="{ 'active': boxNum == item }"
 						@click="setBoxNum(item)">{{ item }}</div>
 				</div>
-				<div class="open-price"> <img class="pc-price-open-pricecoin" src="@/assets/pcimg/common/coin.png" alt="" />
+				<div class="open-price"> <img class="pc-price-open-pricecoin" src="@/assets/pcimg/common/coin.svg" alt="" />
 					{{
 						(boxData.price *
 							boxNum).toFixed(2) }}&nbsp;
@@ -420,7 +420,7 @@ function switchSound() {
 						<p>{{ item.nickName }}</p>
 					</div>
 					<div class="area2">{{ item.goodsName }}</div>
-					<div class="area3"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+					<div class="area3"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 						item.price }}</div>
 					<div class="time">{{ item.createTime }}</div>
 				</div>

@@ -92,7 +92,7 @@ function onClickBack() {
 					<BattleRankTopItem :rank="index + 1" v-for="( item, index ) in topRank" :key="index">
 						<!-- <img :src="item.avater" v-if="item.avater" alt="" class="avatar">
 						<div class="nickname">{{item.nickName}}</div>
-						<div class="score" v-if="item.sumScore"><img src="@/assets/pcimg/common/coin.png" alt=""/>{{item.sumScore}}</div> -->
+						<div class="score" v-if="item.sumScore"><img src="@/assets/pcimg/common/coin.svg" alt=""/>{{item.sumScore}}</div> -->
 						<div class="top-rank-item">
 							<img src="@/assets/pcimg/battle/top-icon.png" class="icon">
 							<div class="user-info">
@@ -113,7 +113,7 @@ function onClickBack() {
 						</HeadPortrait>
 					</div>
 					<div class="info-wrap">
-						<div class="info1"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt=""/>{{ item.sumScore }}</div>
+						<div class="info1"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt=""/>{{ item.sumScore }}</div>
 						<div class="info2">{{ item.nickName }}</div>
 					</div> -->
 				<!-- </div> -->
@@ -132,7 +132,7 @@ function onClickBack() {
 						</HeadPortrait>
 						<span>{{ userInfoBase.nickName }}</span>
 					</div>
-					<div class="item-score"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+					<div class="item-score"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 						selRank.sumScore }}</div>
 				</div>
 				<div v-for="(item, index) in otherRank" class="rank-item" :key="index">
@@ -143,7 +143,7 @@ function onClickBack() {
 						<span>{{ item.nickName }}</span>
 					</div>
 					<div class="item-score">
-						<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt=""/>{{ item.sumScore }} -->
+						<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt=""/>{{ item.sumScore }} -->
 						<Price :value="item.sumScore" color="#70C593" before-size="18px" after-size="14px" show-icon>
 						</Price>
 					</div>
@@ -450,18 +450,19 @@ function onClickBack() {
 		}
 
 		.list-header {
+
+
 			width: 100%;
-			height: 71px;
-			color: #6D6C82;
-			font-size: 12px;
+			margin-top: 24px;
+			margin-bottom: 16px;
+			color: #727391;
+			text-transform: uppercase;
+			font-size: 16px;
+			font-weight: 500;
 			text-align: left;
 			display: flex;
 			align-items: center;
 			box-sizing: border-box;
-			// margin-top: 60px;
-			padding: 0 20px;
-			// padding-left: 39px;
-			// padding-right: 10px;
 
 			p {
 				box-sizing: border-box;

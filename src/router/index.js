@@ -8,14 +8,20 @@ const router = createRouter({
 	routes
 });
 
-const needToken = ['/m/roll_detail', '/m/contract', '/m/createbattle', '/m/battleBoxDetails'
-	, '/m/battleHistory',	 '/m/battleDetail', '/m/recharge', '/m/personal'
-	, '/m/bag', '/m/record', '/m/spread', '/m/information', '/m/informationDetail',"/m/vip", "/p/createbattle"];
+const needToken = ['/m/roll_detail', '/m/contract',
+	'/m/createbattle',
+	'/m/battleBoxDetails'
+	, '/m/battleHistory', '/m/battleDetail', '/m/recharge', '/m/personal'
+	, '/m/bag', '/m/record', '/m/spread', '/m/information', '/m/informationDetail', "/m/vip",
+	"/p/createbattle"
+];
 
-const needReserve = ['/m/battle', '/m/battle/list','/m/createbattle', '/m/battleBoxDetails', '/m/battleHistory', '/m/battleRank', '/m/battleDetail'];
+const needReserve = ['/m/battle', '/m/battle/list',
+	'/m/createbattle'
+	, '/m/battleBoxDetails', '/m/battleHistory', '/m/battleRank', '/m/battleDetail'];
 
-const notShowFooter = ['/m/createbattle','/m/activity','/p/activity'];
-const notShowHeader = ['/m/createbattle','/m/activity','/p/activity'];
+const notShowFooter = ['/m/createbattle', '/m/activity', '/p/activity'];
+const notShowHeader = ['/m/createbattle', '/m/activity', '/p/activity'];
 
 //全局路由守卫
 router.beforeEach((to, from, next) => {
@@ -35,22 +41,22 @@ router.beforeEach((to, from, next) => {
 		setCommonView(to.path);
 		next();
 	} else {
- 
-		localStorage.setItem("returnURL",to.fullPath)
-	 
-		if (needToken.includes(from.path)) { 
+
+		localStorage.setItem("returnURL", to.fullPath)
+
+		if (needToken.includes(from.path)) {
 			setCommonView('/');
 			next('/');
 		} else {
 			setCommonView(from.path);
 			next(from.path);
 		}
-		 store.commit('setSignView', true);
+		store.commit('setSignView', true);
 		// next("")
 	}
 })
 
-router.afterEach((to,from)=>{
+router.afterEach((to, from) => {
 	if (store.state.reserveStatus != 1 && needReserve.includes(to.path)) {
 		router.replace('/');
 		return;

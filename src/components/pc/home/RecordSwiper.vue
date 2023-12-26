@@ -366,6 +366,8 @@ watch(recordType, val => {
 			</div>
 		</div>
 	</div>
+
+	<div class="separate" style="margin-top: 16px;"></div>
 </template>
 
 <style lang="scss" scoped>
@@ -375,6 +377,9 @@ watch(recordType, val => {
 	position: relative;
 	margin-top: 16px;
 
+	// @media screen and (max-width: 768px) {
+	// 	margin-top: 90px;
+	// }
 
 	.opt-wrap {
 		display: flex;
@@ -396,7 +401,7 @@ watch(recordType, val => {
 
 			.live-txt {
 				font-family: Archivo;
-				font-size: 24px;
+				font-size: 18px;
 				font-weight: 700;
 				color: white;
 				text-transform: uppercase;

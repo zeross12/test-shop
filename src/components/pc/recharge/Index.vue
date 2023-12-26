@@ -721,7 +721,7 @@ function closeTip() {
 											},
 										]">
 										<div class="price">
-											<!-- <img src="@/assets/pcimg/common/coin.png" alt="" /> -->
+											<!-- <img src="@/assets/pcimg/common/coin.svg" alt="" /> -->
 											{{
 												item.amount
 											}}
@@ -758,7 +758,7 @@ function closeTip() {
 							<div class="reg-all">
 								<p>{{ t('recharge.realPayment') }} : {{ curMoneyItem.payAmountCny }}</p>
 								<span>{{ t('recharge.receipt') }} :
-									<img src="@/assets/pcimg/common/coin.png" style="width: 24px" />
+									<img src="@/assets/pcimg/common/coin.svg" style="width: 24px" />
 									{{
 										(Number(curMoneyItem.amount) +
 											Number(curMoneyItem.giveAmount)) *
@@ -774,7 +774,7 @@ function closeTip() {
 							<div class="reg-all">
 								<p>{{ t('recharge.realPayment') }} {{ curMoneyItem.amount }}</p>
 								<span>{{ t('recharge.receipt') }}
-									<img src="@/assets/pcimg/common/coin.png" style="width: 24px" />
+									<img src="@/assets/pcimg/common/coin.svg" style="width: 24px" />
 									{{
 										Number(curMoneyItem.amount) +
 										Number(curMoneyItem.giveAmount)
@@ -821,11 +821,11 @@ function closeTip() {
 							<div class="qr-info" v-show="curRechageType.payType != 4 && curRechageType.payType != 5
 								">
 								<div class="info-item">
-									{{ t('recharge.realPaymentMoney') }}<img src="@/assets/pcimg/common/coin.png"
+									{{ t('recharge.realPaymentMoney') }}<img src="@/assets/pcimg/common/coin.svg"
 										style="width: 24px" alt="" /><span>{{ curMoneyItem.amount }}</span>
 								</div>
 								<div class="info-item">
-									{{ t('recharge.receiptMoney') }}<img src="@/assets/pcimg/common/coin.png"
+									{{ t('recharge.receiptMoney') }}<img src="@/assets/pcimg/common/coin.svg"
 										style="width: 24px" alt="" /><span>{{
 											Number(curMoneyItem.amount) +
 											Number(curMoneyItem.giveAmount)

@@ -285,7 +285,7 @@ function isAnchorRoom(item) {
 								<p> {{ value.goodsName }}</p>
 							</div>
 						</div>
-						<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+						<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 							item.joinPrice }}
 						</div>
 						<div class="player">
@@ -349,13 +349,21 @@ function isAnchorRoom(item) {
 		
 <style lang="scss">
 #pc-battle-room-list {
+	width: 100%;
+	color: #fff;
 	min-height: 500px;
+	position: relative;
+	max-width: 1120px;
+	margin: auto;
 
 	.list-header {
 		width: 100%;
-		height: 80px;
-		color: #6D6C82;
-		font-size: 12px;
+		margin-top: 24px;
+		margin-bottom: 16px;
+		color: #727391;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: 500;
 		text-align: left;
 		display: flex;
 		align-items: center;

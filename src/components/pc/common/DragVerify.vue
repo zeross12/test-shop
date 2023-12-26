@@ -3,182 +3,174 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 import { ref, onMounted, defineProps, computed, watch } from 'vue'
 
-const emit = defineEmits( [ 'passing' ] )
-const props = defineProps( {
-	width :
+const emit = defineEmits(['passing'])
+const props = defineProps({
+	width:
 	{
-		type : Number,
-		default : 418
+		type: Number,
+		default: 418
 	},
 
-	height :
+	height:
 	{
-		type : Number,
-		default : 44
-	},
-	
-	successText :
-	{
-		type : String,
-		default : 'common.verifyPass'
+		type: Number,
+		default: 44
 	},
 
-	text :
+	successText:
 	{
-		type : String,
-		default : 'common.dropVerify'
+		type: String,
+		default: 'common.verifyPass'
 	},
 
-	handlerBg :
+	text:
 	{
-		type : String,
-		default : '#fefefe'
+		type: String,
+		default: 'common.dropVerify'
 	},
 
-	background :
+	handlerBg:
 	{
-		type : String,
-		default : '#eee'
+		type: String,
+		default: '#fefefe'
 	},
 
-	progressBarBg :
+	background:
 	{
-		type : String,
-		default : '#5bcb87'
+		type: String,
+		default: '#eee'
 	},
 
-	completedBg :
+	progressBarBg:
 	{
-		type : String,
-		default : '#5bcb87'
+		type: String,
+		default: '#5bcb87'
 	},
 
-	radius :
+	completedBg:
 	{
-		type : String,
-		defualt : '4px'
+		type: String,
+		default: '#5bcb87'
 	},
 
-	textSize :
+	radius:
 	{
-		type : String,
-		default : '14px'
+		type: String,
+		defualt: '4px'
 	},
 
-	textColor :
+	textSize:
 	{
-		type : String,
-		default : '#999'
+		type: String,
+		default: '14px'
 	},
 
-	allowDrag :
+	textColor:
 	{
-		type : Boolean,
-		default : true
+		type: String,
+		default: '#999'
 	},
 
-	isPassing :
+	allowDrag:
 	{
-		type : Boolean,
-		default : false
+		type: Boolean,
+		default: true
+	},
+
+	isPassing:
+	{
+		type: Boolean,
+		default: false
 	}
-} )
+})
 
-const dragVerify = ref( null )				///	refs
-const progressBar = ref( null )
-const handler = ref( null )
-const message = ref( null )
+const dragVerify = ref(null)				///	refs
+const progressBar = ref(null)
+const handler = ref(null)
+const message = ref(null)
 
-const isMoving = ref( false )
-const isOk = ref( false )
-const x = ref( 0 )
+const isMoving = ref(false)
+const isOk = ref(false)
+const x = ref(0)
 
-onMounted( () => {
+onMounted(() => {
 	let el = dragVerify.value
-		el.style.setProperty( "--textColor", props.textColor )
-		el.style.setProperty( "--width", `${Math.floor( props.width / 2 )}px` )
-		el.style.setProperty( "--pwidth", `${-Math.floor( props.width / 2 )}px` )
-		el.style.borderRadius = props.radius
-} )
+	el.style.setProperty("--textColor", props.textColor)
+	el.style.setProperty("--width", `${Math.floor(props.width / 2)}px`)
+	el.style.setProperty("--pwidth", `${-Math.floor(props.width / 2)}px`)
+	el.style.borderRadius = props.radius
+})
 
-const handlerStyle = computed( () => {
+const handlerStyle = computed(() => {
 	return {
-		left : !props.isPassing ? 0 : handler.value.style.left,
-		width : `${props.height}px`,
-		height : `${props.height}px`,
-		background : props.handlerBg
+		left: !props.isPassing ? 0 : handler.value.style.left,
+		width: `${props.height}px`,
+		height: `${props.height}px`,
+		background: props.handlerBg
 	}
-} )
+})
 
-const progressBarStyle = computed( () => {
+const progressBarStyle = computed(() => {
 	return {
-		background : props.progressBarBg,
-		height : `${ props.height }px`,
-		width : !props.isPassing ? 0 : '100%'
+		background: props.progressBarBg,
+		height: `${props.height}px`,
+		width: !props.isPassing ? 0 : '100%'
 	}
-} )
+})
 
-const textStyle = computed( () => {
+const textStyle = computed(() => {
 	return {
-		height : `${props.height}px`,
-		width : `${props.width}px`,
-		fontSize : props.textSize
+		height: `${props.height}px`,
+		width: `${props.width}px`,
+		fontSize: props.textSize
 	}
-} )
+})
 
-const content = computed( {
-	get()
-	{
-		return props.isPassing ? t( props.successText ) : t( props.text )
+const content = computed({
+	get() {
+		return props.isPassing ? t(props.successText) : t(props.text)
 	},
 
-	set( val )
-	{
+	set(val) {
 		return val
 	}
-} )
+})
 
-const dragVerifyStyle = computed( () => {
+const dragVerifyStyle = computed(() => {
 	return {
-		width : `${props.width}px`,
-		height : `${props.height}px`,
-		lineHeight : `${props.height}px`,
-		background : props.background,
-		borderRadius : props.radius
+		width: `${props.width}px`,
+		height: `${props.height}px`,
+		lineHeight: `${props.height}px`,
+		background: props.background,
+		borderRadius: props.radius
 	}
-} )
+})
 
 /**
  * 拖拽开始
  */
-function dragStart( e )
-{
-	if( !props.allowDrag ) return
+function dragStart(e) {
+	if (!props.allowDrag) return
 
-	if( !props.isPassing )
-	{
+	if (!props.isPassing) {
 		isMoving.value = true
-		x.value = e.pageX - parseInt( handler.value.style.left, 10 )
+		x.value = e.pageX - parseInt(handler.value.style.left, 10)
 	}
 }
 
 /**
  * 拖拽中
  */
-function dragMoving( e )
-{
-	if( isMoving.value && !props.isPassing ) 
-	{
+function dragMoving(e) {
+	if (isMoving.value && !props.isPassing) {
 		let _x = e.pageX - x.value
 
-		if( _x > 0 && _x <= props.width - props.height )
-		{
-			handler.value.style.left = `${ _x }px`
-			progressBar.value.style.width = `${ _x + props.height / 2 }px`
+		if (_x > 0 && _x <= props.width - props.height) {
+			handler.value.style.left = `${_x}px`
+			progressBar.value.style.width = `${_x + props.height / 2}px`
 
 		}
-		else if( _x > props.width - props.height )
-		{
+		else if (_x > props.width - props.height) {
 			// window.$dev && console.log( props.width - props.height )
 			handler.value.style.left = `${props.width - props.height}px`
 			progressBar.value.style.width = `${props.width - props.height / 2}px`
@@ -190,34 +182,29 @@ function dragMoving( e )
 /**
  * 拖拽结束
  */
-function dragFinish( e )
-{
-	if( isMoving.value && !props.isPassing )
-	{
+function dragFinish(e) {
+	if (isMoving.value && !props.isPassing) {
 		let _x = e.pageX - x.value
-		if( _x < props.width - props.height )
-		{
+		if (_x < props.width - props.height) {
 			isOk.value = true
-			
-			setTimeout( () => {
+
+			setTimeout(() => {
 				handler.value.style.left = "0"
 				progressBar.value.style.width = "0"
 				isOk.value = false
-			}, 500 )
+			}, 500)
 		}
-		else 
-		{
+		else {
 			handler.value.style.left = `${props.width - props.height}px`
-			progressBar.value.style.width = `${props.width - props.height / 2 }px`
+			progressBar.value.style.width = `${props.width - props.height / 2}px`
 			passVerify()
 		}
 		isMoving.value = false
 	}
 }
 
-function passVerify() 
-{
-	emit( "passing", true )
+function passVerify() {
+	emit("passing", true)
 	isMoving.value = false
 	progressBar.value.style.background = props.completedBg
 	message.value.style["-webkit-text-fill-color"] = "unset"
@@ -227,44 +214,28 @@ function passVerify()
 
 </script>
 <template>
-	<div 
-		class="drag-verify-container" 
-		ref="dragVerify"
-		@mousemove="dragMoving"
-		@mouseup="dragFinish"
-		@mouseleave="dragFinish"
-	>
-		<div
-			class="progress-bar"
-			:class="{ goFirst2 : isOk }"
-			ref="progressBar"
-			:style="progressBarStyle"
-		>
+	<div class="drag-verify-container" ref="dragVerify" @mousemove="dragMoving" @mouseup="dragFinish"
+		@mouseleave="dragFinish">
+		<div class="progress-bar" :class="{ goFirst2: isOk }" ref="progressBar" :style="progressBarStyle">
 
 		</div>
-		<div
-			class="text"
-			:style="textStyle"
-			ref="message"
-		>
+		<div class="text" :style="textStyle" ref="message">
 			{{ content }}
 		</div>
 
-		<div
-			class="handler handler-bg"
-			:class="{ goFirst : isOk, over : props.isPassing }"
-			@mousedown="dragStart"
-			ref="handler"
-			:style="handlerStyle"
-		>
-			<el-icon v-if="!props.isPassing"><DArrowRight /></el-icon>
-			<el-icon :size="20" v-else><SuccessFilled /></el-icon>
+		<div class="handler handler-bg" :class="{ goFirst: isOk, over: props.isPassing }" @mousedown="dragStart"
+			ref="handler" :style="handlerStyle">
+			<el-icon v-if="!props.isPassing">
+				<DArrowRight />
+			</el-icon>
+			<el-icon :size="20" v-else>
+				<SuccessFilled />
+			</el-icon>
 		</div>
 	</div>
 </template>
 <style lang="scss">
-.drag-verify-container
-{
+.drag-verify-container {
 	position: relative;
 	background-color: #e8e8e8;
 	text-align: center;
@@ -274,15 +245,13 @@ function passVerify()
 	width: 100%;
 	border-radius: 4px;
 
-	.progress-bar
-	{
+	.progress-bar {
 		position: absolute;
 		height: 34px;
 		width: 0px;
 	}
 
-	.text
-	{
+	.text {
 		position: absolute;
 		top: 0px;
 		color: transparent;
@@ -290,25 +259,22 @@ function passVerify()
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: gradient(
-			linear,
-			left top,
-			right top,
-			color-stop(0, var(--textColor)),
-			color-stop(0.4, var(--textColor)),
-			color-stop(0.5, #fff),
-			color-stop(0.6, var(--textColor)),
-			color-stop(1, var(--textColor))
-		);
+		background: gradient(linear,
+				left top,
+				right top,
+				color-stop(0, var(--textColor)),
+				color-stop(0.4, var(--textColor)),
+				color-stop(0.5, #fff),
+				color-stop(0.6, var(--textColor)),
+				color-stop(1, var(--textColor)));
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		text-size-adjust: none;
 		animation: slidetounlock 3s infinite;
-		-webkit-text-fill-color: var( --textColor );
+		-webkit-text-fill-color: var(--textColor);
 	}
 
-	.handler
-	{
+	.handler {
 		display: flex !important;
 		position: absolute;
 		top: 0px;
@@ -322,20 +288,18 @@ function passVerify()
 			left: 0px !important;
 			transition: left 0.5s;
 		}
-		
+
 		&.goFirst2 {
 			width: 0px !important;
 			transition: width 0.5s;
 		}
 
-		&.over
-		{
+		&.over {
 			background: #02BF4D !important;
 			color: #fff !important;
 		}
 
-		img
-		{
+		img {
 			user-select: none;
 		}
 
@@ -348,18 +312,21 @@ function passVerify()
 
 @keyframes slidetounlock {
 	0% {
-		background-position: var( --pwidth ) 0;
+		background-position: var(--pwidth) 0;
 	}
+
 	100% {
-		background-position: var( --width ) 0;
+		background-position: var(--width) 0;
 	}
 }
+
 @keyframes slidetounlock2 {
 	0% {
-		background-position: var( --pwidth ) 0;
+		background-position: var(--pwidth) 0;
 	}
+
 	100% {
-		background-position: var( --pwidth ) 0;
+		background-position: var(--pwidth) 0;
 	}
 }
 </style>

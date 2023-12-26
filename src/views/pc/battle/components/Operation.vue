@@ -72,7 +72,7 @@ function closeBoxDetail(e) {
 			</div>
 			<div class="total">
 				<div class="titles">{{ t('bag.priceTotal') }}</div>
-				<div class="sub-title"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" /><span>{{
+				<div class="sub-title"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" /><span>{{
 					joinPrice }}</span></div>
 			</div>
 		</div>
@@ -84,8 +84,9 @@ function closeBoxDetail(e) {
 		
 <style lang="scss">
 #pc-battle-operation {
-	width: 1410px;
-	height: 138px;
+	margin-top: 40px;
+	width: 1120px;
+	// height: 138px;
 	background: #111324;
 	display: flex;
 	align-items: center;
@@ -93,6 +94,24 @@ function closeBoxDetail(e) {
 	// padding: 0 38px;
 	padding-left: 16px;
 	box-sizing: border-box;
+	padding: 16px;
+	border-radius: 12px;
+	// backdrop-filter: blur(12px);
+	position: relative;
+
+	* {
+		position: relative;
+		z-index: 1;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: rgba(28, 33, 89, 0.50);
+		backdrop-filter: blur(12px);
+		z-index: 0;
+	}
 
 	.opt-left {
 		display: flex;
@@ -167,39 +186,54 @@ function closeBoxDetail(e) {
 
 		.round,
 		.total {
-			background: #0D0E1A;
+			// background: #0D0E1A;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			gap: 4px;
 			width: 152px;
 			height: 100%;
 
 			.titles {
-				color: #aaa;
-				font-size: 20px;
+				color: #727391;
+				font-size: 16px;
 				font-style: normal;
-				font-weight: 400;
+				font-weight: 500;
 				display: flex;
 				justify-content: center;
 				width: 100%;
-				line-height: 1.6em;
+				line-height: 24px;
 			}
 		}
 
 		.round {
 			.sub-title {
-				color: #CF3464;
-				font-size: 14px;
+				color: #fff;
+				font-size: 20px;
+				font-weight: 700;
+				line-height: 28px;
+				text-transform: uppercase;
 			}
 		}
 
 		.total {
 			.sub-title {
-				color: #7BDCA2;
-				font-size: 18px;
+				color: #FFE063;
+				font-size: 20px;
+				font-weight: 700;
+				line-height: 28px;
+				text-transform: uppercase;
 				display: flex;
 				align-items: center;
+				gap: 8px;
+
+				img {
+					border: 1px solid #fff;
+					border-radius: 100%;
+					width: 20px;
+					height: 20px;
+				}
 			}
 		}
 

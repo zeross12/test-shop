@@ -15,14 +15,14 @@ import {
 import HeadPortrait from "../head/HeadPortrait.vue";
 import { logout } from "@/network/api/login";
 
-import { UserType } from "@/util/util";
-import { getShowName } from "@/util/common";
+// import { UserType } from "@/util/util";
+// import { getShowName } from "@/util/common";
 import logoIcon from "@/assets/pcimg/common/logo.png"
 
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
-const { reloadView } = inject("reloadView");
+// const { reloadView } = inject("reloadView");
 
 const userInfoBase = computed(() => store.state.userInfoBase);
 const userInfoAssets = computed(() => store.state.userInfoAssets);
@@ -110,7 +110,7 @@ async function onClickExitLogin() {
 		Success({ offset: 100, message: t('menu.loggedOut') });
 		store.commit("logout");
 		nextTick(() => {
-			reloadView();
+			// reloadView();
 		});
 	}
 }
@@ -221,8 +221,9 @@ function scrollTo(index) {
 </script>
 
 <template>
-	<div id="pc-top-header" v-if="store.state.showHeaderView">
-		<div class="pc-top-generalInfo" :class="{ 'isFixed': !isHome }">
+	<div id="pc-top-header" v-if="store.state.showHeaderView" :class="{ 'isDifferentHome': !isHome }">
+
+		<div class=" pc-top-generalInfo">
 			<div class="pc-top-generalInfo-item">
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 					<path
@@ -400,7 +401,7 @@ function scrollTo(index) {
 					</svg>
 					{{ t('menu.rank') }}
 				</div>
-				<div class="nav_item" :class="{ active: route.name == 'p_rank' }" @click="jumpRoute('/p/rank')">
+				<div class="nav_item" :class="{ active: route.name == 'p_battle' }" @click="jumpRoute('/p/battle')">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M15.9697 22.75H7.96973C4.54973 22.75 3.21973 21.42 3.21973 18V10C3.21973 9.59 3.55973 9.25 3.96973 9.25H19.9697C20.3797 9.25 20.7197 9.59 20.7197 10V18C20.7197 21.42 19.3897 22.75 15.9697 22.75ZM4.71973 10.75V18C4.71973 20.58 5.38973 21.25 7.96973 21.25H15.9697C18.5497 21.25 19.2197 20.58 19.2197 18V10.75H4.71973Z"
@@ -418,9 +419,9 @@ function scrollTo(index) {
 							d="M9.94043 16.9C9.66043 16.9 9.37043 16.83 9.11043 16.69C8.54043 16.38 8.19043 15.79 8.19043 15.15V10C8.19043 9.59 8.53043 9.25 8.94043 9.25H14.9804C15.3904 9.25 15.7304 9.59 15.7304 10V15.13C15.7304 15.78 15.3804 16.37 14.8104 16.67C14.2404 16.98 13.5504 16.94 13.0104 16.58L12.1204 15.98C12.0404 15.92 11.9304 15.92 11.8404 15.98L10.9004 16.6C10.6104 16.8 10.2704 16.9 9.94043 16.9ZM9.69043 10.75V15.14C9.69043 15.27 9.77043 15.33 9.82043 15.36C9.87043 15.39 9.97043 15.42 10.0804 15.35L11.0204 14.73C11.6104 14.34 12.3704 14.34 12.9504 14.73L13.8404 15.33C13.9504 15.4 14.0504 15.37 14.1004 15.34C14.1504 15.31 14.2304 15.25 14.2304 15.12V10.74H9.69043V10.75Z"
 							fill="current" />
 					</svg>
-					{{ t('menu.giftRoom') }}
+					{{ t('menu.battle') }}
 				</div>
-				<div class="nav_item" :class="{ active: route.name == 'p_rank' }" @click="jumpRoute('/p/rank')">
+				<div class="nav_item" :class="{ active: route.name == 'p_lucky' }" @click="jumpRoute('/p/lucky')">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M9.98959 22.75C9.78959 22.75 9.62959 22.71 9.50959 22.66C9.10959 22.51 8.42959 22.02 8.42959 20.47V14.02H6.08959C4.74959 14.02 4.26959 13.39 4.09959 13.02C3.92959 12.64 3.77959 11.87 4.65959 10.86L12.2296 2.26001C13.2496 1.10001 14.0796 1.18001 14.4796 1.33001C14.8796 1.48001 15.5596 1.97001 15.5596 3.52001V9.97001H17.8996C19.2396 9.97001 19.7196 10.6 19.8896 10.97C20.0596 11.35 20.2096 12.12 19.3296 13.13L11.7596 21.73C11.0496 22.54 10.4296 22.75 9.98959 22.75ZM13.9296 2.74001C13.8996 2.78001 13.6896 2.88001 13.3596 3.26001L5.78959 11.86C5.50959 12.18 5.46959 12.38 5.46959 12.42C5.48959 12.43 5.66959 12.53 6.08959 12.53H9.17959C9.58959 12.53 9.92959 12.87 9.92959 13.28V20.48C9.92959 20.98 10.0196 21.2 10.0596 21.26C10.0896 21.22 10.2996 21.12 10.6296 20.74L18.1996 12.14C18.4796 11.82 18.5196 11.62 18.5196 11.58C18.4996 11.57 18.3196 11.47 17.8996 11.47H14.8096C14.3996 11.47 14.0596 11.13 14.0596 10.72V3.52001C14.0696 3.02001 13.9696 2.81001 13.9296 2.74001Z"
@@ -533,7 +534,7 @@ function scrollTo(index) {
 					</svg>
 					{{ t('menu.timeBox') }}
 				</div>
-				<div class="nav_item" :class="{ active: route.name == 'p_rank' }" @click="jumpRoute('/p/rank')">
+				<div class="nav_item" :class="{ active: route.name == 'p_mall' }" @click="jumpRoute('/p/mall')">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
 							d="M14.6998 22.75H9.29977C4.35977 22.75 2.25977 20.64 2.25977 15.71V11.22C2.25977 10.81 2.59977 10.47 3.00977 10.47C3.41977 10.47 3.75977 10.81 3.75977 11.22V15.71C3.75977 19.8 5.20977 21.25 9.29977 21.25H14.6898C18.7798 21.25 20.2298 19.8 20.2298 15.71V11.22C20.2298 10.81 20.5698 10.47 20.9798 10.47C21.3898 10.47 21.7298 10.81 21.7298 11.22V15.71C21.7398 20.64 19.6298 22.75 14.6998 22.75Z"
@@ -551,7 +552,7 @@ function scrollTo(index) {
 							d="M14.5 22.75H9.5C9.09 22.75 8.75 22.41 8.75 22V19.5C8.75 17.4 9.9 16.25 12 16.25C14.1 16.25 15.25 17.4 15.25 19.5V22C15.25 22.41 14.91 22.75 14.5 22.75ZM10.25 21.25H13.75V19.5C13.75 18.24 13.26 17.75 12 17.75C10.74 17.75 10.25 18.24 10.25 19.5V21.25Z"
 							fill="current" />
 					</svg>
-					{{ t('menu.store') }}
+					{{ t('menu.ammonMall') }}
 
 					<!-- <sup>NEW</sup> -->
 				</div>
@@ -581,7 +582,7 @@ function scrollTo(index) {
 							<div class="user-info-wrap">
 								<p>{{ userInfoBase.nickName }}</p>
 								<div class="balance">
-									<img src="@/assets/pcimg/common/coin.png" alt="" />
+									<img src="@/assets/pcimg/common/coin.svg" alt="" />
 									<span> {{ userInfoAssets?.amount }}</span>
 									<!-- <span class="balance-small">{{
 								userInfoAssets?.amount?.split(".")[1] || "0"
@@ -691,6 +692,17 @@ function scrollTo(index) {
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	transition: .3s all;
+
+	&.isDifferentHome {
+
+		// transform: translateY(-60px);
+		background-color: rgba(22, 24, 44, .5);
+		backdrop-filter: blur(8px);
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
 
 	// margin: 0 24px;
 	// border-radius: 12px;
@@ -701,6 +713,14 @@ function scrollTo(index) {
 		display: none;
 		align-items: center;
 		gap: 40px;
+		// position: fixed;
+		// top: 0;
+		// z-index: 1000;
+
+		// &.isHidden {
+		// 	position: sticky;
+		// 	top: 0;
+		// }
 
 		@media (min-width: 1200px) {
 			display: flex;
@@ -771,7 +791,8 @@ function scrollTo(index) {
 		z-index: 90;
 
 		&.isFixed {
-			position: fixed;
+			position: sticky;
+			top: 0;
 			left: 24px;
 			right: 24px;
 			margin: 0;
@@ -1168,6 +1189,11 @@ function scrollTo(index) {
 		.pc-header_top {
 			margin: 0;
 
+			&.isFixed {
+				left: 0;
+				right: 0;
+			}
+
 			.logo-wrap {
 				.logo {
 					img {
@@ -1179,6 +1205,7 @@ function scrollTo(index) {
 
 			.tab-list {
 				padding: 16px 0;
+
 
 				.nav_item {
 

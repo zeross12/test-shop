@@ -17,8 +17,8 @@ function hasFrame() {
 <template>
 	<div :class="changeMyClass()">
 		<img class="icon_img" :src="props.userModel.avater || defaultIcon" :style="hasFrame() ? 'border:none' : ''" alt="">
-		<img v-show="hasFrame() && !props.hideFrame" class="icon_img_bg" :src="props.userModel.avaterFrame"	alt="">
-			 <img v-if="props.userModel.isAnchor" class="tv-flag" :src="anchorImgUrl" />
+		<img v-show="hasFrame() && !props.hideFrame" class="icon_img_bg" :src="props.userModel.avaterFrame" alt="">
+		<img v-if="props.userModel.isAnchor" class="tv-flag" :src="anchorImgUrl" />
 	</div>
 </template>
 		
@@ -111,9 +111,11 @@ function hasFrame() {
 }
 
 .pc-battle-header {
-	width: 46px;
-	height: 46px;
+	width: 64px;
+	height: 64px;
 	position: relative;
+	border-radius: 100%;
+	overflow: hidden;
 
 	.icon_img {
 		width: 100%;

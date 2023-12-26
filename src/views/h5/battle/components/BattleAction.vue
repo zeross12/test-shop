@@ -121,25 +121,14 @@ function getImageBg(item) {
 
 <template>
 	<div id="h5-bat-room-action">
-		<div
-			class="act-wrap"
-			ref="actionContainerRef"
-			@transitionend="onTransitionend"
-		>
+		<div class="act-wrap" ref="actionContainerRef" @transitionend="onTransitionend">
 			<div class="act-item" v-for="(item, index) in volutionList" :key="index">
-				<div
-					class="weap-wrap"
-					:style="'background-image: url(' + getImageBg(item) + ');'"
-				>
+				<div class="weap-wrap" :style="'background-image: url(' + getImageBg(item) + ');'">
 					<img :src="item.iconUrl" />
 				</div>
 				<div class="item-info" v-show="animationEnd">
 					<p class="price">
-						<img
-							class="h5-price-coin"
-							src="@/assets/pcimg/common/coin.png"
-							alt=""
-						/>{{ item.price }}
+						<img class="h5-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price }}
 					</p>
 					<p class="item-info2">
 						{{

@@ -21,7 +21,7 @@ import { onMounted, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { UserType } from "@/util/util";
 import { useStore } from "vuex";
-import { _isMobile, isPCFunc } from "@/util/common";
+// import { _isMobile, isPCFunc } from "@/util/common";
 import ActivityMiniDialog from '@/views/pc/activity/ActivityMiniDialog.vue'
 
 const route = useRoute();

@@ -5,8 +5,8 @@ import { nextTick, onMounted, onUnmounted, provide, ref } from "vue";
 import { RouterView, useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { wsurl, tokenName } from "./config";
-import { _isMobile } from "./util/common";
-import { isPCFunc } from "@/util/common";
+// import { _isMobile } from "./util/common";
+// import { isPCFunc } from "@/util/common";
 import { Notify } from "vant";
 
 const store = useStore();
@@ -14,7 +14,7 @@ const route = useRoute();
 const router = useRouter();
 
 const isRouterAlive = ref(true);
-provide("reloadView", { reloadView });
+// provide("reloadView", { reloadView });
 
 // let websocket = null;
 // let socketState = false;
@@ -32,7 +32,7 @@ onMounted(() => {
 	store.dispatch("initGoodsBgList");
 	store.dispatch("getOtherConfig");
 	// initSocket();
-	initResizeView();
+	// initResizeView();
 	window.addEventListener("resize", viewChangeListener);
 	window.addEventListener("orientationchange", viewChangeListener);
 });
@@ -43,10 +43,10 @@ onUnmounted(() => {
 	window.removeEventListener("orientationchange", viewChangeListener);
 });
 
-function initResizeView() {
-	let isPC = isPCFunc();
-	store.commit("setPCClient", isPC);
-}
+// function initResizeView() {
+// 	let isPC = isPCFunc();
+// 	store.commit("setPCClient", isPC);
+// }
 
 function viewChangeListener() {
 	// let isPC = isPCFunc();
@@ -187,10 +187,10 @@ function initBdVid() {
 // }
 
 function reloadView() {
-	isRouterAlive.value = false;
-	nextTick(() => {
-		isRouterAlive.value = true;
-	});
+	// isRouterAlive.value = false;
+	// nextTick(() => {
+	// 	isRouterAlive.value = true;
+	// });
 }
 
 Date.prototype.format = function (fmt) {

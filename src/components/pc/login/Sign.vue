@@ -619,7 +619,7 @@ function submit(e) {
 							</button>
 						</div>
 
-						<div class="form-item" v-show="showDragVerify">
+						<div class="form-item" style="height: 44px;" v-show="showDragVerify">
 							<DragVerify @passing="dragResult" :is-passing="isPassing"></DragVerify>
 						</div>
 
@@ -709,34 +709,51 @@ function submit(e) {
 		flex-direction: column;
 		width: 100%;
 		padding: 40px;
+		border-radius: 24px;
+		border: 1px solid #606691;
+		background: #272B49;
+		backdrop-filter: blur(60px);
 
 
 
+
+
+		&::before {
+			content: "";
+			background: url(@/assets/pcimg/common/modal_1.png);
+			background-repeat: no-repeat;
+			// background-position: center;
+			background-size: 100%;
+			position: absolute;
+			z-index: 0;
+			left: 0;
+			top: 0;
+			width: 392px;
+			height: 296px;
+			transform: translate(-40%, -40%);
+		}
 
 		&::after {
 			content: "";
-			background: url(@/assets/pcimg/common/login_bg.png);
+			background: url(@/assets/pcimg/common/modal_2.png);
 			background-repeat: no-repeat;
-			background-position: center;
-			background-size: contain;
+			// background-position: center;
+			// background-size: contain;
 			position: absolute;
+			bottom: 0;
+			right: 0;
 			z-index: 0;
-			inset: 0;
+			width: 221px;
+			height: 167px;
+
+			transform: translateX(30%);
+			// inset: 0;
 
 		}
 
-		&.isSignUp {
-
-			&::after {
-				background: url(@/assets/pcimg/common/sign-up_bg.png);
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: contain;
-			}
-
-		}
 
 		.close-btn {
+			cursor: pointer;
 			position: absolute;
 			z-index: 1;
 			right: 10px;
@@ -748,8 +765,16 @@ function submit(e) {
 			align-items: center;
 			justify-content: center;
 
+			transition: 0.3s all;
+
+			svg {
+
+				transition: 0.3s all;
+			}
+
 			img {
-				width: 14px;
+				width: 16px;
+				transition: 0.3s all;
 			}
 
 			&:hover {
@@ -813,7 +838,7 @@ function submit(e) {
 
 			.sign-form {
 				display: flex;
-				gap: 13px;
+				gap: 16px;
 				margin-top: 20px;
 				flex-direction: column;
 
@@ -949,9 +974,9 @@ function submit(e) {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
-			padding: 24px 0px;
+			padding: 8px 0px;
 			box-sizing: border-box;
-			gap: 22px;
+			gap: 8px;
 			position: relative;
 			z-index: 1;
 
@@ -965,12 +990,14 @@ function submit(e) {
 				line-height: 22px;
 
 				&.active {
-					color: #0985ed;
+					color: #fff;
 				}
 
 				&.agreement {
 					justify-content: flex-start;
 					gap: 12px;
+
+					color: #fff;
 
 					&:hover {
 						color: #fff;
@@ -985,11 +1012,16 @@ function submit(e) {
 					display: flex;
 					align-items: center;
 					// height: 19px;
-					gap: 12px;
+					gap: 8px;
+					font-size: 16px;
+
+					color: #fff;
+					text-transform: uppercase;
 
 					&.agreement,
 					&.remember {
 						cursor: pointer;
+						color: #fff;
 
 						&:hover {
 							color: #fff;
@@ -1008,6 +1040,7 @@ function submit(e) {
 					&.forget {
 						color: #848492;
 						cursor: default;
+						color: #fff;
 
 						&:hover {
 							color: #fff;
@@ -1032,7 +1065,7 @@ function submit(e) {
 
 	@media screen and (max-width: 768px) {
 		.sign-container {
-			max-width: 400px;
+			max-width: 350px;
 			padding: 30px;
 
 			.sign-form {

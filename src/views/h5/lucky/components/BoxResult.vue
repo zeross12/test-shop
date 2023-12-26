@@ -143,17 +143,9 @@ function getImageBg2(item) {
 			</div>
 			<div class="prize-box-content">
 				<div class="prize-box" :key="choosekey">
-					<div
-						class="prize-item"
-						:class="{ choice: item.choose }"
-						@click="choice(item, index)"
-						v-for="(item, index) in goodList"
-						:key="index"
-					>
-						<div
-							class="prize-item-back"
-							:style="'background-image: url(' + getImageBg2(item) + ');'"
-						>
+					<div class="prize-item" :class="{ choice: item.choose }" @click="choice(item, index)"
+						v-for="(item, index) in goodList" :key="index">
+						<div class="prize-item-back" :style="'background-image: url(' + getImageBg2(item) + ');'">
 							<div class="prize-item-pic">
 								<img :src="item.iconUrl" alt="" />
 							</div>
@@ -168,11 +160,7 @@ function getImageBg2(item) {
 			</div>
 			<div class="opt-wrap">
 				<div class="btn-all-recovery" @click="onClickSell">
-					全部分解<img
-						class="pc-price-coin"
-						src="@/assets/pcimg/common/coin.png"
-						alt=""
-					/>{{ allPrice.toFixed(2) }}
+					全部分解<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ allPrice.toFixed(2) }}
 				</div>
 				<div class="btn-recovery" @click="onClickSell">分解选择的饰品</div>
 				<div class="btn-return" @click="onClose">放入背包</div>
@@ -184,10 +172,7 @@ function getImageBg2(item) {
 			</div>
 			<div class="bg"></div>
 			<div class="result-title">获得饰品</div>
-			<div
-				class="prize-item-back"
-				:style="'background-image: url(' + getImageBg(goodList[0]) + ');'"
-			>
+			<div class="prize-item-back" :style="'background-image: url(' + getImageBg(goodList[0]) + ');'">
 				<div class="prize-item-pic">
 					<img :src="goodList[0].iconUrl" alt="" />
 				</div>
@@ -199,11 +184,7 @@ function getImageBg2(item) {
 			<div class="opt-wrap">
 				<div class="btn-return" @click="onClose">放入背包</div>
 				<div class="btn-recovery" @click="onClickSell">
-					分解<img
-						class="pc-price-coin"
-						src="@/assets/pcimg/common/coin.png"
-						alt=""
-					/>
+					分解<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />
 					{{ sellingPrice.toFixed(2) }}
 				</div>
 			</div>
@@ -571,6 +552,7 @@ function getImageBg2(item) {
 				font-style: normal;
 				font-weight: 400;
 				line-height: 15px;
+
 				img {
 					margin-left: 5px;
 				}

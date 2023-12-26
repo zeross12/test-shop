@@ -218,7 +218,7 @@ function rewardWindowRight() {
 										<div class="pc-item-name">{{ value.name }}</div>
 										<div class="pc-item-price">
 											{{ node == value.boxId ? "Open for " : ""
-											}}<img src="@/assets/pcimg/common/coins.svg" alt="" />
+											}}<img src="@/assets/pcimg/common/coin.svg" alt="" />
 											<Price :value="value.price"></Price>
 										</div>
 									</lazy-component>
@@ -298,7 +298,7 @@ function rewardWindowRight() {
 						<button class="pc-item-price button--secondary">
 							<!-- {{ node == value.boxId ? "Open for" : "" }} -->
 							<!-- {{ value.price }} -->
-							<img src="@/assets/pcimg/common/coins.svg" />
+							<img src="@/assets/pcimg/common/coin.svg" />
 							<Price :value="value.price"></Price>
 							<span v-if="Number(value.price) < Number(value.originalPrice)">{{ value.originalPrice }}</span>
 						</button>
@@ -444,7 +444,7 @@ function rewardWindowRight() {
 	max-width: 1120px;
 	margin: 0 auto;
 	min-height: 500px;
-	background-color: #15172c;
+	// background-color: #15172c;
 	margin-top: 18px;
 	padding: 0 16px;
 

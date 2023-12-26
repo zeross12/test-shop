@@ -100,7 +100,7 @@ function getImageBg(item) {
 			<div class="box-name">{{ curBox.name }}</div>
 			<div class="box-control">
 				<!-- <div class="control-item left"></div> -->
-				<div class="box-price"><img src="@/assets/pcimg/common/coin.png">
+				<div class="box-price"><img src="@/assets/pcimg/common/coin.svg">
 					{{ curBox.price }}&nbsp;
 					<p v-if="Number(curBox.price) < Number(curBox.originalPrice)">{{ curBox.originalPrice }}</p>
 				</div>
@@ -137,7 +137,7 @@ function getImageBg(item) {
 							<p class="item-info1">{{ getGoodsNamePre(item.goodsName) }}</p>
 							<p class="item-info2">{{ getGoodsNameSec(item.goodsName) }}</p>
 						</div>
-						<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+						<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 							item.price }} </div>
 					</div>
 				</div>

@@ -432,7 +432,7 @@ function getGoodsName(item) {
 				<van-switch v-model="selectAll" @change="onAllChooseChange" />
 				<div class="all-price"> {{ t('common.selected') }}<span>{{ selectList.length }}</span></div>
 				<div class="all-price">{{ t('battle.priceTotal') }}
-					<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />
+					<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />
 					<span>{{ totalPrice }}</span>
 				</div>
 			</div>
@@ -460,7 +460,7 @@ function getGoodsName(item) {
 						<img :src="getImageIcon(item)" alt="">
 					</div>
 					<div class="item-info">
-						<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+						<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 							item.price }}</div>
 						<div class="name hide">{{ getGoodsName(item) }}</div>
 					</div>

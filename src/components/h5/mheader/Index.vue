@@ -16,7 +16,7 @@ import { tokenName } from "../../../config";
 const store = useStore();
 const route = useRoute();
 const router = useRouter();
-const { reloadView } = inject("reloadView");
+// const { reloadView } = inject("reloadView");
 const qqGroupDialog = ref(false);
 
 const userInfoBase = computed(() => {
@@ -34,7 +34,7 @@ const leftMemuData = computed(() => {
 			active: route.name == "m_home",
 			show: true,
 			icon: "menu_home",
-			text: t( 'menu.home' ),
+			text: t('menu.home'),
 			hot: false,
 			clickHandler: function () {
 				jumpRoute("/");
@@ -52,7 +52,7 @@ const leftMemuData = computed(() => {
 				store.state.moduleBattle &&
 				store.state.reserveStatus == 1,
 			icon: "menu_battle",
-			text: t( 'menu.battle' ),
+			text: t('menu.battle'),
 			hot: true,
 			clickHandler: function () {
 				jumpRoute("/m/battle/list");
@@ -62,7 +62,7 @@ const leftMemuData = computed(() => {
 			active: route.name == "m_roll" || route.name == "roll_details",
 			show: !store.state.beiAnExamine && store.state.moduleRoll,
 			icon: "menu_roll",
-			text: t( 'menu.rollRoom' ),
+			text: t('menu.rollRoom'),
 			hot: false,
 			clickHandler: function () {
 				jumpRoute("/m/roll");
@@ -72,27 +72,27 @@ const leftMemuData = computed(() => {
 			active: route.name == "m_lucky",
 			show: store.state.moduleLucky,
 			icon: "menu_sp",
-			text: t( 'menu.lucky' ),
+			text: t('menu.lucky'),
 			hot: false,
 			clickHandler: function () {
 				jumpRoute("/m/lucky");
 			},
 		},
 		{
-			 active: route.name == "m_battle_rank",
-			 show: store.state.moduleBattleRank,
-			 icon: "menu_battle_rank",
-			 text: t( 'menu.rank' ),
-			 hot: false,
-			 clickHandler: function () {
-				 jumpRoute("/m/battleRank");
-			 },
+			active: route.name == "m_battle_rank",
+			show: store.state.moduleBattleRank,
+			icon: "menu_battle_rank",
+			text: t('menu.rank'),
+			hot: false,
+			clickHandler: function () {
+				jumpRoute("/m/battleRank");
+			},
 		},
 		{
 			active: route.name == "m_grade",
 			show: store.state.moduleGrade,
 			icon: "menu_fli",
-			text: t( 'menu.gradeBox' ),
+			text: t('menu.gradeBox'),
 			hot: false,
 			clickHandler: function () {
 				jumpRoute("/m/grade");
@@ -102,7 +102,7 @@ const leftMemuData = computed(() => {
 			active: route.name == "m_timebox",
 			show: store.state.moduleTiming,
 			icon: "menu_time",
-			text: t( 'menu.timeBox' ),
+			text: t('menu.timeBox'),
 			hot: false,
 			clickHandler: function () {
 				jumpRoute("/m/timebox");
@@ -136,7 +136,7 @@ const rightMemuData = computed(() => {
 			active: route.name == "m_personal",
 			show: true,
 			icon: "menu_user",
-			text: t( 'menu.userCenter' ),
+			text: t('menu.userCenter'),
 			clickHandler: function () {
 				jumpRoute("/m/personal");
 			},
@@ -145,7 +145,7 @@ const rightMemuData = computed(() => {
 			active: route.name == "m_recharge",
 			show: store.state.moduleRecharge,
 			icon: "menu_pay",
-			text: t( 'menu.rechargeCenter' ),
+			text: t('menu.rechargeCenter'),
 			clickHandler: function () {
 				jumpRoute("/m/recharge");
 			},
@@ -186,7 +186,7 @@ const rightMemuData = computed(() => {
 				route.name == "m_regulations",
 			show: true,
 			icon: "menu_help",
-			text: t( 'menu.supportCenter' ),
+			text: t('menu.supportCenter'),
 			clickHandler: function () {
 				jumpRoute("/m/help");
 			},
@@ -211,14 +211,14 @@ const navShow = ref(false);
 const userShow = ref(false);
 
 const needReturn = [
-	// "m_createbattle",
-	// "m_battleDetail",
-	// "m_battle_rank",
-	// "m_battle_history",
-	// "m_battle_box_details",
-	// "m_lucky_details",
-	// "m_roll_detail",
-	// "m_battleverify",
+	"m_createbattle",
+	"m_battleDetail",
+	"m_battle_rank",
+	"m_battle_history",
+	"m_battle_box_details",
+	"m_lucky_details",
+	"m_roll_detail",
+	"m_battleverify",
 ];
 //导航||返回
 function isback() {
@@ -268,10 +268,10 @@ async function onClickExitLogin() {
 	const res = await logout();
 	if (res.code === 0) {
 		// userShow.value = false;
-		Notify( t( 'menu.loggedOut' ) );
+		Notify(t('menu.loggedOut'));
 		store.commit("logout");
 		nextTick(() => {
-			reloadView();
+			// reloadView();
 		});
 	}
 }
@@ -322,10 +322,10 @@ function onClickService() {
 				button: false,
 			});
 			_AIHECONG("customer", {
-				名称 : store.state.userInfoBase.nickName,
-				手机 : store.state.userInfoBase.mobile,
-				终端 : "MODILE",
-				会员账号 : store.state.userInfoBase.account,
+				名称: store.state.userInfoBase.nickName,
+				手机: store.state.userInfoBase.mobile,
+				终端: "MODILE",
+				会员账号: store.state.userInfoBase.account,
 			});
 			_AIHECONG("showChat");
 		} else {
@@ -340,7 +340,7 @@ function onClickGroup() {
 	navShow.value = false;
 	userShow.value = false;
 	if (navigator.userAgent.indexOf("UCBrowser") > -1) {
-		alert( t( 'menu.browserNotSupport' ) );
+		alert(t('menu.browserNotSupport'));
 	} else {
 		if (
 			store.state.otherConfig.qqGroup &&
@@ -396,27 +396,13 @@ function formatName(str) {
 </script>
 
 <template>
-	<div
-		id="top-header"
-		:class="[{ active: route.name == 'm_home' }]"
-		v-if="store.state.showHeaderView"
-	>
+	<div id="top-header" :class="[{ active: route.name == 'm_home' }]" v-if="store.state.showHeaderView">
 		<div class="header_top" :class="{ active: indexActive }">
 			<div class="opt-wrap">
 				<div class="nav-btn">
-					<img
-						class="back"
-						v-if="isback()"
-						src="@/assets/romimg/header/return.png"
-						alt=""
-						@click="routerReturn"
-					/>
-					<img
-						v-else
-						src="@/assets/romimg/header/left_nav_btn.png"
-						alt=""
-						@click="setNavShow"
-					/>
+					<img class="back" v-if="isback()" src="@/assets/romimg/header/return.png" alt=""
+						@click="routerReturn" />
+					<img v-else src="@/assets/romimg/header/left_nav_btn.png" alt="" @click="setNavShow" />
 				</div>
 				<div class="logo-wrap">
 					<div class="logo">
@@ -430,7 +416,7 @@ function formatName(str) {
 
 			<div class="login-wrap" v-show="!hasLogin" @click="onClickSign">
 				<img src="@/assets/romimg/sign/login.png" alt="" srcset="" />
-				{{ t( 'router.login' ) }}
+				{{ t('router.login') }}
 			</div>
 
 			<div class="user-wrap" @click="setUserShow" v-show="hasLogin">
@@ -440,12 +426,7 @@ function formatName(str) {
 						{{ formatName(userInfoBase.nickName) }}
 					</div>
 					<!-- <div class="balance" v-html="showFloat(userInfoAssets.amount)"></div> -->
-					<Currency
-						:fontsize="12"
-						:font-weight="700"
-						size="minis"
-						:currency="userInfoAssets.amount"
-					></Currency>
+					<Currency :fontsize="12" :font-weight="700" size="minis" :currency="userInfoAssets.amount"></Currency>
 				</div>
 				<div class="user-header">
 					<HeadPortrait :userModel="userInfoBase" :size="'one'"></HeadPortrait>
@@ -455,18 +436,9 @@ function formatName(str) {
 		</div>
 		<div class="header_height"></div>
 
-		<van-popup
-			v-model:show="navShow"
-			position="left"
-			:style="{ height: '100%' }"
-		>
-			<div
-				v-for="(item, index) in leftMemuData"
-				:key="index"
-				class="nav_item"
-				:class="{ active: item.active }"
-				@click="item.clickHandler"
-			>
+		<van-popup v-model:show="navShow" position="left" :style="{ height: '100%' }">
+			<div v-for="(item, index) in leftMemuData" :key="index" class="nav_item" :class="{ active: item.active }"
+				@click="item.clickHandler">
 				<img :src="getAssetURL(item.icon)" />
 				{{ item.text }}
 				<div v-if="item.hot" class="hot"></div>
@@ -556,12 +528,7 @@ function formatName(str) {
 				<img src="@/assets/romimg/nav/ammonbox.png" alt="" />弹壳盲盒
 			</div> -->
 		</van-popup>
-		<van-popup
-			v-model:show="userShow"
-			position="right"
-			class="user-pop"
-			:style="{ height: '100%' }"
-		>
+		<van-popup v-model:show="userShow" position="right" class="user-pop" :style="{ height: '100%' }">
 			<div class="user_area">
 				<div class="user-header">
 					<HeadPortrait :userModel="userInfoBase" :size="'two'"></HeadPortrait>
@@ -587,13 +554,8 @@ function formatName(str) {
 				</div>
 			</div> -->
 
-			<div
-				v-for="(item, index) in rightMemuData"
-				:key="index"
-				class="nav_item"
-				:class="{ active: item.active }"
-				@click="item.clickHandler"
-			>
+			<div v-for="(item, index) in rightMemuData" :key="index" class="nav_item" :class="{ active: item.active }"
+				@click="item.clickHandler">
 				<img :src="getAssetURL(item.icon)" />
 				{{ item.text }}
 				<div v-if="item.hot" class="hot"></div>
@@ -670,7 +632,7 @@ function formatName(str) {
 			<div class="tool-wrap">
 				<div class="tool-item-wrap" @click="onClickRed">
 					<img src="@/assets/romimg/header/red_icon.png" alt="" />
-					{{ t( 'menu.redPack' ) }}
+					{{ t('menu.redPack') }}
 				</div>
 				<!-- <div class="tool-item-wrap" @click="onClickGroup">
 					<img src="@/assets/romimg/header/qq_icon.png" alt="" />
@@ -684,23 +646,15 @@ function formatName(str) {
 
 			<div class="sign_out" @click="onClickExitLogin()">
 				<span class="icon iconfont">&#xe629;</span>
-				{{ t( 'menu.logout' ) }}
+				{{ t('menu.logout') }}
 			</div>
 		</van-popup>
-		<van-dialog
-			v-model:show="qqGroupDialog"
-			:showConfirmButton="false"
-			:show-cancel-button="true"
-		>
+		<van-dialog v-model:show="qqGroupDialog" :showConfirmButton="false" :show-cancel-button="true">
 			<div class="qqGroup-list-dialog">
-				<div
-					class="qqGroup-item-wrap"
-					v-for="(item, index) in store.state.otherConfig.qqGroup"
-					:key="index"
-					@click="onClickGroupItem(item)"
-				>
+				<div class="qqGroup-item-wrap" v-for="(item, index) in store.state.otherConfig.qqGroup" :key="index"
+					@click="onClickGroupItem(item)">
 					<img src="@/assets/romimg/sidebar/btn_qq.png" alt="" />
-					<p>{{ t( 'menu.groupChat' ) }}{{ index + 1 }}</p>
+					<p>{{ t('menu.groupChat') }}{{ index + 1 }}</p>
 				</div>
 			</div>
 		</van-dialog>
@@ -759,10 +713,10 @@ function formatName(str) {
 				display: flex;
 				align-items: center;
 
-				.logo
-				{
+				.logo {
 					display: flex;
 					align-items: center;
+
 					img {
 						height: 80px;
 						margin-top: 6px;
@@ -818,6 +772,7 @@ function formatName(str) {
 					margin-bottom: 12px;
 					// line-height: 50px;
 				}
+
 				// .balance {
 				// height: 42px;
 				// display: flex;
@@ -958,6 +913,7 @@ function formatName(str) {
 			overflow: hidden;
 			// background-color: rgba($color: #141221, $alpha: 1);
 			background: #1b313f;
+
 			.nav_btn {
 				margin-top: 124px;
 				display: flex;
@@ -1019,6 +975,7 @@ function formatName(str) {
 				&.active {
 					background: rgba($color: #fff, $alpha: 0.04);
 					color: #fff;
+
 					&::after {
 						display: none;
 					}
@@ -1054,9 +1011,11 @@ function formatName(str) {
 			padding: 0px 40px;
 			background-color: #11222c;
 		}
+
 		.user-wrap {
 			margin-left: 20px;
 			text-align: left;
+
 			.user_name {
 				font-size: 26px;
 				font-weight: bold;
@@ -1064,6 +1023,7 @@ function formatName(str) {
 				text-align: left;
 				padding-left: 10px;
 			}
+
 			.user_level {
 				padding-left: 10px;
 				margin-top: 15px;
@@ -1122,6 +1082,7 @@ function formatName(str) {
 				justify-content: center;
 				align-items: center;
 				gap: 30px;
+
 				img {
 					width: 86px;
 					height: 86px;
@@ -1144,6 +1105,7 @@ function formatName(str) {
 			transform: translateX(-50%);
 			box-sizing: border-box;
 			bottom: 0px;
+
 			span {
 				font-size: 36px;
 				color: #79faff;
@@ -1203,17 +1165,21 @@ function formatName(str) {
 				color: #fff;
 			}
 		}
+
 		.van-hairline--top {
 			.van-button {
 				display: unset !important;
 			}
 		}
 	}
+
 	.van-dialog__footer {
 		height: 96px;
+
 		.van-button {
 			display: unset !important;
 		}
+
 		.van-dialog__cancel {
 			width: 250px !important;
 			height: 76px !important;
@@ -1229,6 +1195,7 @@ function formatName(str) {
 			// justify-content: center !important;
 			// align-items: center;
 		}
+
 		// display: flex !important;
 		// justify-content: center !important;
 		// align-items: center;

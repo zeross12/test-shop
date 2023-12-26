@@ -121,14 +121,14 @@ export default [
 				},
 			},
 			// 商城
-			// {
-			// 	path: "mall",
-			// 	name: "m_mall",
-			// 	component: () => import("@/views/h5/mall/Index.vue"),
-			// 	meta: {
-			// 		name: "mall",
-			// 	},
-			// },
+			{
+				path: "mall",
+				name: "m_mall",
+				component: () => import("@/views/h5/mall/Index.vue"),
+				meta: {
+					name: "mall",
+				},
+			},
 			//中转
 			{
 				path: "transfor",
@@ -198,14 +198,14 @@ export default [
 				],
 			},
 			// 创建对战
-			{
-				path: "createbattle",
-				name: "m_createbattle",
-				component: () => import("@/views/h5/battle/CreateBattle.vue"),
-				meta: {
-					name: "createBattle",
-				},
-			},
+			// {
+			// 	path: "createbattle",
+			// 	name: "m_createbattle",
+			// 	component: () => import("@/views/h5/battle/CreateBattle.vue"),
+			// 	meta: {
+			// 		name: "createBattle",
+			// 	},
+			// },
 			//欧皇战场
 			{
 				path: "battleDetail",
@@ -682,15 +682,15 @@ export default [
 				}
 			},
 			//商城
-			// {
-			// 	path: 'mall',
-			// 	name: 'p_mall',
-			// 	component: () =>
-			// 		import('@/views/pc/mall/Index.vue'),
-			// 	meta: {
-			// 		name: 'mall'
-			// 	}
-			// },
+			{
+				path: 'mall',
+				name: 'p_mall',
+				component: () =>
+					import('@/views/pc/mall/Index.vue'),
+				meta: {
+					name: 'mall'
+				}
+			},
 			//中转
 			{
 				path: "transfor",

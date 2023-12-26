@@ -196,7 +196,7 @@ function getImageBg2(item) {
 			</div>
 			<div class="opt-wrap">
 				<div class="btn-all-recovery" @click="onClickSell">{{ t('openbox.saleAll') }}<img class="pc-price-coin"
-						src="@/assets/pcimg/common/coin.png" alt="" />{{ allPrice.toFixed(2) }} </div>
+						src="@/assets/pcimg/common/coin.svg" alt="" />{{ allPrice.toFixed(2) }} </div>
 				<div class="btn-recovery" @click="onClickSell">{{ t('openbox.saleSelected') }}</div>
 				<div class="btn-return" @click="onClose">{{ t('openbox.putInBag') }}</div>
 			</div>
@@ -219,7 +219,7 @@ function getImageBg2(item) {
 			<div class="opt-wrap">
 				<div class="btn-return" @click="onClose">{{ t('openbox.putInBag') }}</div>
 				<div class="btn-recovery" @click="onClickSell">{{ t('openbox.sale') }}<img class="pc-price-coin"
-						src="@/assets/pcimg/common/coin.png" alt="" /> {{ sellingPrice.toFixed(2) }}</div>
+						src="@/assets/pcimg/common/coin.svg" alt="" /> {{ sellingPrice.toFixed(2) }}</div>
 			</div>
 		</div>
 	</div>

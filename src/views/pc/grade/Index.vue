@@ -236,7 +236,7 @@ function onClickLogin() {
 					<div class="free" v-if="Number(availablePoint) >= Number(item.needAmount)">FREE</div>
 					<!-- <div class="free" v-else-if="gradeType != 0 && Number(availablePoint) >= Number(item.needAmount)">FREE</div> -->
 					<div class="free" v-else>
-						<!-- <img src="@/assets/pcimg/common/coin.png"> -->
+						<!-- <img src="@/assets/pcimg/common/coin.svg"> -->
 						{{ t('grade.needRecharge', { money: Number(item.needAmount) - Number(availablePoint) }) }}
 					</div>
 

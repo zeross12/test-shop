@@ -76,7 +76,7 @@ async function copy(value) {
 					<div class="wrapper_bottom">
 						<div class="text-price">
 
-							<img src="@/assets/pcimg/common/coins.svg" style="width: 32px;">
+							<img src="@/assets/pcimg/common/coin.svg" style="width: 32px;">
 							<span>
 								53.20
 							</span>

@@ -125,7 +125,7 @@ function getImageBg(item) {
 				<div class="item-info" v-show="animationEnd">
 					<p class="item-info1">{{ getGoodsNamePre(item.goodsName) }}</p>
 					<p class="item-info2">{{ getGoodsNameSec(item.goodsName, item.goodsType) }}</p>
-					<p class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price
+					<p class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price
 					}}</p>
 				</div>
 			</div>

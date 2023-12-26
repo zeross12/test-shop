@@ -287,7 +287,7 @@ function isAnchorRoom(item) {
 							</div>
 						</div>
 						<div class="price">
-							<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" /> -->
+							<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" /> -->
 							<!-- {{item.joinPrice }} -->
 							<Price :value="item.joinPrice" color="#75DC9R" before-size="20px" after-size="14px" show-icon>
 							</Price>
@@ -325,14 +325,14 @@ function isAnchorRoom(item) {
 				<div class="top-item">
 					<span class="item-title">{{ t('battle.bestInHistory') }}</span>
 					<div class="item-num" v-show="Number(statistics.maxAmount) > 0"><img
-							src="@/assets/pcimg/common/coin.png" />{{ statistics.maxAmount }}</div>
+							src="@/assets/pcimg/common/coin.svg" />{{ statistics.maxAmount }}</div>
 					<span class="item-time" v-show="Number(statistics.maxAmount) > 0">{{ statistics.maxTime }}</span>
 					<div class="item-nodata" v-show="Number(statistics.maxAmount) <= 0">{{ t('battle.historyNil') }}</div>
 				</div>
 				<div class="top-item">
 					<span class="item-title">{{ t('battle.bestInToday') }}</span>
 					<div class="item-num" v-show="Number(statistics.dayMaxAmount) > 0"><img
-							src="@/assets/pcimg/common/coin.png" />{{ statistics.dayMaxAmount }}</div>
+							src="@/assets/pcimg/common/coin.svg" />{{ statistics.dayMaxAmount }}</div>
 					<span class="item-time" v-show="Number(statistics.dayMaxAmount) > 0">{{ statistics.dayMaxTime }}</span>
 					<div class="item-nodata" v-show="Number(statistics.dayMaxAmount) <= 0">{{ t('battle.historyNil') }}
 					</div>
@@ -353,7 +353,7 @@ function isAnchorRoom(item) {
 							</div>
 						</div>
 						<div class="price">
-							<img src="@/assets/pcimg/common/coin.png" alt="" />{{
+							<img src="@/assets/pcimg/common/coin.svg" alt="" />{{
 								item.maxWinPrice.toFixed(2)
 							}}
 						</div>
@@ -380,12 +380,17 @@ function isAnchorRoom(item) {
 	color: #fff;
 	min-height: 975px;
 	position: relative;
+	max-width: 1120px;
+	margin: auto;
 
 	.list-header {
 		width: 100%;
-		height: 80px;
-		color: #6D6C82;
-		font-size: 12px;
+		margin-top: 24px;
+		margin-bottom: 16px;
+		color: #727391;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: 500;
 		text-align: left;
 		display: flex;
 		align-items: center;
@@ -393,8 +398,8 @@ function isAnchorRoom(item) {
 
 		p {
 			box-sizing: border-box;
-			display: flex;
-			justify-content: center;
+			// display: flex;
+			// justify-content: center;
 			// text-align: left;
 		}
 
@@ -402,6 +407,7 @@ function isAnchorRoom(item) {
 
 		.header1 {
 			width: 135px;
+			text-align: left;
 			// padding-left: 10px;
 		}
 
@@ -436,18 +442,37 @@ function isAnchorRoom(item) {
 		flex-direction: column;
 		width: 100%;
 		box-sizing: border-box;
+		gap: 8px;
 
 		.room_item {
 			position: relative;
 			width: 100%;
 			display: flex;
-			height: 138px;
+			// height: 138px;
 			align-items: center;
 			transition: all 0.3s;
 			opacity: 1;
-			background: url(@/assets/pcimg/battle/row_item3.png) center no-repeat;
-			background-size: 100% 100%;
-			margin-bottom: 2px;
+			// background: url(@/assets/pcimg/battle/row_item3.png) center no-repeat;
+			// background-size: 100% 100%;
+			// margin-bottom: 2px;
+			border-radius: 12px;
+			background: linear-gradient(89deg, rgba(136, 71, 255, 0.20) 0%, rgba(0, 0, 0, 0.00) 100%), #1B1D35;
+
+			* {
+				position: relative;
+				z-index: 1;
+
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: url(@/assets/pcimg/battle/box_bg.png) no-repeat;
+				background-size: contain;
+				background-position: left;
+				z-index: 0;
+			}
 
 			.round {
 				width: 135px;
@@ -465,25 +490,25 @@ function isAnchorRoom(item) {
 			.boxs {
 				display: flex;
 				flex: 1;
-				overflow-y: scroll;
+				overflow-y: auto;
 				height: 100%;
 
-				&::-webkit-scrollbar {
-					width: 0;
-				}
+				// &::-webkit-scrollbar {
+				// 	width: 0;
+				// }
 
 				.box-item {
 					display: flex;
 					justify-content: center;
 					align-items: center;
 					flex-direction: column;
-					position: relative;
-					background-size: contain;
-					background-repeat: no-repeat;
-					background-position: center;
-					width: 100px;
-					margin-right: 3px;
-					flex-shrink: 0;
+					// position: relative;
+					// background-size: contain;
+					// background-repeat: no-repeat;
+					// background-position: center;
+					// width: 100px;
+					// margin-right: 3px;
+					// flex-shrink: 0;
 
 					.box-item-bg {
 						display: flex;
@@ -527,11 +552,13 @@ function isAnchorRoom(item) {
 			}
 
 			.price {
-				color: #75DC9E;
+				// color: #75DC9E;
 
 				font-size: 20px;
 				font-weight: 700;
+				line-height: 28px;
 				width: 120px;
+				text-transform: uppercase;
 
 				img {
 					width: 18px;
@@ -554,12 +581,18 @@ function isAnchorRoom(item) {
 					.player-item {
 						width: 46px;
 						height: 46px;
-						display: flex;
-						margin-right: 10px;
+
+						border-radius: 100%;
+						overflow: hidden;
+
+						&:not(:first-child) {
+							margin-left: -8px;
+						}
 
 						.player-icon {
 							width: 46px;
 							height: 46px;
+							border-radius: 100%;
 							position: relative;
 
 							.win-flag {
@@ -596,13 +629,21 @@ function isAnchorRoom(item) {
 					justify-content: center;
 					align-items: center;
 					flex-shrink: 0;
-					color: #CFCEE8;
+					color: #151515;
 					text-align: center;
-					font-size: 13px;
+					font-size: 16px;
 					font-weight: 700;
 					cursor: pointer;
-					border-radius: 4px;
-					background: #494D72;
+					border-radius: 8px;
+					background: #FFE063;
+					cursor: pointer;
+					transition: .3s all;
+					border: 1px solid #FFE063;
+
+					&:hover {
+						background: transparent;
+						color: #ffe063;
+					}
 				}
 			}
 

@@ -20,7 +20,7 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 
-const { reloadView } = inject('reloadView')
+// const { reloadView } = inject('reloadView')
 
 const userInfoBase = computed(() => store.state.userInfoBase);
 const userInfoExt = computed(() => store.state.userInfoExt);
@@ -340,7 +340,7 @@ function jumpRoute(v) {
 				</div>
 				<div class="info-item">
 					<div class="item-t">{{ t('users.gold') }}</div>
-					<div class="item-price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+					<div class="item-price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 						userInfoAssets.amount }}</div>
 					<div class="item-btn" @click="onClickRecharge">{{ t('recharge.title') }}</div>
 				</div>

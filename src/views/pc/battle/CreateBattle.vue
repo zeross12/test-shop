@@ -342,19 +342,35 @@ const formatOriginaldecimalPart = (price) => {
 
 		<div class="pc-battle-title">
 			<div class="title-c">
-				<img src="@/assets/pcimg/battle/icon_create.png" alt="" />
+				<!-- <img src="@/assets/pcimg/battle/icon_create.png" alt="" /> -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+					<path
+						d="M35.8997 13.0146V13.0166V26.9833C35.8997 29.8675 35.0429 32.0795 33.5527 33.5697C32.0625 35.0598 29.8505 35.9166 26.9663 35.9166H13.0163C10.1322 35.9166 7.92043 35.0599 6.43034 33.5679C4.94014 32.0758 4.08301 29.8597 4.08301 26.9666V13.0166C4.08301 10.1325 4.93982 7.9205 6.43 6.43031C7.92019 4.94012 10.1322 4.08331 13.0163 4.08331H26.983C29.8673 4.08331 32.079 4.94018 33.5669 6.42998C35.0547 7.91961 35.9076 10.1309 35.8997 13.0146ZM21.9997 26.6666V22H26.6663C27.7639 22 28.6663 21.0975 28.6663 20C28.6663 18.9024 27.7639 18 26.6663 18H21.9997V13.3333C21.9997 12.2358 21.0972 11.3333 19.9997 11.3333C18.9021 11.3333 17.9997 12.2358 17.9997 13.3333V18H13.333C12.2355 18 11.333 18.9024 11.333 20C11.333 21.0975 12.2355 22 13.333 22H17.9997V26.6666C17.9997 27.7642 18.9021 28.6666 19.9997 28.6666C21.0972 28.6666 21.9997 27.7642 21.9997 26.6666Z"
+						fill="#4B4F71" stroke="#4B4F71" stroke-width="1.5" />
+				</svg>
 				<p>{{ t('battle.addBox') }}</p>
 				<div class="question"><img src="@/assets/pcimg/battle/question.png" alt="" /></div>
 			</div>
 			<div class="opts">
 				<div class="opt" @click="onClickBack">
-					<img src="@/assets/pcimg/common/back.png" alt="" />{{ t('common.back') }}
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M15 22.75H9C3.57 22.75 1.25 20.43 1.25 15V9C1.25 3.57 3.57 1.25 9 1.25H15C20.43 1.25 22.75 3.57 22.75 9V15C22.75 20.43 20.43 22.75 15 22.75ZM9 2.75C4.39 2.75 2.75 4.39 2.75 9V15C2.75 19.61 4.39 21.25 9 21.25H15C19.61 21.25 21.25 19.61 21.25 15V9C21.25 4.39 19.61 2.75 15 2.75H9Z"
+							fill="white" />
+						<path
+							d="M13.9204 16.13H9.00039C8.59039 16.13 8.25039 15.79 8.25039 15.38C8.25039 14.97 8.59039 14.63 9.00039 14.63H13.9204C15.2004 14.63 16.2504 13.59 16.2504 12.3C16.2504 11.01 15.2104 9.96997 13.9204 9.96997H7.15039C6.74039 9.96997 6.40039 9.62997 6.40039 9.21997C6.40039 8.80997 6.74039 8.46997 7.15039 8.46997H13.9204C16.0304 8.46997 17.7504 10.19 17.7504 12.3C17.7504 14.41 16.0304 16.13 13.9204 16.13Z"
+							fill="white" />
+						<path
+							d="M8.56945 11.52C8.37945 11.52 8.18945 11.45 8.03945 11.3L6.46945 9.73001C6.17945 9.44001 6.17945 8.96001 6.46945 8.67001L8.03945 7.10001C8.32945 6.81001 8.80945 6.81001 9.09945 7.10001C9.38945 7.39001 9.38945 7.87001 9.09945 8.16001L8.05945 9.20001L9.09945 10.24C9.38945 10.53 9.38945 11.01 9.09945 11.3C8.95945 11.44 8.76945 11.52 8.56945 11.52Z"
+							fill="white" />
+					</svg>
+					{{ t('common.back') }}
 				</div>
 			</div>
 		</div>
 		<div class="create-nav">
 			<div class="nav-left">
-				<div class="round">{{ round }}{{ t('battle.round') }}</div>
+				<div class="round">{{ round }} {{ t('battle.round') }}</div>
 				<div class="pep-count">{{ t('common.users') }}
 					<div class="pep-item" :class="{ 'active': item.peopleCount == peopleCount }"
 						v-for="(item, index) in pattern" :key="index" @click="onClickRoomType(item.peopleCount)">
@@ -363,33 +379,90 @@ const formatOriginaldecimalPart = (price) => {
 			</div>
 			<div class="nav-right">
 				{{ t('battle.priceTotal') }}
-				<span><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ totalPrice.toFixed(2)
+				<span><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ totalPrice.toFixed(2)
 				}}</span>
 			</div>
 		</div>
 		<div class="box-wrap">
 			<div class="box-item" v-for="(item, index) in already" :key="index">
+				<div class="box-item--bg">
+
+				</div>
 				<div class="num-wrap">
-					<div class="btn-num" @click="boxCatAmount(item)">-</div>
+					<div class="btn-num" @click="boxCatAmount(item)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path
+								d="M13.3337 10.625H6.66699C6.32533 10.625 6.04199 10.3417 6.04199 10C6.04199 9.65833 6.32533 9.375 6.66699 9.375H13.3337C13.6753 9.375 13.9587 9.65833 13.9587 10C13.9587 10.3417 13.6753 10.625 13.3337 10.625Z"
+								fill="white" />
+							<path
+								d="M12.5003 18.9584H7.50033C2.97533 18.9584 1.04199 17.0251 1.04199 12.5001V7.50008C1.04199 2.97508 2.97533 1.04175 7.50033 1.04175H12.5003C17.0253 1.04175 18.9587 2.97508 18.9587 7.50008V12.5001C18.9587 17.0251 17.0253 18.9584 12.5003 18.9584ZM7.50033 2.29175C3.65866 2.29175 2.29199 3.65841 2.29199 7.50008V12.5001C2.29199 16.3417 3.65866 17.7084 7.50033 17.7084H12.5003C16.342 17.7084 17.7087 16.3417 17.7087 12.5001V7.50008C17.7087 3.65841 16.342 2.29175 12.5003 2.29175H7.50033Z"
+								fill="white" />
+						</svg>
+					</div>
 					<div class="num">{{ item.amount }}</div>
-					<div class="btn-num" @click="addAmount(item)">+</div>
+					<div class="btn-num" @click="addAmount(item)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path
+								d="M13.3337 10.625H6.66699C6.32533 10.625 6.04199 10.3417 6.04199 10C6.04199 9.65833 6.32533 9.375 6.66699 9.375H13.3337C13.6753 9.375 13.9587 9.65833 13.9587 10C13.9587 10.3417 13.6753 10.625 13.3337 10.625Z"
+								fill="white" />
+							<path
+								d="M10 13.9584C9.65833 13.9584 9.375 13.6751 9.375 13.3334V6.66675C9.375 6.32508 9.65833 6.04175 10 6.04175C10.3417 6.04175 10.625 6.32508 10.625 6.66675V13.3334C10.625 13.6751 10.3417 13.9584 10 13.9584Z"
+								fill="white" />
+							<path
+								d="M12.5003 18.9584H7.50033C2.97533 18.9584 1.04199 17.0251 1.04199 12.5001V7.50008C1.04199 2.97508 2.97533 1.04175 7.50033 1.04175H12.5003C17.0253 1.04175 18.9587 2.97508 18.9587 7.50008V12.5001C18.9587 17.0251 17.0253 18.9584 12.5003 18.9584ZM7.50033 2.29175C3.65866 2.29175 2.29199 3.65841 2.29199 7.50008V12.5001C2.29199 16.3417 3.65866 17.7084 7.50033 17.7084H12.5003C16.342 17.7084 17.7087 16.3417 17.7087 12.5001V7.50008C17.7087 3.65841 16.342 2.29175 12.5003 2.29175H7.50033Z"
+								fill="white" />
+						</svg>
+					</div>
 				</div>
 				<div class="case-pic" :style="'background-image: url(' + item.imageUrl + ');'"><img
 						:src="item.weaponImageUrl" alt=""></div>
 				<div class="name">{{ item.name }}</div>
-				<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+				<div class="price"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 					(Number(item.price) * Number(item.amount)).toFixed(2) }}</div>
 				<div class="close" @click.stop="boxCatAllAmount(item)">
-					<img src="@/assets/pcimg/common/close.png" alt="" />
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path
+							d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"
+							fill="#EB4C4B" />
+						<path
+							d="M9.16937 15.5801C8.97937 15.5801 8.78938 15.5101 8.63938 15.3601C8.34938 15.0701 8.34938 14.5901 8.63938 14.3001L14.2994 8.64011C14.5894 8.35011 15.0694 8.35011 15.3594 8.64011C15.6494 8.93011 15.6494 9.41011 15.3594 9.70011L9.69937 15.3601C9.55937 15.5101 9.35937 15.5801 9.16937 15.5801Z"
+							fill="#EB4C4B" />
+						<path
+							d="M14.8294 15.5801C14.6394 15.5801 14.4494 15.5101 14.2994 15.3601L8.63938 9.70011C8.34938 9.41011 8.34938 8.93011 8.63938 8.64011C8.92937 8.35011 9.40937 8.35011 9.69937 8.64011L15.3594 14.3001C15.6494 14.5901 15.6494 15.0701 15.3594 15.3601C15.2094 15.5101 15.0194 15.5801 14.8294 15.5801Z"
+							fill="#EB4C4B" />
+					</svg>
 				</div>
 			</div>
-			<div class="box-add" @click="onClickAdd">
-				<div class="add-wrap">+</div>
+			<div class="box-item" @click="onClickAdd">
+				<div class="box-item--bg">
+
+				</div>
+
+				<!-- <div class="add-wrap">+</div> -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+					<path
+						d="M53.3337 41.75H26.667C25.7145 41.75 24.917 40.9525 24.917 40C24.917 39.0475 25.7145 38.25 26.667 38.25H53.3337C54.2861 38.25 55.0837 39.0475 55.0837 40C55.0837 40.9525 54.2861 41.75 53.3337 41.75Z"
+						fill="#727391" stroke="#727391" stroke-width="1.5" />
+					<path
+						d="M40 55.0833C39.0475 55.0833 38.25 54.2857 38.25 53.3333V26.6666C38.25 25.7142 39.0475 24.9166 40 24.9166C40.9525 24.9166 41.75 25.7142 41.75 26.6666V53.3333C41.75 54.2857 40.9525 55.0833 40 55.0833Z"
+						fill="#727391" stroke="#727391" stroke-width="1.5" />
+					<path
+						d="M50.0003 75.8333H30.0003C11.9003 75.8333 4.16699 68.1 4.16699 50V30C4.16699 11.9 11.9003 4.16663 30.0003 4.16663H50.0003C68.1003 4.16663 75.8337 11.9 75.8337 30V50C75.8337 68.1 68.1003 75.8333 50.0003 75.8333ZM30.0003 9.16663C14.6337 9.16663 9.16699 14.6333 9.16699 30V50C9.16699 65.3666 14.6337 70.8333 30.0003 70.8333H50.0003C65.367 70.8333 70.8337 65.3666 70.8337 50V30C70.8337 14.6333 65.367 9.16663 50.0003 9.16663H30.0003Z"
+						fill="#727391" />
+				</svg>
 				<p>{{ t('battle.addBox') }}</p>
 			</div>
 		</div>
 		<div class="btn-create" @click="onConfirmCreate">
-			{{ t('battle.create') }}<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{
+			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+				<path
+					d="M18.5 12.75H6.5C6.09 12.75 5.75 12.41 5.75 12C5.75 11.59 6.09 11.25 6.5 11.25H18.5C18.91 11.25 19.25 11.59 19.25 12C19.25 12.41 18.91 12.75 18.5 12.75Z"
+					fill="#171717" />
+				<path
+					d="M12.5 18.75C12.09 18.75 11.75 18.41 11.75 18V6C11.75 5.59 12.09 5.25 12.5 5.25C12.91 5.25 13.25 5.59 13.25 6V18C13.25 18.41 12.91 18.75 12.5 18.75Z"
+					fill="#171717" />
+			</svg>
+			{{ t('battle.create') }}<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{
 				totalPrice.toFixed(2) }}
 		</div>
 
@@ -398,7 +471,7 @@ const formatOriginaldecimalPart = (price) => {
 				<div class="close-btn" @click="showConfirmDialog = false"><img src="@/assets/pcimg/common/close.png"></div>
 				<div class="cc-title">{{ t('battle.create') }}</div>
 				<div class="cc-sub-title">{{ t('battle.createTip') }}</div>
-				<div class="cc-price"><img src="@/assets/pcimg/common/coin.png">{{ totalPrice.toFixed(2) }}</div>
+				<div class="cc-price"><img src="@/assets/pcimg/common/coin.svg">{{ totalPrice.toFixed(2) }}</div>
 				<div class="cc-tip">{{ t('battle.createConfirmText') }}</div>
 				<div class="cc-checkbox" :class="{ shake: jumpTip }" @click="onAutoSelectReward">
 					<img src="@/assets/pcimg/battle/checkbox.png" v-if="!autoSelectReward">
@@ -422,7 +495,7 @@ const formatOriginaldecimalPart = (price) => {
 						{{ t('router.createBattle') }}
 						<div class="cost-container">
 							{{ t('battle.priceTotal') }}
-							<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />
+							<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />
 							<div class="price" v-html="showFloat(totalPrice.toFixed(2), 10)"></div>
 						</div>
 
@@ -460,7 +533,7 @@ const formatOriginaldecimalPart = (price) => {
 							</div>
 							<div class="desc">{{ item.name }}</div>
 							<div class="price">
-								<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />
+								<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />
 								<div>{{ item.price }}</div>&nbsp;&nbsp;
 								<p v-if="Number(item.price) < Number(item.originalPrice)">{{ item.originalPrice }}</p>
 								<!-- <p class="point" v-if="Number(item.price) < Number(item.originalPrice)">{{ formatOriginaldecimalPart(item.originalPrice) }}</p> -->
@@ -504,12 +577,11 @@ const formatOriginaldecimalPart = (price) => {
 }
 
 #pc-createbattle {
-	max-width: 1440px;
+	max-width: 1120px;
 	width: 100%;
 	margin: auto;
-	padding: 0 15px;
-	box-sizing: border-box;
 	min-height: 900px;
+	margin-top: 40px;
 
 	.confirm-container {
 		width: 514px;
@@ -606,6 +678,8 @@ const formatOriginaldecimalPart = (price) => {
 			img {
 				width: 30px;
 			}
+
+
 		}
 
 		.cc-title {
@@ -630,7 +704,6 @@ const formatOriginaldecimalPart = (price) => {
 	}
 
 	.pc-battle-title {
-		height: 138px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -639,15 +712,18 @@ const formatOriginaldecimalPart = (price) => {
 
 		.title-c {
 			color: #fff;
-			font-size: 27px;
+			font-size: 40px;
+			font-weight: 700;
+			letter-spacing: 4px;
+			text-transform: uppercase;
 			display: flex;
 			align-items: center;
 			position: relative;
 
-			img {
-				width: 28px;
-				height: 28px;
-				margin-right: 10px;
+			svg {
+				width: 40px;
+				height: 40px;
+				margin-right: 8px;
 			}
 
 			.question {
@@ -667,25 +743,25 @@ const formatOriginaldecimalPart = (price) => {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			color: #cfd4ff;
-			font-size: 14px;
+			color: white;
+			font-size: 16px;
+			font-weight: 700;
+			text-transform: uppercase;
+			line-height: 24px;
 
 			.opt {
 				cursor: pointer;
-				margin: 10px;
 				display: flex;
 				align-items: center;
-				padding: 0 50px;
-				height: 60px;
+				padding: 16px 32px;
 				flex-shrink: 0;
 				vertical-align: middle;
 				border-radius: 4px;
-				border: 1px solid #313350;
+				border-radius: 8px;
+				background: #4B4F71;
 
-				img {
-					width: 17px;
-					height: 17px;
-					margin-right: 15px;
+				svg {
+					margin-right: 8px;
 				}
 			}
 		}
@@ -693,51 +769,66 @@ const formatOriginaldecimalPart = (price) => {
 
 	.create-nav {
 		display: flex;
-		width: 100%;
-		height: 80px;
+		// width: 100%;
 		align-items: center;
-		flex-shrink: 0;
-		background: #111324;
-		margin-top: 10px;
+		// flex-shrink: 0;
+		margin-top: 16px;
 		justify-content: space-between;
-		padding: 0 40px;
-		box-sizing: border-box;
+		padding: 12px 24px;
+		border-radius: 12px;
+		background: rgba(28, 33, 89, 0.50);
+		backdrop-filter: blur(12px);
+		color: white;
 
 		.nav-left {
 			display: flex;
 			align-items: center;
 
 			.round {
-				color: #7349CA;
-
+				color: white;
 				font-size: 20px;
-				font-weight: 300;
+				font-weight: 700;
+				line-height: 28px;
+				text-transform: uppercase;
 			}
 
 			.pep-count {
 				display: flex;
 				align-items: center;
 				color: #FFF;
-				font-size: 16px;
-				font-weight: 300;
-				margin-left: 60px;
+				font-size: 18px;
+				font-weight: 500;
+				margin-left: 65px;
 
 				.pep-item {
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					width: 24px;
-					height: 24px;
-					border-radius: 6px;
-					border: 1px solid #313350;
-					color: #959AC2;
-					font-size: 11px;
-					margin-left: 10px;
+					width: 48px;
+					height: 48px;
+					color: #fff;
+					font-size: 18px;
+					line-height: 26px;
 					cursor: pointer;
+					border-radius: 12px;
+					border: 1px solid #727391;
+					margin-left: 8px;
+					transition: .3s all;
+
+					&:first-child {
+						margin-left: 24px;
+					}
 
 					&.active {
 						border: 1px solid #6D6C82;
 						color: #FFF;
+					}
+
+					&:hover,
+					&.active {
+						border-color: #FFE063;
+						background: #FFE063;
+						color: #151515;
 					}
 				}
 			}
@@ -745,47 +836,110 @@ const formatOriginaldecimalPart = (price) => {
 
 		.nav-right {
 			color: #FFF;
-			font-size: 16px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 26px;
 			display: flex;
 			align-items: center;
+			gap: 16px;
 
 			span {
-				color: #75DC9E;
-
-				font-size: 14px;
-				font-weight: 500;
-				letter-spacing: 0.42px;
-				margin-left: 10px;
+				font-size: 20px;
+				font-weight: 700;
+				text-transform: uppercase;
+				display: flex;
+				align-items: center;
+				gap: 8px;
 			}
 
 			img {
-				margin-bottom: -3px;
+				width: 20px;
+				height: 20px;
+			}
+
+			.pc-price-coin {
+				margin: 0 !important;
 			}
 		}
 	}
 
 	.box-wrap {
-		display: flex;
-		padding: 0 38px;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 16px;
 		box-sizing: border-box;
-		margin-top: 18px;
+		margin-top: 40px;
+
 
 		.box-item {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+
+			// display: flex;
+			// justify-content: center;
+			// align-items: center;
+			// flex-direction: column;
+			height: 100%;
+			color: white;
+			background: rgba(52, 53, 79, 0.50);
+			backdrop-filter: blur(80px);
+			border-radius: 16px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 26px;
+			cursor: pointer;
+			overflow: hidden;
+
+			aspect-ratio: .8;
+			height: 100%;
 			position: relative;
-			background: url(@/assets/pcimg/battle/box_bg.png) no-repeat center;
-			background-size: 100% 100%;
-			border-radius: 10px;
-			width: 170px;
-			height: 225px;
-			margin-right: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			// bacfilter: blur(40px);
+
+			* {
+				position: relative;
+				z-index: 1;
+			}
+
+			&::before {
+				content: "";
+				position: absolute;
+				background: url(@/assets/pcimg/battle/box_bg.png) no-repeat center;
+				width: 100%;
+				aspect-ratio: 1.34;
+				bottom: 0;
+				z-index: 0;
+			}
+
+			&--bg,
+			&::after {
+				content: "";
+				position: absolute;
+				background: #6544f7b9;
+				width: 130px;
+				height: 130px;
+				top: 0;
+				left: 0;
+				transform: translate(-40%, -40%);
+				z-index: 0;
+				border-radius: 100%;
+				filter: blur(40px);
+			}
+
+			&::after {
+				bottom: 0;
+				top: 90%;
+				right: 0;
+				left: 90%;
+			}
+
+
 
 			.close {
 				position: absolute;
-				right: 10px;
-				top: 10px;
+				right: 16px;
+				top: 16px;
 				cursor: pointer;
 
 				img {
@@ -798,28 +952,25 @@ const formatOriginaldecimalPart = (price) => {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				margin-top: 12px;
+				position: absolute;
+				top: 16px;
+				left: 16px;
 
 				.btn-num {
+					cursor: pointer;
 					display: flex;
 					align-items: center;
-					justify-content: center;
-					width: 12px;
-					height: 12px;
-					border-radius: 2px;
-					border: 0.8px solid #959AC2;
-					color: #959AC2;
-					font-size: 10px;
-					text-align: center;
-					box-sizing: border-box;
-					line-height: 10px;
 				}
 
 				.num {
 					color: #FFF;
-					font-size: 12px;
-					margin: 0 8px;
-					line-height: 12px;
+					align-self: stretch;
+					font-size: 18px;
+					font-weight: 500;
+					width: 40px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				}
 			}
 
@@ -840,39 +991,30 @@ const formatOriginaldecimalPart = (price) => {
 			}
 
 			.name {
-				margin-top: 5px;
-				color: #B4B6C8;
-
-				font-size: 14px;
+				color: #fff;
+				font-size: 16px;
 				font-weight: 500;
+				padding-top: 16px;
 			}
 
 			.price {
 				display: flex;
-				margin-top: 6px;
-				color: #75DC9E;
-
-				font-size: 14px;
+				align-items: center;
+				margin-top: 8px;
+				color: #fff;
+				font-size: 18px;
 				font-weight: 500;
-				letter-spacing: 0.42px;
+				gap: 4px;
 
+				img {
+					margin: 0;
+				}
 			}
 
 		}
 
-		.box-add {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			width: 170px;
-			height: 225px;
-			background: #1E203D;
-			color: #B4B6C8;
+		.box-item {
 
-			font-size: 14px;
-			font-weight: 500;
-			cursor: pointer;
 
 			.add-wrap {
 				display: flex;
@@ -885,28 +1027,40 @@ const formatOriginaldecimalPart = (price) => {
 			}
 
 			p {
-				margin-top: 19px;
+				margin-top: 16px;
 			}
 		}
 	}
 
 	.btn-create {
+		padding: 24px 32px;
+		border-radius: 8px;
+		background: #FFE063;
+		color: #151515;
+		text-align: center;
+		font-size: 20px;
+		font-weight: 700;
+		margin: auto;
+		margin-top: 40px;
+		margin-bottom: 98px;
+		cursor: pointer;
+		width: fit-content;
+		transition: .3s all;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 180px;
-		height: 50px;
-		border-radius: 4px;
-		background: #3A34B0;
-		color: #FFF;
-		text-align: center;
-		font-size: 16px;
-		font-weight: 700;
-		margin: 54px auto;
-		cursor: pointer;
+		gap: 8px;
+
+		img {
+			border: 2px solid white;
+			border-radius: 100%;
+			width: 20px;
+			height: 20px;
+			margin: 0;
+		}
 
 		&:hover {
-			background: #4B58C9;
+			background: #ffe063e7;
+
 		}
 
 		span {
@@ -993,9 +1147,7 @@ const formatOriginaldecimalPart = (price) => {
 				}
 
 				.close {
-					float: right;
 					color: #959ac2;
-					margin-top: 20px;
 					cursor: pointer;
 				}
 			}

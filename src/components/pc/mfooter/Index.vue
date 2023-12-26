@@ -64,10 +64,6 @@ function getLogo() {
 
 <template>
 	<div id="pc-footer-wrap" v-if="store.state.showFooterView">
-		<div>
-
-
-		</div>
 
 		<!-- <div class="site-info-container">
 			<div class="info-wrap">
@@ -88,6 +84,7 @@ function getLogo() {
 		</div> -->
 		<div class="footer-content-container">
 
+			<div class="separate--2" style="height: 1px;" />
 			<div class="separate--2" />
 			<div class="content-wrap">
 				<div class="logo-wrap">

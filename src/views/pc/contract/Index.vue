@@ -390,7 +390,7 @@ function getColor(v) {
 										</div>
 										<p class="hide">{{
 											item.goodsName }}</p>
-										<div class="item-price"><img src="@/assets/pcimg/common/coin.png" alt="">{{
+										<div class="item-price"><img src="@/assets/pcimg/common/coin.svg" alt="">{{
 											item.price
 										}}
 										</div>
@@ -424,7 +424,7 @@ function getColor(v) {
 										<p class="hide"
 											@click="itemNameIndex == index ? itemNameIndex = -1 : itemNameIndex = index">{{
 												item.goodsName }}</p>
-										<div class="item-price"><img src="@/assets/pcimg/common/coin.png" alt="">{{
+										<div class="item-price"><img src="@/assets/pcimg/common/coin.svg" alt="">{{
 											item.price
 										}}
 										</div>
@@ -469,7 +469,7 @@ function getColor(v) {
 													<img :src="item.iconUrl" alt="">
 												</div>
 												<p class="hide">{{ item.goodsName }}</p>
-												<div class="item-price"><img src="@/assets/pcimg/common/coin.png" alt="">{{
+												<div class="item-price"><img src="@/assets/pcimg/common/coin.svg" alt="">{{
 													item.price
 												}}
 												</div>
@@ -498,7 +498,7 @@ function getColor(v) {
 					<div class="result-title"><img src="@/assets/romimg/contract/bt_title.png" alt=""></div>
 					<div class="result-img"><img :src="replaceItem.iconUrl" alt=""></div>
 					<div class="result-name hide">{{ replaceItem.goodsName }}</div>
-					<div class="result-price"><img src="@/assets/pcimg/common/coin.png" alt="">{{
+					<div class="result-price"><img src="@/assets/pcimg/common/coin.svg" alt="">{{
 						replaceItem.price
 					}}</div>
 					<div class="result-btn-wrap">

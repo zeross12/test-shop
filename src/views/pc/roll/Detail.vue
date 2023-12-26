@@ -377,7 +377,7 @@ const truncatedNickName = (nickName) => {
 						<div class="item-card award">
 							<div class="card-label">
 								<!-- <p>饰品价格</p> -->
-								<span><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price
+								<span><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price
 								}}</span>
 							</div>
 							<div class="weapon-item-pic" :style="`background-image: url(` + getImageBg(item) + `)`">
@@ -407,7 +407,7 @@ const truncatedNickName = (nickName) => {
 					</div>
 					<div class="item line-item">
 						<p>{{ t('battle.priceTotal') }}：</p>
-						<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" /><span>{{ rollInfo.priceNum
+						<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" /><span>{{ rollInfo.priceNum
 						}}</span>
 					</div>
 				</div>
@@ -416,7 +416,7 @@ const truncatedNickName = (nickName) => {
 						<div class="item-card">
 							<div class="card-label">
 								<p>{{ t('battle.price') }}</p>
-								<span><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price
+								<span><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price
 								}}</span>
 							</div>
 							<div class="weapon-item-pic" :style="`background-image: url(` + getImageBg(item) + `)`">

@@ -43,14 +43,14 @@ function toactiveIndex(index) {
 			<div class="weapon-item" v-for="(item, index) in list" :key="index"
 				:style="'background-image: url(' + getImageBg(item) + ');'">
 				<div class="weapon-item-price" v-if="!item.probability && false">
-					<img src="@/assets/pcimg/common/coin.png" alt="">
+					<img src="@/assets/pcimg/common/coin.svg" alt="">
 					<div class="price">
 						{{ item.price }}
 					</div>
 				</div>
-				<div class="weapon-price" v-else><img src="@/assets/pcimg/common/coin.png" alt=""> {{ item.price }}</div>
+				<div class="weapon-price" v-else><img src="@/assets/pcimg/common/coin.svg" alt=""> {{ item.price }}</div>
 				<div class="weapon-info" v-if="false">
-					<div class="weapon-item-price"><img src="@/assets/pcimg/common/coin.png" alt="">{{ item.price }}</div>
+					<div class="weapon-item-price"><img src="@/assets/pcimg/common/coin.svg" alt="">{{ item.price }}</div>
 					<div v-if="showBaolv" class="rate" @click="showProbability(index)">{{ truncation(item.probability) }}%
 					</div>
 				</div>
@@ -97,7 +97,7 @@ function toactiveIndex(index) {
 		.weapon-item {
 			position: relative;
 			min-width: 180px;
-			width: calc( 100% / 7 );
+			width: calc(100% / 7);
 			height: 205px;
 			background-size: cover;
 			background-position: center;
@@ -190,8 +190,7 @@ function toactiveIndex(index) {
 				}
 			}
 
-			.weapon-price
-			{
+			.weapon-price {
 				display: flex;
 				position: absolute;
 				top: 28px;
@@ -200,8 +199,7 @@ function toactiveIndex(index) {
 				line-height: 16px;
 				color: #7BDCA2;
 
-				img
-				{
+				img {
 					width: 16px;
 					margin-right: 6px;
 				}
@@ -331,4 +329,5 @@ function toactiveIndex(index) {
 		}
 	}
 
-}</style>
+}
+</style>

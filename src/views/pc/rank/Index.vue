@@ -196,7 +196,7 @@ function offRule() {
 						<BattleRankTopItem :rank="index + 1" v-for="( item, index ) in topRank" :key="index">
 							<!-- <img :src="item.avater" v-if="item.avater" alt="" class="avatar">
 						<div class="nickname">{{item.nickName}}</div>
-						<div class="score" v-if="item.sumScore"><img src="@/assets/pcimg/common/coin.png" alt=""/>{{item.sumScore}}</div> -->
+						<div class="score" v-if="item.sumScore"><img src="@/assets/pcimg/common/coin.svg" alt=""/>{{item.sumScore}}</div> -->
 							<div class="top-rank-item">
 								<img src="@/assets/pcimg/battle/top-icon.png" class="icon">
 								<div class="user-info">
@@ -204,7 +204,7 @@ function offRule() {
 									<div>{{ index + 1 }}</div>
 								</div>
 								<div class="other-info">
-									<div class="amount"><img src="@/assets/pcimg/common/coin.png" alt="" /> {{ parseInts(
+									<div class="amount"><img src="@/assets/pcimg/common/coin.svg" alt="" /> {{ parseInts(
 										item.rewardAmount) }}</div>
 									<div class="point">
 										{{ parseInts(item.point) }}
@@ -221,7 +221,7 @@ function offRule() {
 						</HeadPortrait>
 					</div>
 					<div class="info-wrap">
-						<div class="info1"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt=""/>{{ item.sumScore }}</div>
+						<div class="info1"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt=""/>{{ item.sumScore }}</div>
 						<div class="info2">{{ item.nickName }}</div>
 					</div> -->
 					<!-- </div> -->
@@ -241,7 +241,7 @@ function offRule() {
 						</HeadPortrait>
 						<span>{{ userInfoBase.nickName }}</span>
 					</div>
-					<div class="item-score"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt=""/>{{ selRank.sumScore }}</div>
+					<div class="item-score"><img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt=""/>{{ selRank.sumScore }}</div>
 				</div> -->
 					<div class="rank-item my-rank" v-if="hasLogin">
 						<div class="item-rank">{{ (myRank !== null && myRank.rankNum && myRank.rankNum < 50) ?
@@ -253,12 +253,12 @@ function offRule() {
 								<div class="item-score">
 									<img src="@/assets/pcimg/battle/point.png"> {{ (myRank && myRank.point) ? myRank.point
 										: 0 }}
-									<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt=""/>{{ item.sumScore }} -->
+									<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt=""/>{{ item.sumScore }} -->
 									<!-- <Price :value="item.sumScore" color="#70C593" before-size="18px" after-size="14px" show-icon></Price> -->
 								</div>
 								<div class="item-price no-warp"
 									v-if="myRank && myRank.rankNum != 0 && myRank.rankNum <= 50">
-									<img src="@/assets/pcimg/common/coin.png" alt="" />{{ parseInts(myRank.rewardAmount)
+									<img src="@/assets/pcimg/common/coin.svg" alt="" />{{ parseInts(myRank.rewardAmount)
 									}}
 								</div>
 								<div class="item-price" v-else>
@@ -282,11 +282,11 @@ function offRule() {
 							</div>
 							<div class="item-score">
 								<img src="@/assets/pcimg/battle/point.png"> {{ parseInts(item.point) }}
-								<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt=""/>{{ item.sumScore }} -->
+								<!-- <img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt=""/>{{ item.sumScore }} -->
 								<!-- <Price :value="item.sumScore" color="#70C593" before-size="18px" after-size="14px" show-icon></Price> -->
 							</div>
 							<div class="item-price">
-								<img src="@/assets/pcimg/common/coin.png" alt="" />{{ parseInts(item.rewardAmount) }}
+								<img src="@/assets/pcimg/common/coin.svg" alt="" />{{ parseInts(item.rewardAmount) }}
 							</div>
 						</div>
 					</div>
@@ -897,19 +897,22 @@ function offRule() {
 
 		.list-header {
 			// border: 1px solid red;
-			max-width: 1400px;
 			width: 100%;
-			height: 71px;
-			color: #6D6C82;
-			font-size: 12px;
+			// color: #fff;
+			min-height: 975px;
+			position: relative;
+			max-width: 1120px;
+			margin: auto;
+
+			margin-top: 24px;
+			margin-bottom: 16px;
+			color: #727391;
+			text-transform: uppercase;
+			font-size: 16px;
+			font-weight: 500;
 			text-align: left;
 			display: flex;
 			align-items: center;
-			box-sizing: border-box;
-			// margin-top: 60px;
-			// padding: 0 20px;
-			// padding-left: 39px;
-			// padding-right: 10px;
 
 			p {
 				box-sizing: border-box;

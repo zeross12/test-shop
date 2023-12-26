@@ -227,6 +227,8 @@ function getWinItemKey(item, index) {
 				<div class="state" v-show="!waiting && clientRoomStatus == 3">
 					<div class="result" :class="{ userWin: userData.winFlag != 2 }">
 						<div :class="[userData.winFlag != 1 ? 'loser' : 'winner']">
+							<img v-if="userData.winFlag != 1" src='@/assets/pcimg/battle/flag.svg' alt="">
+							<img v-else src='@/assets/pcimg/battle/winner-bg.png' alt="">
 							<div class="text">
 								{{ userData.winFlag != 1 ? t('battle.loser') : t('battle.winner') }}
 							</div>
@@ -235,7 +237,7 @@ function getWinItemKey(item, index) {
 								is_lose: userData.winFlag == 2,
 							}">
 								<div class="result-price">
-									<img src="@/assets/pcimg/common/coin.png" />
+									<img src="@/assets/pcimg/common/coin.svg" />
 									<count-to :startVal="usedPrice" :endVal="userPrice || 0" :duration="800"
 										:decimals="2"></count-to>
 								</div>
@@ -273,7 +275,7 @@ function getWinItemKey(item, index) {
 									: 'loser'
 								: 'winner',
 					]">
-						<img src="@/assets/pcimg/common/coin.png" alt="" />
+						<img src="@/assets/pcimg/common/coin.svg" alt="" />
 						<count-to :startVal="usedPrice" :endVal="curPrice || 0" :duration="800" :decimals="2"></count-to>
 					</div>
 				</div>
@@ -289,7 +291,7 @@ function getWinItemKey(item, index) {
 			<div class="goods-list" v-show="clientRoomStatus != 1">
 				<div class="goods-item" v-for="( item, index ) in sticker" :key="index">
 					<div class="price">
-						<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price }}
+						<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price }}
 					</div>
 					<div class="pic">
 						<img :src="item.iconUrl" alt="" />
@@ -305,7 +307,7 @@ function getWinItemKey(item, index) {
 					<div class="goods-item" v-for="item in winGoodsItems" :key="item"
 						:style="{ background: `url( ${getImageBg(item)} )` }">
 						<div class="price">
-							<img class="pc-price-coin" src="@/assets/pcimg/common/coin.png" alt="" />{{ item.price }}
+							<img class="pc-price-coin" src="@/assets/pcimg/common/coin.svg" alt="" />{{ item.price }}
 						</div>
 						<div class="pic">
 							<img :src="item.iconUrl" alt="" />
@@ -329,7 +331,7 @@ function getWinItemKey(item, index) {
 
 	.room-main-wrap {
 		width: 100%;
-		height: 450px;
+		// height: 450px;
 		// background: #1B1D33;
 		position: relative;
 		// padding: 24px 20px 0;
@@ -337,15 +339,14 @@ function getWinItemKey(item, index) {
 
 		.user-info-wrap {
 			width: 100%;
-			height: 98px;
 			overflow: hidden;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			overflow: visible;
 			box-sizing: border-box;
-			margin-top: 6px;
-			background: #111324;
+			background: transparent;
+			margin: 40px 0;
 
 			.user-header-wrap {
 				display: flex;
@@ -355,24 +356,28 @@ function getWinItemKey(item, index) {
 				color: #fff;
 				font-size: 14px;
 				height: 100%;
-				margin-left: 15px;
 
 				.txt-info {
 					display: flex;
 					flex-direction: column;
 					margin-left: 15px;
+					font-size: 20px;
+					font-weight: 700;
+					line-height: 28px;
+					text-transform: uppercase;
 
 					p {
 						&:last-child {
 							color: #8386a5;
-							font-size: 12px;
+							font-size: 16px;
+							text-transform: none;
+							font-weight: 500;
 						}
 					}
 				}
 			}
 
 			.user-price-wrap {
-				margin-top: 6px;
 				flex: 1;
 				display: flex;
 				justify-content: flex-end;
@@ -385,25 +390,19 @@ function getWinItemKey(item, index) {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					// color: #7BDCA2;
-					color: #fff;
+					// color: #fff;
 
 					font-size: 24px;
 					font-weight: 700;
 					margin-top: 2px;
-					padding: 0 34px;
-					height: 64px;
 
 					&.winner {
-						background: linear-gradient(180deg,
-								rgba(98, 250, 216, 0) 0%,
-								#4af1cc 100%);
+
+						color: #42D7A1;
 					}
 
 					&.loser {
-						background: linear-gradient(180deg,
-								rgba(248, 60, 118, 0) 0%,
-								#f83c76 100%);
+						color: #EB4C4B;
 					}
 
 					img {
@@ -544,12 +543,13 @@ function getWinItemKey(item, index) {
 
 					.loser,
 					.winner {
-						position: absolute;
+						// position: absolute;
 						width: 100%;
 						height: 100%;
-						top: 0;
-						left: 0;
-						background: #0d0e1a url(@/assets/pcimg/battle/battle-user-body-bg1.png) no-repeat;
+						// top: 0;
+						// left: 0;
+						backdrop-filter: blur(60px);
+						background: rgba(21, 23, 44, 0.50) url(@/assets/pcimg/battle/battle-user-body-bg1.png) no-repeat;
 						background-size: 100% 100%;
 						animation: light 1s ease;
 						display: flex;
@@ -557,26 +557,46 @@ function getWinItemKey(item, index) {
 						justify-content: center;
 						flex-direction: column;
 						gap: 8px;
+						// padding-top: 30px;
 
 						.text {
 							// margin-bottom: 140px;
-							font-weight: 400;
-							font-size: 38px;
-							color: #4af1cc;
+							font-weight: 700;
+							font-size: 20px;
+							color: #fff;
+							text-transform: uppercase;
+						}
+
+						>img {
+							opacity: .3;
 						}
 
 						.price-result {
-							width: 200px;
-							height: 80px;
+							// width: 200px;
+							// height: 80px;
 							display: flex;
 							justify-content: center;
 							align-items: center;
-							background-position: center center !important;
-							// background-size: cover !important;
+							flex-direction: column;
 							font-size: 24px;
 
+
+
+							// &:before {
+							// 	content: "";
+							// 	// position: absolute;
+							// 	// top: 30px;
+							// 	width: 200px;
+							// 	height: 200px;
+							// 	opacity: .3;
+							// 	// background: url(@/views/pc/battle/shield-tick.png) no-repeat;
+
+							// 	background: url(@/assets/pcimg/battle/winner-bg.png) no-repeat;
+							// }
+
 							&.is_win {
-								background: url(@/assets/pcimg/battle/winner-bg.png) no-repeat;
+
+								// background: url(@/views/pc/battle/shield-tick.png) no-repeat;
 							}
 
 							&.is_lose {
@@ -584,10 +604,21 @@ function getWinItemKey(item, index) {
 							}
 
 							.result-price {
-								width: 200px;
+								// width: 200px;
 								display: flex;
 								justify-content: center;
 								align-items: center;
+								position: absolute;
+								top: 50%;
+								transform: translateY(-50%);
+								color: #FFE063;
+								font-size: 24px;
+								font-weight: 700;
+								gap: 8px;
+
+								img {
+									margin: 0;
+								}
 							}
 
 							img {
